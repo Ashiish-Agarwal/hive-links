@@ -1,15 +1,60 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono ,Eagle_Lake, Sansation ,Crimson_Pro ,Annie_Use_Your_Telescope , Reenie_Beanie , Sofia, Recursive ,Sour_Gummy} from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 
+const crimsonPro = Crimson_Pro({
+  subsets: ["latin"],
+ weight:["400"],
+  variable: "--font-crimson-pro",
+})
+const sansation = Sansation({
+  subsets: ["latin"],
+ weight:["400"],
+  variable: "--font-sansation",
+})
+const ReenieBeanie= Reenie_Beanie({
+  subsets: ["latin"],
+ weight:["400"],
+  variable: "--font-reenie-beanie",
+})
+const AnnieUseYourTelescope= Annie_Use_Your_Telescope({
+  subsets: ["latin"],
+ weight:["400"],
+  variable: "--font-annie-use-your-telescope",
+})
+
+
+const sourGummy = Sour_Gummy({
+  subsets: ["latin"],
+ weight:["400"],
+  variable: "--font-sour-gummy",
+});
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+const eagleLake = Eagle_Lake({
+subsets:["latin"],
+weight:["400"],
+variable:"--font-eagle-lake"
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const sofia = Sofia({
+  subsets: ["latin"],
+ weight:["400"],
+  variable: "--font-sofia",
+});
+
+const recursive = Recursive({
+  subsets: ["latin"],
+ weight:["400"],
+  variable: "--font-recursive",
 });
 
 export const metadata: Metadata = {
@@ -25,10 +70,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${crimsonPro.variable} ${sansation.variable} ${eagleLake.variable} ${AnnieUseYourTelescope.variable} ${ReenieBeanie.variable} ${sourGummy.variable} ${recursive.variable} ${sofia.variable}  antialiased  `}
       >
-        {children}
+         <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
       </body>
+
+     
     </html>
   );
 }

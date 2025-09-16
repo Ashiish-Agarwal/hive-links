@@ -1,0 +1,57 @@
+import { UuidAction } from '@/actions/read'
+import RightPanel from '@/components/Right-Panel'
+import SideBaar from '@/components/SideBaar'
+import { Toaster } from '@/components/ui/sonner'
+import React, { Children } from 'react'
+
+
+const layout = ({children}: {children: React.ReactNode}) => {
+
+
+  return (
+<>
+{/* large screen */}
+<div className=' hidden md:block p-2 overflow-hidden h-screen w-full    '>
+
+    <div className='w-fit   h-screen flex  '>
+        <div className=' h-full w-[20rem]  flex  border-r-2  overflow-hidden dark:border-gray-800/20 border-gray-200/70   '>
+        <div className=' h-full w-full grid grid-rows-[200px_1fr]   '>
+          <div className=' ml-5    text-3xl  font-semibold '>Link-Og</div>
+          <div >
+
+            <SideBaar/>
+          </div>
+
+        
+        </div>
+        </div>
+            
+
+                <div className='w-[50rem] hide-scrollbar  border-r-2 dark:border-gray-800/20 border-gray-200/70 h-full  relative overflow-y-scroll '>
+                {children}
+                </div>
+                
+                <div className='h-full  w-[20rem]  '>
+                  <div className='flex justify-center items-center overflow-hidden  '>
+                   <RightPanel/>
+                  </div>
+                   
+                </div>
+
+
+
+      </div>
+</div>
+{/**small or medium screen  */}
+<div className='block md:hidden '>
+sm screen 
+</div>
+
+
+<Toaster richColors={true}   duration={5000}/>
+
+</>
+  )
+}
+
+export default layout
