@@ -32,7 +32,7 @@ if( !dataa[0]?.name){
 
   return (
     <>
-   <div className=' w-full h-full overflow-auto   hide-scrollbar  p-3  '>
+   <div className=' w-full h-full overflow-auto   hide-scrollbar container mx-auto  p-3  '>
     <div className=''>
 
     <NewProductButton/>

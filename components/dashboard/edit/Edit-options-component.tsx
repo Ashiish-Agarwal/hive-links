@@ -3,7 +3,7 @@ import React from 'react'
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
 import Link from 'next/link'
-import { Edit3Icon,  EyeIcon, WandSparkles } from 'lucide-react'
+import { Edit3Icon,  EyeIcon, Palette, WandSparkles } from 'lucide-react'
 import {  usePathname } from 'next/navigation'
 
 const EditOptionsCMP = ({param}:{param:string}) => {
@@ -32,11 +32,11 @@ const search = usePathname().split('/').filter(Boolean).pop()
     <Link href={`/dashboard/${param}/edit`} className={buttonVariants({
       variant:'option',
       
-      // className:` h-12 w-12 p-3 rounded-md cursor-pointer text-center dark:bg-gray-800/30 hover:bg-gray-800/10    ` ,
+     
     }) }><Edit3Icon className='size-full' size={20}/> </Link>
      <div className=' absolute  left-1/2 -translate-x-1/2     group-hover:block hidden   '>
       <span className=' px-2 py-1  text-sm    w-fit h-fit '>
-        Edit
+      Edit
       </span>
     </div>
     </div>
@@ -48,7 +48,7 @@ const search = usePathname().split('/').filter(Boolean).pop()
     <Link href={`/dashboard/${param}/edit/design`} className={buttonVariants({         
       variant:'option',
       
-      // className:' h-12 w-12 p-3 rounded-md cursor-pointer text-center dark:bg-gray-800/30 hover:bg-gray-800/10    '
+      
     })}><WandSparkles className='size-full' size={20}/> </Link>
      <div className=' absolute  left-1/2 -translate-x-1/2     group-hover:block hidden   '>
       <span className=' px-2 py-1  text-sm    w-fit h-fit '>
@@ -57,21 +57,39 @@ const search = usePathname().split('/').filter(Boolean).pop()
     </div>
     </div>
 
-    {/* preview link */}
-    <div className= {` relative group rounded-md duration-300 text-black dark:text-white  ${search ==='preview' ?' bg-primary hover:bg-primary/90  text-white   ':''}`}>
+  
+    {/* theme  */}
+    <div className= {` relative group rounded-md duration-300 text-black dark:text-white  ${search ==='theme' ?' bg-primary hover:bg-primary/90  text-white   ':''}`}>
 
-    <Link href={`/dashboard/${param}/edit/preview`} className={buttonVariants({
+    <Link href={`/dashboard/${param}/edit/theme`} className={buttonVariants({
       variant:'option',
       
       
-      // className:' h-12 w-12 p-3 rounded-md cursor-pointer text-center dark:bg-gray-800/30 hover:bg-gray-800/10    '
-    })}><EyeIcon className='size-full' size={20}/> </Link>
-    <div className=' absolute  left-1/2 -translate-x-1/2     group-hover:block hidden   '>
+      
+    })}><Palette className='size-full' size={20}/> </Link>
+    <div className=' absolute  left-1/2 -translate-x-1/2  group-hover:block hidden   '>
       <span className=' px-2 py-1   text-sm    w-fit h-fit  delay-200 animate-fade-in '>
-        Preview
+        Theme
       </span>
     </div>
     </div>
+    
+
+      {/* preview link */}
+      <div className= {` relative group rounded-md duration-300 text-black dark:text-white  ${search ==='preview' ?' bg-primary hover:bg-primary/90  text-white   ':''}`}>
+
+<Link href={`/dashboard/${param}/edit/preview`} className={buttonVariants({
+  variant:'option',
+  
+  
+  
+})}><EyeIcon className='size-full' size={20}/> </Link>
+<div className=' absolute  left-1/2 -translate-x-1/2  group-hover:block hidden   '>
+  <span className=' px-2 py-1   text-sm    w-fit h-fit  delay-200 animate-fade-in '>
+  Preview
+  </span>
+</div>
+</div>
 
     </div>
     

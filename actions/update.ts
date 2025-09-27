@@ -10,12 +10,16 @@ import { revalidateTag } from 'next/cache';
 import { cache_Tag } from '@/lib/chache';
 import { randomUUID } from 'crypto';
 
-export const updateData = async (formData: z.infer<typeof userDataSchema>) => {
+
+export const updateData = async (formData: z.infer<typeof userDataSchema>,productid:string) => {
 
     const user = await UuidAction();
     const userId = user[0]?.id
     const dataIdrow  = await db.select().from(data).where(eq(data.userId,userId))
     const datarowid = dataIdrow[0].id
+    console.log(productid, datarowid +
+        'some id '
+    )
 
     if (!userId) {
         return {
@@ -32,14 +36,15 @@ export const updateData = async (formData: z.infer<typeof userDataSchema>) => {
         updatedAt:new Date(),
     }).where(eq(data.userId,userId)).execute()
 
-      // Delete existing links
-//   await db.delete(links).where(eq(links.userId, userId)).execute()
+
     
 if(formData.links.length >= 0){
 
 
 const linkInsert= formData.links.filter((links)=>links.titleName !== "" || links.linkUrl !== "").map((links)=>({
     title:links.titleName,
+    data_id_link:productid,
+    user_id:userId,
     link:links.linkUrl,
     createdAt:new Date(),
     updatedAt:new Date(),
@@ -49,15 +54,20 @@ const linkInsert= formData.links.filter((links)=>links.titleName !== "" || links
 
 // geting some warning in link insert right down 
 
-   await db.insert(links).values(linkInsert.map((e)=>({
-    id:crypto.randomUUID(),
-    link:e.link,
-    title:e.title,
-    userId:datarowid,
-    createdAt:new Date(),
-    updatedAt:new Date(),
-   }))).execute()
-    
+if (linkInsert.length > 0) {
+    if (linkInsert.length > 0) {
+        await db.insert(links).values(linkInsert.map((e) => ({
+            id: crypto.randomUUID(),
+            linkId: productid,  // This should reference data.id (lowercase 'l')
+            userId: userId,     // This should reference user.id
+            title: e.title,
+            link: e.link,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+        }))).execute()
+    }
+}
+  
 }
 
     revalidateTag(`${cache_Tag.Products}`)

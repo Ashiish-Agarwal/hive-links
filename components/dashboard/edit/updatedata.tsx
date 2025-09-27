@@ -35,9 +35,10 @@ interface UserDataUpdateFormProps {
       linkUrl: string
     }>
   }
+  productid:string
 }
 
-function UserDataUpdateForm({ initialData }: UserDataUpdateFormProps) {
+function UserDataUpdateForm({ initialData,productid }: UserDataUpdateFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [imagePreview, setImagePreview] = useState<string | null>(null)
   const [isConverting, setIsConverting] = useState(false)
@@ -54,6 +55,7 @@ function UserDataUpdateForm({ initialData }: UserDataUpdateFormProps) {
         linkUrl: ""
       }],
       profile: initialData?.profile || "",
+      
     },
   })
  
@@ -148,7 +150,7 @@ function UserDataUpdateForm({ initialData }: UserDataUpdateFormProps) {
     setIsSubmitting(true)
 
     try {
-      const result = await updateData(values)
+      const result = await updateData(values,productid)
 
       if (result.success) {
         toast.success(result.message)

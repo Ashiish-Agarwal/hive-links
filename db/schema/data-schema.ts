@@ -12,14 +12,17 @@ export const data = pgTable("data",{
     createdAt:timestamp("created_at").notNull(),
     updatedAt:timestamp("updated_at").notNull(),
 })
+
 export const links = pgTable("links",{
     id:text("id").primaryKey(),
-    userId:text("data_id_link").notNull().references(() => data.id, { onDelete: "cascade" }),
+    linkId:text("data_id_link").notNull().references(() => data.id, { onDelete: "cascade" }),
+    userId:text("user_id").notNull().references(() => user.id, { onDelete: "cascade" }),
     title:text("title").notNull(),
     link:text("link").notNull(),
     createdAt:timestamp("created_at").notNull(),
     updatedAt:timestamp("updated_at").notNull(),
 })
+
 export const theme = pgTable("theme",{
     id:text("id").primaryKey(),
     productId:text('productid').references(()=>data.id, { onDelete: "cascade" }),
@@ -27,6 +30,7 @@ export const theme = pgTable("theme",{
     theme:text('theme'),
     fontStyle:text('fontStyle'),
     textcolor:text('textcolor'),
+    Linkcolor:text('Linkcolor'),
     backgroundColor:text('backgroundColor'),
 
 

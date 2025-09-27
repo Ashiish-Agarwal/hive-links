@@ -122,6 +122,12 @@
   }
 }
 
+
+.cardeffect{
+  background: #b956c4;
+background: linear-gradient(90deg,rgba(185, 86, 196, 1) 0%, rgba(113, 48, 120, 1) 50%, rgba(29, 145, 118, 1) 100%);
+}
+
 /* fonts styles */
 
 
@@ -204,33 +210,27 @@
   scrollbar-width: none;     /* Firefox */
 }
 
-h1{
-   text-transform: uppercase;
-     user-select: none;
-}
 
-/* theme desing  */
+
+/* theme color */
 
 .whiteTheme{
- background-color: white;
- color: black;
- user-select: none;
+  background-color: white;
+  color: black;
+  user-select: none;
 
 }
 .blackTheme{
- background-color: rgba(0, 0, 0, 0.222);
- color: white;
- user-select: none;
-
+  background-color: rgba(0, 0, 0, 0.222);
+  user-select: none;
+  
 }
 .tealTheme{
   background-color: teal;
-  color: wheat;
   user-select: none;
 }
 .salmonTheme{
   background-color: salmon;
-  color: wheat;
   user-select: none;
 }
 
@@ -239,35 +239,240 @@ h1{
 
 .greenTheme{
   background-color: rgb(106, 206, 60);
-  color: rgb(252, 250, 247);
   user-select: none;
 }
 .redTheme{
   background-color: rgb(206, 60, 60);
-  color: rgb(252, 250, 247);
   user-select: none;
 }
 .skyTheme{
   background-color: rgb(51, 190, 209);
-  color: rgb(252, 250, 247);
   user-select: none;
 }
 .pinkTheme{
   background-color: pink;
-  color: rgb(252, 250, 247);
   user-select: none;
   
 }
 
 .purpleTheme{
   background-color: purple;
-  color: rgb(252, 250, 247);
   user-select: none;
   
 }
 .yellowTheme{
   background-color: yellow;
-  color: black;
   user-select: none;
 }
 
+
+
+/* theme desing  */
+
+/* ---------- BUSINESS THEMES ---------- */
+
+.theme-business-corporate {
+  --bg: #1d4ed8;
+  --text: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --accent: #3b82f6;
+}
+.theme-business-gray {
+  --bg: #f3f4f6;
+  --text: #111827;
+  --card-bg: #ffffff;
+  --accent: #6b7280;
+}
+.theme-business-tech {
+  --bg: linear-gradient(135deg, #6d28d9, #4f46e5);
+  --text: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --accent: #a78bfa;
+}
+.theme-business-finance {
+  --bg: #065f46;
+  --text: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.06);
+  --accent: #10b981;
+}
+.theme-business-elegant {
+  --bg: #0f172a;
+  --text: #f9fafb;
+  --card-bg: rgba(255, 255, 255, 0.06);
+  --accent: #fbbf24;
+}
+
+/* ---------- INFLUENCER THEMES ---------- */
+.theme-influencer-candy {
+  --bg: linear-gradient(135deg, #ec4899, #3b82f6);
+  --text: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --accent: #f472b6;
+}
+.theme-influencer-sunrise {
+  --bg: linear-gradient(135deg, #f59e0b, #ef4444);
+  --text: #ffffff;
+  --card-bg: rgba(0, 0, 0, 0.12);
+  --accent: #fb923c;
+}
+.theme-influencer-gold {
+  --bg: linear-gradient(135deg, #facc15, #f59e0b);
+  --text: #111827;
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --accent: #fbbf24;
+}
+.theme-influencer-neon {
+  --bg: linear-gradient(135deg, #db2777, #06b6d4);
+  --text: #fdf4ff;
+  --card-bg: rgba(0, 0, 0, 0.3);
+  --accent: #a855f7;
+}
+.theme-influencer-minimal {
+  --bg: #ffffff;
+  --text: #111827;
+  --card-bg: #f9fafb;
+  --accent: #2563eb;
+}
+
+/* ---------- AESTHETIC / NORMAL THEMES ---------- */
+.theme-aesthetic-pastel-pink {
+  --bg: #fce7f3;
+  --text: #831843;
+  --card-bg: #fff0f6;
+  --accent: #f472b6;
+}
+
+.theme-aesthetic-mint {
+  --bg: #ecfdf5;
+  --text: #064e3b;
+  --card-bg: #d1fae5;
+  --accent: #10b981;
+}
+
+.theme-aesthetic-lavender {
+  --bg: #f3e8ff;
+  --text: #4c1d95;
+  --card-bg: #ede9fe;
+  --accent: #a78bfa;
+}
+
+.theme-aesthetic-sky {
+  --bg: #e0f2fe;
+  --text: #075985;
+  --card-bg: #bae6fd;
+  --accent: #0ea5e9;
+}
+
+.theme-aesthetic-cream {
+  --bg: #fef9c3;
+  --text: #713f12;
+  --card-bg: #fef3c7;
+  --accent: #facc15;
+}
+
+.theme-aesthetic-coffee {
+  --bg: #f5f5f4;
+  --text: #3f2f2f;
+  --card-bg: #e7e5e4;
+  --accent: #a16207;
+}
+
+.theme-aesthetic-olive {
+  --bg: #f7fee7;
+  --text: #365314;
+  --card-bg: #ecfccb;
+  --accent: #65a30d;
+}
+
+.theme-aesthetic-rust {
+  --bg: #fff7ed;
+  --text: #7c2d12;
+  --card-bg: #ffedd5;
+  --accent: #ea580c;
+}
+
+.theme-aesthetic-charcoal {
+  --bg: #1f2937;
+  --text: #e5e7eb;
+  --card-bg: #374151;
+  --accent: #9ca3af;
+}
+
+.theme-aesthetic-sakura {
+  --bg: linear-gradient(135deg, #fff1f2, #ffe4e6);
+  --text: #9d174d;
+  --card-bg: rgba(255,255,255,0.6);
+  --accent: #f472b6;
+}
+
+/* Normal/Everyday Themes */
+.theme-normal-classic {
+  --bg: #f8fafc;
+  --text: #334155;
+  --card-bg: #ffffff;
+  --accent: #64748b;
+}
+
+.theme-normal-warm {
+  --bg: #fef7ed;
+  --text: #9a3412;
+  --card-bg: #ffffff;
+  --accent: #ea580c;
+}
+
+.theme-normal-cool {
+  --bg: #f0f9ff;
+  --text: #0c4a6e;
+  --card-bg: #ffffff;
+  --accent: #0284c7;
+}
+
+.theme-normal-earth {
+  --bg: #f5f5f4;
+  --text: #44403c;
+  --card-bg: #ffffff;
+  --accent: #78716c;
+}
+
+.theme-normal-fresh {
+  --bg: #f0fdf4;
+  --text: #15803d;
+  --card-bg: #ffffff;
+  --accent: #22c55e;
+}
+
+/* Romantic Themes */
+.theme-romantic-blush {
+  --bg: linear-gradient(135deg, #fce7f3, #fdf2f8);
+  --text: #9d174d;
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --accent: #ec4899;
+}
+
+.theme-romantic-sunset {
+  --bg: linear-gradient(135deg, #fed7aa, #fecaca);
+  --text: #7c2d12;
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --accent: #f97316;
+}
+
+.theme-romantic-lavender {
+  --bg: linear-gradient(135deg, #e9d5ff, #f3e8ff);
+  --text: #6b21a8;
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --accent: #a855f7;
+}
+
+.theme-romantic-rose {
+  --bg: linear-gradient(135deg, #fff1f2, #fce7f3);
+  --text: #881337;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --accent: #e11d48;
+}
+
+.theme-romantic-pearl {
+  --bg: linear-gradient(135deg, #f8fafc, #f1f5f9);
+  --text: #475569;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --accent: #94a3b8;
+}

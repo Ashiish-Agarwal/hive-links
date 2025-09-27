@@ -59,13 +59,28 @@ CREATE TABLE "data" (
 CREATE TABLE "links" (
 	"id" text PRIMARY KEY NOT NULL,
 	"data_id_link" text NOT NULL,
+	"user_id" text NOT NULL,
 	"title" text NOT NULL,
 	"link" text NOT NULL,
 	"created_at" timestamp NOT NULL,
 	"updated_at" timestamp NOT NULL
 );
 --> statement-breakpoint
+CREATE TABLE "theme" (
+	"id" text PRIMARY KEY NOT NULL,
+	"productid" text,
+	"user_id" text,
+	"theme" text,
+	"fontStyle" text,
+	"textcolor" text,
+	"Linkcolor" text,
+	"backgroundColor" text
+);
+--> statement-breakpoint
 ALTER TABLE "account" ADD CONSTRAINT "account_user_id_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "session" ADD CONSTRAINT "session_user_id_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "data" ADD CONSTRAINT "data_user_id_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "links" ADD CONSTRAINT "links_data_id_link_data_id_fk" FOREIGN KEY ("data_id_link") REFERENCES "public"."data"("id") ON DELETE cascade ON UPDATE no action;
+ALTER TABLE "links" ADD CONSTRAINT "links_data_id_link_data_id_fk" FOREIGN KEY ("data_id_link") REFERENCES "public"."data"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "links" ADD CONSTRAINT "links_user_id_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "theme" ADD CONSTRAINT "theme_productid_data_id_fk" FOREIGN KEY ("productid") REFERENCES "public"."data"("id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "theme" ADD CONSTRAINT "theme_user_id_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."user"("id") ON DELETE cascade ON UPDATE no action;

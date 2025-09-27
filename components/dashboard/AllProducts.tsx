@@ -1,8 +1,8 @@
 
 import React from 'react'
 import { Card } from '../ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel,  DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Button, buttonVariants } from '../ui/button';
 import { CardContent, } from '../ui/card';
 import { Copy, Edit, EllipsisVertical, Trash2 } from 'lucide-react';
@@ -20,7 +20,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import Link from 'next/link';
-import { ClipboardWithIcon } from 'flowbite-react';
+
 
 import DeleteProductComponent from './delete-product';
 import { UuidAction } from '@/actions/read';
@@ -35,7 +35,7 @@ const AllProducts = async ({ data }: {
   data: {
     name: string,
     bio: string | null,
-    profile: string | null;
+    profile: string | null ;
     id: string,
     userId: string,
     createdAt: Date,
@@ -47,11 +47,12 @@ const AllProducts = async ({ data }: {
 
   const uuid = await  UuidAction()
   const user = uuid[0].id
-  const fetchImage = await db.select().from(userdata).where(eq(userdata.userId,user))
+//   const fetchImage = await db.select().from(userdata).where(eq(userdata.userId,user))
 
- const profileImage = fetchImage[0]?.profile
+//  const profileImage = fetchImage[0]?.profile
 
- 
+
+ console.log(data)
 
 
 
@@ -63,19 +64,22 @@ const AllProducts = async ({ data }: {
           data.map((item) => {
             return (
               <Card key={item.id} className=' w-full  h-full      gap-2   p-2      '>
+
+                
                 <div className='flex  justify-between items-center w-full h-full   '>
 
                   <div className='p-2 flex    w-1/2    gap-4  text-lg  '>
-                    <Avatar>
-                      <AvatarImage className='rounded-full size-20    ' src={profileImage || defaultImage} />
-                      <AvatarFallback>{item.name[0]}</AvatarFallback>
+                
+                    <Avatar className='size-20 '>
+                      <AvatarImage className='rounded-full size-20  overflow-hidden w-full h-full' src={item.profile || defaultImage} alt='profile' />
+                      <AvatarFallback>loading</AvatarFallback>
                     </Avatar>
                     <div className=' flex flex-col gap-2 '>
 
-                      <h1 className='text-lg font-semibold  text-black hover:text-zinc-900  dark:text-white dark:hover:text-white/70  '> @ {item.name}</h1>
-                      <div className='  w-full'>
+                      <h1 className='text-lg font-semibold  text-black hover:text-zinc-900  dark:text-white dark:hover:text-white/70 flex   '> @ {item.name}</h1>
+                      <div className='  w-full  '>
 
-                        <p className='text-ellipsis truncate text-xs text-zinc-800  dark:text-zinc-200  '> {item.bio}</p>
+                        <p className='text-ellipsis truncate text-xs text-zinc-800  dark:text-zinc-200 flex    text-wrap w-full '> {item?.bio?.length || 0 > 15 ? item.bio?.slice(0, 15) + '...' : item.bio }</p>
                       </div>
                     </div>
                   </div>
@@ -104,7 +108,7 @@ const AllProducts = async ({ data }: {
                                   <AlertDialogHeader>
                                     <AlertDialogTitle >Copy    </AlertDialogTitle>
                                     <AlertDialogDescription className='flex   '>
-                                      <CopyToClipboard name={item.userId} id={item.name} />
+                                      <CopyToClipboard name={item.name} id={item.id} />
                                     </AlertDialogDescription>
                                   </AlertDialogHeader >
                                   <AlertDialogFooter>

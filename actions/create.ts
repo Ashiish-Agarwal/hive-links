@@ -3,13 +3,14 @@
 
 import { userDataSchema } from '@/lib/zod/Userdata';
 import { db } from '@/db';
-import { data, links } from '@/db/schema/data-schema';
+import { data, links, theme } from '@/db/schema/data-schema';
 import { UuidAction } from './read';
 import { z } from 'zod';
 
 import { revalidateTag } from 'next/cache';
 import { cache_Tag } from '@/lib/chache';
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
+
 
 
 export async function createProduct(formData: z.infer<typeof userDataSchema>) {
@@ -49,7 +50,8 @@ export async function createProduct(formData: z.infer<typeof userDataSchema>) {
       const LinksData = validatedData.links.map((elem) => (
         {
           id: crypto.randomUUID(),
-          userId: dataId,
+          linkId: dataId,
+          userId:userId,
           title: elem.titleName,
           link: elem.linkUrl,
           createdAt: new Date(),
@@ -57,7 +59,7 @@ export async function createProduct(formData: z.infer<typeof userDataSchema>) {
         }
       ))
 
-
+   
 
       await db.insert(links).values(LinksData).execute();
     }
@@ -104,3 +106,133 @@ export async function createProduct(formData: z.infer<typeof userDataSchema>) {
   }
 }
 
+
+
+
+
+
+export async function createDesign(themeC:{
+  color:string,
+  pickerColorText:string,
+  pickerColor_Background:string,
+  pickerColor2_Link:string,
+  fontStyle:string,
+  productid:string
+}) {
+  const user = await UuidAction();
+  const userId = user[0]?.id
+  if(!userId || user.length===0){
+    return {
+      success: false,
+      message: 'Failed to create userss data',
+      error: 'User not found'
+    };
+  }
+
+  const productId = await db.select().from(theme).where(and(eq(theme.productId,themeC.productid),eq(theme.userId,userId))).limit(1).execute()
+ 
+  
+
+ 
+console.log(productId)
+
+  try{
+
+  if(productId.length ===0 ){
+
+    
+    
+    await db.insert(theme).values({
+    id:crypto.randomUUID(),
+    userId:userId,
+    theme:'',
+    productId:themeC.productid,
+    fontStyle:themeC.fontStyle,
+    textcolor:themeC.color,
+    backgroundColor:themeC.pickerColor_Background,
+    Linkcolor:themeC.pickerColor2_Link,
+    
+  }).execute()
+
+  
+}
+
+
+  await db.update(theme).set({
+  
+    userId:userId,
+    theme:'',
+   
+    fontStyle:themeC.fontStyle,
+    textcolor:themeC.color,
+    backgroundColor:themeC.pickerColor_Background,
+    Linkcolor:themeC.pickerColor2_Link,
+  }).where(and(eq(theme.userId,userId),eq(theme.productId,themeC.productid))).execute()
+
+  revalidateTag(`${cache_Tag.Design}`)
+  return {
+    success: true,
+    message: 'design updated  successfully',
+  
+
+  };
+
+} catch (error) {
+  console.log('comes to catch validation ' +  error)}
+  return {
+    success: false,
+    message: 'Failed to create u data',
+    error: 'failed'
+  };
+
+
+}
+
+
+
+
+export async function CreateTheme(params:string,themeClient:string) {
+
+  const userid = await UuidAction()
+
+  if(! userid || themeClient.length===0){
+    const user = await UuidAction()
+  if(user.length === 0 || themeClient.length===0 || userid.length===0){
+  return{
+    success:false,
+    message:'error in adding theme '
+  }
+  }
+    return{
+      success:false,
+      message:'error in adding theme '
+    }
+  }
+  try {
+
+    await db.update(theme).set({
+      theme:themeClient,
+      fontStyle:'',
+      textcolor:'',
+      backgroundColor:'',
+      Linkcolor:''
+    }).where(and(eq(theme.productId,params),eq(theme.userId,userid[0]?.id))).execute()
+   
+    revalidateTag(`${cache_Tag.Design}`)
+    return{
+      success:true,
+      message:'added theme successfully'
+      
+    }
+
+  } catch (error) {
+    console.log('comes to catch validation ' + error)
+    return{
+      success:false,
+      message:'error in adding theme ',
+      error:error instanceof Error ? error.message : 'Unknown error'
+    }
+  }
+
+  
+}

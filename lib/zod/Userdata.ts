@@ -12,6 +12,7 @@ export  const userDataSchema = z.object({
   links: z.array(z.object({
     titleName: z.string().min(1, "Title is required"),
     linkUrl: z.string().url("Please enter a valid URL")
-  })).min(1, "At least one link is required")
+  })).min(1, "At least one link is required"),
+  productid:z.string().optional(),
 
 })

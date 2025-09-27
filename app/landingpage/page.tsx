@@ -5,16 +5,13 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className='w-full h-screen flex items-center justify-center'>
+    <div className='w-[99%] mx-auto h-screen  bg-teal-500 text-center flex items-center justify-center flex-col   '>
 
-        <div>
-            <h1 className='text-4xl font-bold'>Link OG</h1>
-            <p className='text-lg'>Link OG is a link shortener service that allows you to shorten your links and track your links.</p>
+<h1 className='text-2xl   '>the dummy page is here   </h1>
+<p className='text-xl '>hey so this is a hive link dummy site make sure not properly rely or share with some one bcz still its workin progress</p>
+  <p className='text-sm'>so wha he does example a story soemtimes before my freidn ahve a yt channel and snap id insttra id and github or linkden tik tok he not put all stuff at one place if he do its looks weird or not cool .</p>
+<p className='texxt-sm '>so the website is aragne the link and share </p>
 
-            <h1 className='text-5xl font-semibold'>Alkaif ki maa ki choooooooooooo</h1>
-            <Link className={cn(buttonVariants({variant:"outline"}))} href='/signup'>Sign Up</Link>
-            <Link className={cn(buttonVariants({variant:"outline"}))} href='/signin'>Login</Link>
-        </div>
     </div>
   )
 }

@@ -1,11 +1,12 @@
 
 import { unstable_cache } from "next/cache"
-import {cache } from 'react'
+
 
 export const cache_Tag = {
     Products:'products',
     User:'user',
-    Link:'link'
+    Link:'link',
+    Design:'design'
    
 } as const 
 
