@@ -27,7 +27,6 @@ import { Textarea } from "../ui/textarea"
 import { toast } from "sonner"
 import { Card } from "../ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar"
-import { usePathname } from "next/navigation"
 
 
 
@@ -109,14 +108,14 @@ function UserDataFormSubsmition() {
     }
   }
 
-  // 🔥 NEW: Remove image
-  const removeImage = () => {
-    setImagePreview(null)
-    form.setValue('profile', '')
-    // Reset file input
-    const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement
-    if (fileInput) fileInput.value = ''
-  }
+  // // 🔥 NEW: Remove image
+  // const removeImage = () => {
+  //   setImagePreview(null)
+  //   form.setValue('profile', '')
+  //   // Reset file input
+  //   const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement
+  //   if (fileInput) fileInput.value = ''
+  // }
 
 
 
@@ -202,7 +201,7 @@ function UserDataFormSubsmition() {
             <FormField
               control={form.control}
               name='profile'
-              render={({ field: { value, onChange, ...fieldProps } }) => (
+              render={({ field: {  onChange, ...fieldProps } }) => (
                 <FormItem>
                   <FormLabel>Profile Image</FormLabel>
                   <FormControl>

@@ -1,8 +1,8 @@
-import { GetLink, GetProduct, UuidAction } from '@/actions/read'
-import React, { cache } from 'react'
+import { GetLink,  UuidAction } from '@/actions/read'
+import React from 'react'
 import { redirect } from 'next/navigation'
 import { db } from '@/db'
-import { data, links } from '@/db/schema/data-schema'
+import { data } from '@/db/schema/data-schema'
 import { and, eq } from 'drizzle-orm'
 import UserDataUpdateForm from '@/components/dashboard/edit/updatedata'
 import EditOptionsCMP from '@/components/dashboard/edit/Edit-options-component'
@@ -12,7 +12,7 @@ import EditOptionsCMP from '@/components/dashboard/edit/Edit-options-component'
 const page = async ({params}:{params:Promise<{product :string}>}) => {
   const param = await params
  
-  const ProductDataaa = await cache(()=> GetProduct( param.product))()
+ 
   const user= await UuidAction()
   if(!user || !user[0].id || user.length === 0){
     return redirect('/signup')  

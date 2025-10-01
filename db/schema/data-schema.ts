@@ -35,3 +35,15 @@ export const theme = pgTable("theme",{
 
 
 })
+
+export const socialLinks = pgTable('social_links', {
+    productid:text("productid").references(()=>data.id, { onDelete: "cascade" }),
+    userId:text("user_id").notNull().references(() => user.id, { onDelete: "cascade" }),
+    platform:text("platform").notNull(),
+    url:text("url").notNull(),
+    createdAt:timestamp("created_at").notNull(),
+    updatedAt:timestamp("updated_at").notNull(),
+    
+  });
+
+  

@@ -4,8 +4,10 @@ import { UuidAction } from "./read"
 import { and, eq } from "drizzle-orm"
 import {data as userdata} from '@/db/schema/data-schema'
 import { revalidatePath, revalidateTag, unstable_cache } from "next/cache"
-import { success } from "better-auth"
+
 import { cache_Tag, withCache } from "@/lib/chache"
+import { redirect } from "next/navigation"
+import { user as userSchema } from "@/db/schema/auth-schema"
 // import { revalidatePath, revalidateTag } from "next/cache"
 
 
@@ -37,5 +39,26 @@ return {success:true , message:'product deleted successfully',data:delted}
 catch(error){
     return{success:false , message:'error in deleting product'}
     }}
+
+
+
+export async function DeleteAccount(user:string) {
+        const useruuid =await  UuidAction()
+        if(!useruuid[0].id){
+            return redirect('/landingpage')
+            
+        }
+        try {
+            const deleted = await db.delete(userSchema).where(eq(userSchema.id, user))
+            cache_Tag.User
+            
+            return {success:true , message:'account deleted successfully',data:deleted}
+        } catch (error) {
+            return {success:false , message:'error in deleting account'}
+        }
+
+        
+    }
+
 
 

@@ -10,19 +10,25 @@ import {
   PaginationNext,
   PaginationPrevious
 } from '@/components/ui/pagination'
-import { CometCard } from '@/components/ui/comet-card'
-import InboxDummy from '../dummy'
+
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import Link from 'next/link'
-import { cn, defaultImage } from '@/lib/utils'
-import { Check, ExternalLink, Facebook, Github, Instagram, Loader2, Twitter } from 'lucide-react'
-import { Separator } from '@radix-ui/react-dropdown-menu'
+import { defaultImage } from '@/lib/utils'
+import {  Facebook, Github, Instagram, Loader2, Twitter } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { CreateTheme } from '@/actions/create'
 import { toast } from 'sonner'
 
-const ThemeList = ({params}:{params:string}) => {
+const ThemeList = ({params}:{params?:string}) => {
+
+  const iconMap =[
+    {key:'github',value:<Github />},
+    {key:'facebook',value:<Facebook />},
+    {key:'twitter',value:<Twitter />},
+    {key:'instagram',value:<Instagram />},
+  ]
+
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 9 
   const [Submittheme, setSumbittheme] = useState('')
@@ -45,7 +51,7 @@ const ThemeList = ({params}:{params:string}) => {
     setloading(true)
     console.log(Submittheme)
 
-    const themeSubmit = await CreateTheme(params,Submittheme)
+    const themeSubmit = await CreateTheme(params!,Submittheme)
     if(themeSubmit.success){
       toast.success(themeSubmit.message)
     }
@@ -60,6 +66,7 @@ const ThemeList = ({params}:{params:string}) => {
   const generatePageNumbers = () => {
     const pages = []
     const maxVisiblePages = 5
+    
 
     if (totalPages <= maxVisiblePages) {
       // Show all pages if total pages is small
@@ -115,7 +122,7 @@ const ThemeList = ({params}:{params:string}) => {
             onClick={() => setSumbittheme(elem)}
             style={{
               background: "var(--bg)",
-              color: "var(--text)"
+              
             }}
           >
             <Popover >
@@ -148,21 +155,18 @@ const ThemeList = ({params}:{params:string}) => {
                     }}> A small devloper working with @donry build a saas applicaiton a self enterpensure
                     </h1>
                   </div>
-                  <div style={{
-                    color: 'var(--text) '
-                  }} className='flex flex-wrap gap-2 mt-2 '>
-                    <Link href={'/'}>
-                    <Github size={20}/>
-                    </Link>
-                    <Link href={'/'}>
-                    <Facebook size={20}/>
-                    </Link>
-                    <Link href={'/'}>
-                    <Twitter size={20}/>
-                    </Link>
-                    <Link href={'/'}>
-                    <Instagram size={20}/>
-                    </Link>
+                  <div  className='flex flex-wrap gap-2 mt-2 '>
+                  {
+                    iconMap.map((elem) => (
+                      <span  style={{
+                        background: 'var(--card-bg) ',
+                        color:'var(--text)'
+                      }} className='p-2 rounded-md hover:scale-105 delay-100 transition-all duration-300' key={elem.key}>{elem.value}</span>
+                    ))
+                  }
+                  
+                   
+                    
                   </div>
                  
                   <div className='flex flex-col gap-2 mt-3 items-start ml-5  capitalize   w-full     '  >
@@ -175,10 +179,11 @@ const ThemeList = ({params}:{params:string}) => {
 
                           <Link key={i} style={{
                             color: 'var(--text)',
+                            background:'var(--card-bg)'
 
-                          }} className={`text-primary  inline-block border-b-2 border-transparent duration-300 hover:border-black  `} href={'/'}> <span className='flex gap-2  '>
+                          }} className={`text-primary p-1 flex items-center justify-center  rounded-md w-full  `} href={'/'}> 
 
-                              your link   <ExternalLink size={20} /> </span></Link>
+                              your link    </Link>
 
 
 

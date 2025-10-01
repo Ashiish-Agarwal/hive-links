@@ -1,22 +1,24 @@
 
 import { Getunauthorizedata, GetunauthorizeDesigndata, GetunauthorizeLink } from '@/actions/read'
-import { GetLink } from '@/actions/read'
-import { Facebook, Github, Instagram, Linkedin, LucideCrown, Twitter } from 'lucide-react'
+
 import Link from 'next/link'
 import { Avatar ,AvatarFallback,AvatarImage } from '@/components/ui/avatar'
+import SocialLinksDisplay from '@/components/dashboard/social-links'
 
 
 
-const page = async ({params}:{params:Promise<{username:string,productid:string}>}) => {
+const Page   = async ({params}:{params:Promise<{username:string,productid:string}>}) => {
 
     const {username,productid} = await params
-    const decodedProductid = decodeURIComponent(username)
-    const decodedUsername = decodeURIComponent(productid)
+    const decodedProductid = decodeURIComponent(productid)
+    const decodedUsername = decodeURIComponent(username)
    
-
+console.log(decodedProductid,decodedUsername)
  const GetunAuthorizeData= await Getunauthorizedata({productid:decodedProductid})
  const linksdata = await GetunauthorizeLink({productid:decodedProductid})
  const designdata = await GetunauthorizeDesigndata({productid:decodedProductid})
+
+ 
  
 
 
@@ -32,17 +34,21 @@ const page = async ({params}:{params:Promise<{username:string,productid:string}>
 
   return (
 
-    <div className='w-full h-screen overflow-scroll'>
+    <div
+    style={{
+      background:designdata?.backgroundColor || ''
+    }}
+     
+     className={`w-full h-screen  overflow-scroll  ` }>
 
-<div className=' w-[80%] h-screen mx-auto'> 
-      <div style={{
-        background:'var(--bg)',
+
+      <div  style={{
+        background:(designdata?.textcolor ? designdata?.textcolor : 'var(--bg)'),
         color:'var(--text)'
-      }} className={`w-full h-screen flex flex-col items-center justify-center  text-center ${designdata?.fontStyle || 'sansation-light'} ${designdata?.backgroundColor || ' bg-white dark:bg-black '} ${designdata?.textcolor || 'text-black dark:text-white'} ${designdata?.theme || ''} p-2 theme-${designdata?.theme}`}>
-        <div style={{
-          background:'var(--bg)',
-          
-        }} className='w-full h-screen rounded-md flex flex-col items-center justify-center mb-20   '>
+      }} className={`w-full h-screen flex flex-col items-center justify-center ${designdata?.textcolor}  ${designdata?.fontStyle || 'sansation-light'} ${designdata?.backgroundColor}   p-2 theme-${designdata?.theme}`}>
+      
+       
+        <div className='w-full h-screen rounded-md flex flex-col items-center justify-center    '>
           {/* //image */}
           <div className={`  w-full flex items-center justify-center ${ GetunAuthorizeData?.profile?'block':'hidden' }`} >
             <Avatar className=' size-52  select-none overflow-hidden'>
@@ -59,13 +65,11 @@ const page = async ({params}:{params:Promise<{username:string,productid:string}>
           {/* name bio */}
           
 
-          <div style={{
-              color:designdata?.textcolor || '',
-            }} className={`${designdata?.textcolor?.length!==0 ?'':'text-black dark:text-white' }flex flex-col items-center  gap-1  text-center `}>
-            <h1 style={{
-              fontFamily:designdata?.fontStyle || 'default'
-            }} className='text-2xl uppercase  '>{GetunAuthorizeData?.name}</h1>
-            <p className='text-sm text-zinc-400  text-balance break-words  w-[70%] mx-auto  '> {GetunAuthorizeData?.bio }   </p>
+          <div className={`${designdata?.textcolor?.length!==0 ?'':'text-black dark:text-white' }flex flex-col items-center  gap-1  text-center `}>
+            <h1  className='text-2xl uppercase  '>{GetunAuthorizeData?.name}</h1>
+            <p style={{
+              color:'var(--accent)'
+            }} className='text-lg text-zinc-500 hover:text-zinc-700 duration-300 ease-in-out  text-balance break-words  w-[90%] mx-auto  '> {GetunAuthorizeData?.bio }   </p>
 
           </div>
           {/* links */}
@@ -74,7 +78,7 @@ const page = async ({params}:{params:Promise<{username:string,productid:string}>
               <>
               <span key={e.id } className='flex gap-2 w-full '>
               <a style={{
-                background:designdata?.Linkcolor || 'purple' 
+                background:designdata?.Linkcolor || 'var(--card-bg)' 
                 
               }} href={`${e?.link}`}  target="_blank" className={` flex items-center justify-center rounded-md w-full md:w-[50%] p-2 h-10 mx-auto scale-105 duration-300 ease-in-out hover:scale-110   sm:text-sm md:text-base lg:text-lg xl:text-xl  `}>{e.title}</a>
               </span>
@@ -83,21 +87,17 @@ const page = async ({params}:{params:Promise<{username:string,productid:string}>
             ))}
           </div>
           {/* icons */}
-          {/* <div className='flex gap-3 text-center mt-6  items-center flex-wrap '>
-           <Github/>
-           <Facebook/>
-           <Twitter/>
-           <Instagram/>
-           <Linkedin/>
+          <div  className='flex gap-3 text-center mt-6 w-full justify-center  items-center flex-wrap '>
+           <SocialLinksDisplay  productid={productid} />
        
-          </div> */}
+          </div>
 
           
           
 
         
           {/* logo */}
-          <div className='flex items-center gap-2 w-full     justify-center mt-10 h-fit  text-purple-300  hover:text-purple-800 duration-300 ease-in-out   '>
+          <div className='flex items-center gap-2 w-full     justify-center mt-10 h-fit   duration-300 ease-in-out   '>
             <Link href={'/landingpage'} target="_blank" className=' text-3xl'>
             Hive Link 
             </Link>
@@ -112,8 +112,7 @@ const page = async ({params}:{params:Promise<{username:string,productid:string}>
     
    
        
-    </div>
   )
 }
 
-export default page
+export default Page

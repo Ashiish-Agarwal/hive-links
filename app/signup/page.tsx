@@ -43,11 +43,12 @@ export default function SignUp() {
 	};
 
 	return (
-		<Card className="z-50 rounded-md rounded-t-none max-w-md">
-			<CardHeader>
-				<CardTitle className="text-lg md:text-xl">Sign Up</CardTitle>
-				<CardDescription className="text-xs md:text-sm">
-					Enter your information to create an account
+		<div className="flex items-center justify-center h-screen w-full">
+			<Card className="z-50 rounded-md rounded-t-none max-w-md">
+				<CardHeader>
+					<CardTitle className="text-lg md:text-xl">Sign Up</CardTitle>
+					<CardDescription className="text-xs md:text-sm">
+						Enter your information to create an account
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
@@ -185,11 +186,12 @@ export default function SignUp() {
 			<CardFooter>
 				<div className="flex justify-center w-full border-t py-4">
 					<p className="text-center text-xs text-neutral-500">
-						Secured by <Link href='/signup' className="text-blue-800 ">signup </Link>
+						i have already account <Link href='/signin' className="text-blue-800 ">sign in </Link>
 					</p>
 				</div>
 			</CardFooter>
 		</Card>
+		</div>
 	);
 }
 

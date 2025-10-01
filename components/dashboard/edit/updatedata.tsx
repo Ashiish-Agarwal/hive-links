@@ -3,7 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useFieldArray, useForm } from "react-hook-form"
 import { z } from "zod"
 import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
 import { Loader2, Plus, Trash2 } from "lucide-react"
 import { toast } from "sonner"
 
@@ -42,7 +41,6 @@ function UserDataUpdateForm({ initialData,productid }: UserDataUpdateFormProps) 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [imagePreview, setImagePreview] = useState<string | null>(null)
   const [isConverting, setIsConverting] = useState(false)
-  const router = useRouter()
 
   // Initialize form with existing data or defaults
   const form = useForm<z.infer<typeof userDataSchema>>({
@@ -123,13 +121,13 @@ function UserDataUpdateForm({ initialData,productid }: UserDataUpdateFormProps) 
   }
 
   // Remove image
-  const removeImage = () => {
-    setImagePreview(null)
-    form.setValue('profile', '')
-    // Reset file input
-    const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement
-    if (fileInput) fileInput.value = ''
-  }
+  // const removeImage = () => {
+  //   setImagePreview(null)
+  //   form.setValue('profile', '')
+  //   // Reset file input
+  //   const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement
+  //   if (fileInput) fileInput.value = ''
+  // }
 
   const addNewLink = () => {
     if(fields.length >= 10){
@@ -186,7 +184,7 @@ function UserDataUpdateForm({ initialData,productid }: UserDataUpdateFormProps) 
             <FormField
               control={form.control}
               name='profile'
-              render={({ field: { value, onChange, ...fieldProps } }) => (
+              render={({ field: { onChange, ...fieldProps } }) => (
                 <FormItem>
                   <FormLabel>Profile Image</FormLabel>
                   <FormControl>

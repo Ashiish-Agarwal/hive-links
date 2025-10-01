@@ -1,11 +1,11 @@
 'use server'
 import { db } from "@/db";
 import { user } from "@/db/schema/auth-schema";
-import { data, links, theme } from "@/db/schema/data-schema";
+import { data, links, socialLinks, theme } from "@/db/schema/data-schema";
 import { auth } from "@/lib/auth";
 import { cache_Tag } from "@/lib/chache";
 import { and, eq } from "drizzle-orm";
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { Trykker } from "next/font/google";
 import { headers } from "next/headers";
 import { notFound, redirect } from "next/navigation";
@@ -102,8 +102,6 @@ return checkdata
 
 
 export async function Getunauthorizedata({productid}:{productid:string}){
-  // the productid is '18fa7026-2533-48b5-afd9-8675f8e1a045'
-  // a2v9ZgPqSip8DvfosZN5yNYbNyi8uyMc
 
  
   
@@ -114,6 +112,7 @@ export async function Getunauthorizedata({productid}:{productid:string}){
    
     return null
   }
+
   
   return querry[0]
 
@@ -140,4 +139,23 @@ export async function GetunauthorizeDesigndata({productid}:{productid:string}){
   }
 
   return data[0]
+}
+export async function GetSocialLink({productid}:{productid:string}){
+  
+  try {
+    
+    
+    const AllLinks =await db.select().from(socialLinks).where( and(eq(socialLinks.productid,productid)))
+    
+  
+
+    if(!AllLinks){
+      return null
+    }
+    
+    return  AllLinks
+  } catch (error) {
+    console.log(error)
+    return null
+  }
 }

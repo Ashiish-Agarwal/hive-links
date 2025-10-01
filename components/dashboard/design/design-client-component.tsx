@@ -1,9 +1,9 @@
 'use client'
-import React, { cache, useState } from 'react'
-import Fontstyles from './Fontstyles'
+import React, {  useState } from 'react'
+
 import { Button } from '@/components/ui/button'
 import { ThemeColor } from '@/lib/Theme'
-import { Edit2, Loader2, RotateCcw, TimerReset } from 'lucide-react'
+import { Edit2, Loader2, RotateCcw } from 'lucide-react'
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/css";
 import { Popover, PopoverContent, PopoverTrigger } from '@radix-ui/react-popover'
@@ -21,47 +21,55 @@ const DesignClientCmp = ({userId}:{userId:string} ) => {
 
   const [font, setFont] = useState<string>('')
 
-  const fontdata = fontData
+
 
   const [color, SetColor] = useState<string>('')
   const [pickerColorText, setpickerColorText] = useColor('#fbfbfb');
   // use for change the baclground
+
+
   const [pickerColor_Background, setpickerColor_Background] = useColor('#000000');
+
+
   // use for change the link color
   const [pickerColor2_Link, setpickerColor2_Link] = useColor('#3c9f8b');
 
-  const Color = ThemeColor
+  const bgColor = Array.isArray(ThemeColor) ? ThemeColor[0] : ThemeColor;
+  const bgColormap= ThemeColor
 
 
-  const isCustomColor = pickerColor_Background && pickerColor_Background.hex !== '#000000'
 
-  console.log('custom color' + isCustomColor)
-  const backgroundColor = isCustomColor ? {
-    backgroundColor: pickerColor_Background.hex
-  } : {}
+  const isCustomColor =  pickerColor_Background.hex !== '#000000'
+
+ 
+  const backgroundColor = isCustomColor 
+  ? { backgroundColor: pickerColor_Background.hex }
+  : { backgroundColor: Array.isArray(bgColor) ? bgColor[0] : bgColor };
 
 
-async function OnSubmit(){
-setLoading(true) 
-
+  async function OnSubmit(){
+    setLoading(true) 
+   
   const data = await createDesign({
     fontStyle:font,
-    color:color,
+    color:color,   
     pickerColorText:pickerColorText.hex,
     pickerColor_Background:pickerColor_Background.hex,
     pickerColor2_Link:pickerColor2_Link.hex,
-    productid:userId
+    productid:userId 
+
 
   })
   if(data?.success){
     toast.success(data.message)
-    console.log('sucess')
+    
   }else{
     toast.error(data?.message)
-    console.log(data)
+    
   }
   setLoading(false)
 }
+
 
 
   return (
@@ -92,11 +100,10 @@ setLoading(true)
       </div>
       <div style={
 
-        backgroundColor && {
-          color: pickerColorText.hex,
-        }
+       { ...backgroundColor, color: pickerColorText.hex}
+        
 
-      } className={`relative w-[90%] mx-auto h-screen  gap-4  ${font} flex items-center flex-col ${!isCustomColor ? color : ''} `}>
+      } className={`relative w-[90%] mx-auto h-screen  gap-4   ${font} flex items-center flex-col ${!isCustomColor ? color : 'bg-red-500'}  `}>
         
 
         {/* font design  */}
@@ -154,10 +161,11 @@ setLoading(true)
 
 
             {
-              Color.map((elem) => (
-                <Button key={elem} onClick={() => SetColor(elem)} className={`${elem}  hover:text-black rounded-full p-2 gap-4 `}>
+              bgColormap.map((elem) => (
+                <Button key={elem} onClick={() => {SetColor(elem); console.log(elem)}} className={`${elem}  hover:text-black rounded-full p-2 gap-4 `}>
 
                   <span className={`${elem} size-5 rounded-full  `}/>
+                  
                   
 
                  
@@ -197,7 +205,7 @@ setLoading(true)
           </div>
           {
 
-            ['facebook', 'twitter', 'instagram'].map((item, index) => <div style={
+            ['facebook', 'twitter', 'linkedin'].map((item, index) => <div style={
               {
                 backgroundColor: pickerColor2_Link.hex,
                 

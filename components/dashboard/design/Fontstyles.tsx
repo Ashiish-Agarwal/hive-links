@@ -11,25 +11,28 @@ import "react-color-palette/css";
  
 const Fontstyles = ({name}:{name:string}) => {
 
-  const handleFontSubmit = (font:string) => {
-    console.log(font)
+  // const handleFontSubmit = (font:string) => {
+  //   console.log(font)
     
-  }
+  // }
 
 
   const [font,setFont] = useState<string>('')
   const [pickerColor, setpickerColor] = useColor('');
+if(!font){
+  return null
+}
 
-const fontdata= fontData
+// const fontdata= fontData
  
 
   return (
     <div  style={
       { color: pickerColor.hex}
-     } className=' flex flex-col gap-4'>
+     } className=' flex flex-col gap-4   ' >
       <h1 style={
      { color: pickerColor.hex}
-    }  className='text-xl fontsofia uppercase select-none '>design your Fonts</h1>
+    }  className='text-xl fontsofia  uppercase select-none '>design your Fonts</h1>
 
     <div className=' flex w-[40vw] gap-5 p-3 overflow-x-scroll mx-auto hide-scrollbar rounded-md   bg-accent/4  '>
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import { DesignAction, GetLink, GetProduct } from '@/actions/read'
-import { redirect } from 'next/navigation'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import Link from 'next/link'
-import { Facebook,  Github, Instagram, Linkedin, LucideCrown, Twitter } from 'lucide-react'
+import {  LucideCrown } from 'lucide-react'
+import SocialLinksDisplay from '../social-links'
 
 
 
@@ -25,7 +25,7 @@ export type PreviewProfileProps = {
 const PreviewProfile = async ({productid}:{productid:string}) => {
 
 const designdata = await DesignAction(productid)
-const themeData =  designdata 
+// const themeData =  designdata 
 
 
   return (
@@ -48,8 +48,7 @@ export async function  PreviewProfileComponent (
 
 
 {
-  const productids= productid
-  const theme = data
+  
   const datainformation = await GetProduct(productid) 
   const linksdata = await GetLink(productid) 
   
@@ -57,20 +56,27 @@ export async function  PreviewProfileComponent (
  
 
   return(
-    <div> 
+    <div style={{
+      background:data?.backgroundColor || ''
+    }} >
 
-      <div style={{
+      <div 
+      style={{
         background:'var(--bg)',
         color:'var(--text)'
-      }} className={`w-full h-screen  text-center ${data?.fontStyle || 'sansation-light'} ${data?.backgroundColor || ' bg-white dark:bg-black '} ${data?.textcolor || 'text-black dark:text-white'} ${data?.theme || ''} p-2 theme-${data?.theme}`}>
-        <div style={{
+        
+      }} 
+      className={`w-full h-screen  text-center ${data?.fontStyle }   ${data?.textcolor } ${data?.theme || ''} p-2 theme-${data?.theme}`}>
+        <div
+         style={{
           background:'var(--bg)',
           
-        }} className='w-full h-screen rounded-md  '>
+        }}
+         className='w-full h-screen rounded-md  '>
           {/* //image */}
-          <div className={` size-52 w-full flex items-center justify-center ${ datainformation[0]?.profile?'block':'hidden' }`} >
-            <Avatar className='w-full h-full select-none overflow-hidden'>
-              <AvatarImage className='   w-full h-full  overflow-hidden    ' src={`${datainformation[0]?.profile } `}/>
+          <div className={` w-full flex items-center justify-center ${ datainformation[0]?.profile?'block':'hidden' }`} >
+            <Avatar className=' size-52  select-none overflow-hidden'>
+              <AvatarImage className='   size-52  overflow-hidden  w-full h-full  ' src={`${datainformation[0]?.profile } `}/>
            
               
 
@@ -83,9 +89,9 @@ export async function  PreviewProfileComponent (
           {/* name bio */}
           
 
-          <div style={{
-              color:data?.textcolor || '',
-            }} className={`${data?.textcolor?.length!==0 ?'':'text-black dark:text-white' }flex flex-col items-center  gap-1 w-full text-center `}>
+          <div 
+          
+           className={`${data?.textcolor?.length!==0 ?'':'text-black dark:text-white' }flex flex-col items-center  gap-1 w-full text-center `}>
             <h1  className='text-2xl uppercase  '>{datainformation[0]?.name}</h1>
             <p className='text-sm text-zinc-400  text-balance break-words  '> {datainformation[0]?.bio }   </p>
 
@@ -95,31 +101,29 @@ export async function  PreviewProfileComponent (
             {linksdata?.map(e=>(
               <>
               <span className='flex gap-2'>
-              <a style={{
-                background:data?.Linkcolor || 'purple' 
-              }} href={`${e?.link}`}  target="_blank" className={` rounded-md w-full p-2 h-10  scale-105 duration-300 ease-in-out hover:scale-110  text-sm `}>{e.title}</a>
+              <a 
+             
+              href={`${e?.link}`}  target="_blank" className={` rounded-md w-full p-2 h-10  scale-105 duration-300 ease-in-out hover:scale-110  text-sm `}>{e.title}</a>
               </span>
 
               </>
             ))}
           </div>
           {/* icons */}
-          {/* <div className='flex gap-3 text-center mt-6  items-center flex-wrap '>
-           <Github/>
-           <Facebook/>
-           <Twitter/>
-           <Instagram/>
-           <Linkedin/>
+          <div className='flex gap-3 text-center mt-6  items-center flex-wrap '>
+          <SocialLinksDisplay productid={productid} />
        
-          </div> */}
+          </div>
 
           
           
 
         
           {/* logo */}
-          <div className='flex items-center gap-2 w-full   text-center mt-10   '>
-            <Link href={'/landingpage'} target="_blank" className=' text-black dark:text-white hover:text-purple-500  duration-300 ease-in-out text-3xl flex items-center gap-2'>
+          <div className='flex items-center justify-center  gap-2 w-full   text-center mt-10   '>
+            <Link href={'/landingpage'} style={{
+              background:'var(--card-bg)'
+            }} target="_blank" className=' text-black dark:text-white hover:text-purple-500  duration-300 ease-in-out text-3xl flex items-center gap-2'>
             Hive Link <LucideCrown/>
             </Link>
           </div>

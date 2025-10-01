@@ -3,9 +3,9 @@ import React from 'react'
 import { Card } from '../ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel,  DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { Button, buttonVariants } from '../ui/button';
+import { Button } from '../ui/button';
 import { CardContent, } from '../ui/card';
-import { Copy, Edit, EllipsisVertical, Trash2 } from 'lucide-react';
+import { Copy, Edit, EllipsisVertical } from 'lucide-react';
 import { CopyToClipboard } from './CopyUrl';
 
 import {
@@ -23,11 +23,9 @@ import Link from 'next/link';
 
 
 import DeleteProductComponent from './delete-product';
-import { UuidAction } from '@/actions/read';
-import { db } from '@/db';
-import { eq } from 'drizzle-orm';
-import { data as userdata } from '@/db/schema/data-schema';
 import { defaultImage } from '@/lib/utils';
+import SocialLinksManager from './sociallinks';
+import SocialLinksDisplay from './social-links';
 
 
 
@@ -43,10 +41,10 @@ const AllProducts = async ({ data }: {
   }[]
 }) => {
 
-  const CopyDomain = process.env.PUBLIC_DOMAIN
+  // const CopyDomain = process.env.PUBLIC_DOMAIN
 
-  const uuid = await  UuidAction()
-  const user = uuid[0].id
+  // const uuid = await  UuidAction()
+  // const user = uuid[0].id
 //   const fetchImage = await db.select().from(userdata).where(eq(userdata.userId,user))
 
 //  const profileImage = fetchImage[0]?.profile
@@ -67,6 +65,7 @@ const AllProducts = async ({ data }: {
 
                 
                 <div className='flex  justify-between items-center w-full h-full   '>
+                  
 
                   <div className='p-2 flex    w-1/2    gap-4  text-lg  '>
                 
@@ -82,7 +81,9 @@ const AllProducts = async ({ data }: {
                         <p className='text-ellipsis truncate text-xs text-zinc-800  dark:text-zinc-200 flex    text-wrap w-full '> {item?.bio?.length || 0 > 15 ? item.bio?.slice(0, 15) + '...' : item.bio }</p>
                       </div>
                     </div>
+                   
                   </div>
+               
                   <div className=' w-10 h-full   ' >
                     <DropdownMenu  >
                       <DropdownMenuTrigger asChild>
@@ -163,6 +164,12 @@ const AllProducts = async ({ data }: {
                   </div>
 
                 </div>
+              <div className='flex gap-2 items-center h-10 w-full  '>
+
+                <SocialLinksManager productid={item.id}/>
+                <SocialLinksDisplay productid={item.id}/>
+              </div>
+               
 
               </Card>
 

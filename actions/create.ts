@@ -3,13 +3,14 @@
 
 import { userDataSchema } from '@/lib/zod/Userdata';
 import { db } from '@/db';
-import { data, links, theme } from '@/db/schema/data-schema';
+import { data, links, socialLinks, theme } from '@/db/schema/data-schema';
 import { UuidAction } from './read';
 import { z } from 'zod';
 
 import { revalidateTag } from 'next/cache';
 import { cache_Tag } from '@/lib/chache';
 import { and, eq } from 'drizzle-orm';
+import { uuid } from 'better-auth';
 
 
 
@@ -133,8 +134,7 @@ export async function createDesign(themeC:{
  
   
 
- 
-console.log(productId)
+
 
   try{
 
@@ -235,4 +235,38 @@ export async function CreateTheme(params:string,themeClient:string) {
   }
 
   
+}
+
+export async function CreatSocialLink({platform,url,productid}:{platform:string,url:string,productid:string}){
+  const useridd = await UuidAction()
+
+  if(!useridd || useridd.length===0){
+    return{
+      success:false,
+      message:'error in adding theme '
+    }
+  }
+  const userid = useridd[0].id
+  try {
+    
+await db.insert(socialLinks).values({
+  productid:productid,
+  userId:userid,
+  platform:platform,
+  url:url,
+  createdAt:new Date(),
+  updatedAt:new Date(),
+  
+})
+revalidateTag(cache_Tag.Social)
+
+  } catch (error) {
+    console.log('comes to catch validation ' + error)
+    return{
+      success:false,
+      message:'error in adding theme ',
+      error:error instanceof Error ? error.message : 'Unknown error'
+    }
+  }
+
 }

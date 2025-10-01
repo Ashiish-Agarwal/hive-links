@@ -137,7 +137,10 @@ background: linear-gradient(90deg,rgba(185, 86, 196, 1) 0%, rgba(113, 48, 120, 1
   font-style: normal;
 }
 
-
+.fontJapanese{
+  font-family: var(--font-japanese-font), sans-serif;
+  
+}
 
 
 .fontEagle{
@@ -215,7 +218,7 @@ background: linear-gradient(90deg,rgba(185, 86, 196, 1) 0%, rgba(113, 48, 120, 1
 /* theme color */
 
 .whiteTheme{
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   color: black;
   user-select: none;
 
@@ -223,15 +226,18 @@ background: linear-gradient(90deg,rgba(185, 86, 196, 1) 0%, rgba(113, 48, 120, 1
 .blackTheme{
   background-color: rgba(0, 0, 0, 0.222);
   user-select: none;
+  color: white;
   
 }
 .tealTheme{
-  background-color: teal;
+  background-color: rgb(0, 128, 128);
   user-select: none;
+  color: white;
 }
 .salmonTheme{
-  background-color: salmon;
+  background-color: rgb(255, 140, 105);
   user-select: none;
+  color: white;
 }
 
 
@@ -240,29 +246,33 @@ background: linear-gradient(90deg,rgba(185, 86, 196, 1) 0%, rgba(113, 48, 120, 1
 .greenTheme{
   background-color: rgb(106, 206, 60);
   user-select: none;
+  color: white;
 }
 .redTheme{
   background-color: rgb(206, 60, 60);
   user-select: none;
+  color: white;
 }
 .skyTheme{
   background-color: rgb(51, 190, 209);
   user-select: none;
+  color: white;
 }
 .pinkTheme{
-  background-color: pink;
+  background-color: rgb(255, 192, 203);
   user-select: none;
-  
+  color: white;
 }
 
 .purpleTheme{
-  background-color: purple;
+  background-color: rgb(128, 0, 128);
   user-select: none;
-  
+  color: white;
 }
 .yellowTheme{
-  background-color: yellow;
+  background-color: rgb(174, 174, 106);
   user-select: none;
+  color: white;
 }
 
 
@@ -303,6 +313,7 @@ background: linear-gradient(90deg,rgba(185, 86, 196, 1) 0%, rgba(113, 48, 120, 1
 }
 
 /* ---------- INFLUENCER THEMES ---------- */
+
 .theme-influencer-candy {
   --bg: linear-gradient(135deg, #ec4899, #3b82f6);
   --text: #ffffff;
@@ -327,6 +338,7 @@ background: linear-gradient(90deg,rgba(185, 86, 196, 1) 0%, rgba(113, 48, 120, 1
   --card-bg: rgba(0, 0, 0, 0.3);
   --accent: #a855f7;
 }
+
 .theme-influencer-minimal {
   --bg: #ffffff;
   --text: #111827;

@@ -6,7 +6,8 @@ export const cache_Tag = {
     Products:'products',
     User:'user',
     Link:'link',
-    Design:'design'
+    Design:'design',
+    Social:'social',
    
 } as const 
 

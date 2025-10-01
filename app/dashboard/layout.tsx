@@ -1,8 +1,9 @@
-import { UuidAction } from '@/actions/read'
+
+import Logo from '@/components/logo'
 import RightPanel from '@/components/Right-Panel'
-import SideBaar from '@/components/SideBaar'
+import {SideBaar , MobileNavBar} from '@/components/SideBaar'
 import { Toaster } from '@/components/ui/sonner'
-import React, { Children } from 'react'
+import React from 'react'
 
 
 const layout = ({children}: {children: React.ReactNode}) => {
@@ -16,7 +17,10 @@ const layout = ({children}: {children: React.ReactNode}) => {
     <div className='w-fit   h-screen flex  '>
         <div className=' h-full w-[20rem]  flex  border-r-2  overflow-hidden dark:border-gray-800/20 border-gray-200/70   '>
         <div className=' h-full w-full grid grid-rows-[200px_1fr]   '>
-          <div className=' ml-5    text-3xl  font-semibold '>Link-Og</div>
+          <div className=' ml-5    text-3xl  font-semibold '>
+
+            <Logo/>
+          </div>
           <div >
 
             <SideBaar/>
@@ -43,8 +47,13 @@ const layout = ({children}: {children: React.ReactNode}) => {
       </div>
 </div>
 {/**small or medium screen  */}
-<div className='block md:hidden '>
+<div className=' sm:block md:hidden   '>
+  <div>
+
+  <MobileNavBar/>
+
 {children}
+  </div>
 </div>
 
 

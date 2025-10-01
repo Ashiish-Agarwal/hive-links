@@ -2,6 +2,19 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono ,Eagle_Lake, Sansation ,Crimson_Pro ,Annie_Use_Your_Telescope , Reenie_Beanie , Sofia, Recursive ,Sour_Gummy} from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import localFont from "next/font/local";
+
+const japaneseFont = localFont({
+  src: [
+    {
+      path:"../public/font/NinjaKageDemo-Rough.ttf",
+      weight:"200",
+      style:"normal",
+    }
+  ],
+ 
+  variable:"--font-japanese-font",
+})
 
 const crimsonPro = Crimson_Pro({
   subsets: ["latin"],
@@ -70,7 +83,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${crimsonPro.variable} ${sansation.variable} ${eagleLake.variable} ${AnnieUseYourTelescope.variable} ${ReenieBeanie.variable} ${sourGummy.variable} ${recursive.variable} ${sofia.variable}  antialiased  `}
+        className={`${geistSans.variable} ${geistMono.variable} ${crimsonPro.variable} ${sansation.variable} ${japaneseFont.variable} ${eagleLake.variable} ${AnnieUseYourTelescope.variable} ${ReenieBeanie.variable} ${sourGummy.variable} ${recursive.variable} ${sofia.variable}  antialiased  `}
       >
          <ThemeProvider
             attribute="class"

@@ -1,6 +1,6 @@
 import { Plus } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button, buttonVariants } from '@/components/ui/button';
+import {  buttonVariants } from '@/components/ui/button';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
@@ -22,7 +22,7 @@ export default function NoProducts() {
           
           <CardTitle className="text-2xl">No products yet</CardTitle>
           <CardDescription className="text-base">
-            You haven't added any products to your inventory. Create your first product to get started with your catalog.
+            You haven &nbsp; added any products to your inventory. Create your first product to get started with your catalog.
           </CardDescription>
         </CardHeader>
         
