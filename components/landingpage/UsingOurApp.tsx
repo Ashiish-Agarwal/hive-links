@@ -26,25 +26,32 @@ const UsingOurApp = () => {
         link:''
     },
     {
-        id:6,
+        id:3,
         name:' DornyGrp  ',
         designation:'small Company',
         image:'/panda.png',
         link:'https://www.instagram.com/dornygrp?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=='
     },
     {
-        id:3,
+        id:4,
         name:'kushal raj ',
         designation:'User ',
         image:'/userimg.jpg',
         link:'https://www.instagram.com/kushal_raj_2006?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=='
     },
     {
-        id:4,
+        id:5,
         name:'bharat.singh ',
         designation:'Promoters :)',
         image:'/bharat.singh.jpg',
         link:'https://www.instagram.com/bharat.singh04?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=='
+    },
+    {
+        id:6,
+        name:'Ritika ',
+        designation:'User',
+        image:'/ladyuser.jpg',
+        link:'https://www.instagram.com/ritika.soul_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=='
     },
    
 ]

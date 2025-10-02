@@ -2,17 +2,13 @@ import type { NextConfig } from "next";
 
 
 const nextConfig: NextConfig = {
-
-   experimental:{
-    typedRoutes:true,
-    staleTimes:{
-      dynamic:30,
-      static:180,
+  typedRoutes: true,
+  experimental: {
+    staleTimes: {
+      dynamic: 30,
+      static: 180,
     }
-   },
- 
-  
-    
+  },
 };
 
 export default nextConfig;

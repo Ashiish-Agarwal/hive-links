@@ -10,7 +10,7 @@ import { z } from 'zod';
 import { revalidateTag } from 'next/cache';
 import { cache_Tag } from '@/lib/chache';
 import { and, eq } from 'drizzle-orm';
-import { uuid } from 'better-auth';
+
 
 
 
@@ -121,7 +121,7 @@ export async function createDesign(themeC:{
   productid:string
 }) {
   const user = await UuidAction();
-  const userId = user[0]?.id
+  const userId = await user[0]?.id
   if(!userId || user.length===0){
     return {
       success: false,
@@ -167,7 +167,7 @@ export async function createDesign(themeC:{
     textcolor:themeC.color,
     backgroundColor:themeC.pickerColor_Background,
     Linkcolor:themeC.pickerColor2_Link,
-  }).where(and(eq(theme.userId,userId),eq(theme.productId,themeC.productid))).execute()
+  }).where(and(eq(theme.userId,userId),and(eq(theme.productId,themeC.productid),eq(theme.userId,userId)))).execute()
 
   revalidateTag(`${cache_Tag.Design}`)
   return {

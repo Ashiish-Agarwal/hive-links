@@ -14,7 +14,7 @@ export const cache_Tag = {
 export type typeChache = typeof cache_Tag[keyof typeof cache_Tag]
 
 // ✅ generic wrapper
-export function withCache<T extends (...args: any[]) => Promise<any>>(
+export function withCache<T extends (...args: unknown[]) => Promise<unknown>>(
     fn: T,
     key: string[],
     tags: typeChache[]

@@ -5,10 +5,10 @@ import { z } from 'zod';
 import { UuidAction } from './read';
 import { db } from '@/db';
 import { data, links } from '@/db/schema/data-schema';
-import { eq } from 'drizzle-orm';
+import { and, eq } from 'drizzle-orm';
 import { revalidateTag } from 'next/cache';
 import { cache_Tag } from '@/lib/chache';
-import { randomUUID } from 'crypto';
+
 
 
 export const updateData = async (formData: z.infer<typeof userDataSchema>,productid:string) => {
@@ -17,9 +17,7 @@ export const updateData = async (formData: z.infer<typeof userDataSchema>,produc
     const userId = user[0]?.id
     const dataIdrow  = await db.select().from(data).where(eq(data.userId,userId))
     const datarowid = dataIdrow[0].id
-    console.log(productid, datarowid +
-        'some id '
-    )
+    
 
     if (!userId) {
         return {
@@ -34,9 +32,10 @@ export const updateData = async (formData: z.infer<typeof userDataSchema>,produc
         bio:formData.bio,
         profile:formData.profile,
         updatedAt:new Date(),
-    }).where(eq(data.userId,userId)).execute()
+    }).where(and(eq(data.userId,userId),eq(data.id,datarowid))).execute()
 
 
+    await db.delete(links).where(and(eq(links.userId,userId),eq(links.linkId,productid))).execute()
     
 if(formData.links.length >= 0){
 

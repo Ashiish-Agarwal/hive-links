@@ -49,7 +49,7 @@ export async function DeleteAccount(user:string) {
             
         }
         try {
-            const deleted = await db.delete(userSchema).where(eq(userSchema.id, user))
+            const deleted = await db.delete(userSchema).where(and(eq(userSchema.id, user),eq(userSchema.id, useruuid[0].id)))
             cache_Tag.User
             
             return {success:true , message:'account deleted successfully',data:deleted}

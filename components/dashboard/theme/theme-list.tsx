@@ -43,7 +43,7 @@ const ThemeList = ({params}:{params?:string}) => {
   const currentItems = ThemeData.slice(startIndex, endIndex)
 
   // Handle page change
-  const handlePageChange = (page: any) => {
+  const handlePageChange = (page: number) => {
     setCurrentPage(page)
     
   }
@@ -250,7 +250,9 @@ const ThemeList = ({params}:{params?:string}) => {
                     href="#"
                     onClick={(e) => {
                       e.preventDefault()
-                      handlePageChange(page)
+                      if (typeof page === 'number') {
+                        handlePageChange(page)
+                      }
                     }}
                     isActive={currentPage === page}
                   >

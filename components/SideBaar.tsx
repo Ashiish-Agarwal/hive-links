@@ -17,7 +17,11 @@ import { Button } from './ui/button'
 import { Separator } from '@radix-ui/react-dropdown-menu'
 import { usePathname } from 'next/navigation'
 
-const links = [
+const links: Array<{
+    id: number;
+    name: string;
+    href: string;
+}> = [
     {
         id:1,
         name:"dashboard",
@@ -64,7 +68,7 @@ console.log(routes)
 {
     links.map((elem)=>(
         <div key={elem.id} className={` w-full h-full  text-center p-2 hover:dark:bg-gray-800/30  hover:bg-gray-800/10  rounded-md   duration-300 ${routes === elem.name ? 'bg-primary/60 hover:bg-primary/90  text-white   ':''}`}>
-            <Link className={`text-xl font-semibold w-full  h-12  transition-all duration-300  delay-200  `} href={elem.href as any}>{elem.name}</Link>
+            <Link className={`text-xl font-semibold w-full  h-12  transition-all duration-300  delay-200  `} href={elem.href as '/dashboard' | '/dashboard/theme' | '/dashboard/analytics' | '/dashboard/setting'}>{elem.name}</Link>
         </div>
     ))
 }
@@ -101,7 +105,7 @@ const routes = usepath.split('/').filter(Boolean).pop()
         
 
         <Sheet>
-  <SheetTrigger>
+  <SheetTrigger asChild>
     <Button variant="outline" size="icon">
               <MenuIcon  className="h-5 w-5" />
             </Button>
@@ -118,7 +122,7 @@ const routes = usepath.split('/').filter(Boolean).pop()
             links.map((elem)=>(
               <div key={elem.id} className={` w-full h-full  text-center p-2 hover:dark:bg-gray-800/30  hover:bg-gray-800/10  rounded-md   duration-300 ${routes === elem.name ? 'bg-primary/80 hover:bg-primary/90  text-white   ':''}`}>
 
-                <Link className={`text-xl font-semibold w-full  h-12   delay-200  hover:dark:bg-gray-800/30  hover:bg-gray-800/10  rounded-md   duration-300  `} href={elem.href as any}>{elem.name}</Link>
+                <Link className={`text-xl font-semibold w-full  h-12   delay-200  hover:dark:bg-gray-800/30  hover:bg-gray-800/10  rounded-md   duration-300  `} href={elem.href as '/dashboard' | '/dashboard/theme' | '/dashboard/analytics' | '/dashboard/setting'}>{elem.name}</Link>
               </div>
               ))
             }
