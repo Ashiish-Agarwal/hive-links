@@ -1,6 +1,6 @@
 
 import Logo from '@/components/logo'
-import RightPanel from '@/components/Right-Panel'
+
 import {SideBaar , MobileNavBar} from '@/components/SideBaar'
 import { Toaster } from '@/components/ui/sonner'
 import React from 'react'
