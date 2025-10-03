@@ -15,8 +15,7 @@ export const updateData = async (formData: z.infer<typeof userDataSchema>,produc
 
     const user = await UuidAction();
     const userId = user[0]?.id
-    const dataIdrow  = await db.select().from(data).where(eq(data.userId,userId))
-    const datarowid = dataIdrow[0].id
+  
     
 
     if (!userId) {
@@ -32,7 +31,7 @@ export const updateData = async (formData: z.infer<typeof userDataSchema>,produc
         bio:formData.bio,
         profile:formData.profile,
         updatedAt:new Date(),
-    }).where(and(eq(data.userId,userId),eq(data.id,datarowid))).execute()
+    }).where(and(eq(data.userId,userId),eq(data.id,productid))).execute()
 
 
     await db.delete(links).where(and(eq(links.userId,userId),eq(links.linkId,productid))).execute()

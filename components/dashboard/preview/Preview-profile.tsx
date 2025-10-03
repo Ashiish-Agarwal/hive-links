@@ -4,6 +4,8 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import Link from 'next/link'
 import {  LucideCrown } from 'lucide-react'
 import SocialLinksDisplay from '../social-links'
+import Image from 'next/image'
+import { defaultImage } from '@/lib/utils'
 
 
 
@@ -75,14 +77,8 @@ export async function  PreviewProfileComponent (
          className='w-full h-screen rounded-md  '>
           {/* //image */}
           <div className={` w-full flex items-center justify-center ${ datainformation[0]?.profile?'block':'hidden' }`} >
-            <Avatar className=' size-52  select-none overflow-hidden'>
-              <AvatarImage className='   size-52  overflow-hidden  w-full h-full  ' src={`${datainformation[0]?.profile } `}/>
-           
-              
-
-             
-              <AvatarFallback>Hive</AvatarFallback>
-            </Avatar>
+                                  <Image className='rounded-full ' src={datainformation[0]?.profile || defaultImage} alt='profile' width={70} height={70}/>
+            
             
 
           </div>

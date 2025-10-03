@@ -26,6 +26,7 @@ import DeleteProductComponent from './delete-product';
 import { defaultImage } from '@/lib/utils';
 import SocialLinksManager from './sociallinks';
 import SocialLinksDisplay from './social-links';
+import Image from 'next/image';
 
 
 
@@ -69,10 +70,9 @@ const AllProducts = async ({ data }: {
 
                   <div className='p-2 flex    w-1/2    gap-4  text-lg  '>
                 
-                    <Avatar className='size-20 '>
-                      <AvatarImage className='rounded-full size-20  overflow-hidden w-full h-full' src={item.profile || defaultImage} alt='profile' />
-                      <AvatarFallback>loading</AvatarFallback>
-                    </Avatar>
+                 
+                      <Image className='rounded-full ' src={item.profile || defaultImage} alt='profile' width={70} height={70}/>
+                     
                     <div className=' flex flex-col gap-2 '>
 
                       <h1 className='text-lg font-semibold  text-black hover:text-zinc-900  dark:text-white dark:hover:text-white/70 flex   '> @ {item.name}</h1>

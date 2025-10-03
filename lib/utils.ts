@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const defaultImage = "https://github.com/shadcn.png"
+export const defaultImage = "/dummy.png"
 
 
 

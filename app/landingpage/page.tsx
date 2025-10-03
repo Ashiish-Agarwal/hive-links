@@ -7,6 +7,7 @@ import { UuidAction } from '@/actions/read'
 import UsingOurApp from '@/components/landingpage/UsingOurApp'
 import InputLandingPage from '@/components/landingpage/inputlandingpage'
 import { redirect } from 'next/navigation'
+import Image from 'next/image'
 
 const page = async() => {
 
@@ -58,7 +59,7 @@ const page = async() => {
           {/* //image */}
           <div className={`  w-full flex items-center justify-center `} >
             <Avatar className=' size-44   select-none overflow-hidden'>
-              <AvatarImage className='   w-full h-full  overflow-hidden    ' src={`${ '/defaultimg.jpg' } `}></AvatarImage>
+          <Image src={"/defaultimg.jpg"} alt="" width={100} height={100}/>
            
               
 
