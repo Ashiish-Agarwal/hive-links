@@ -97,7 +97,7 @@ const routes = usepath.split('/').filter(Boolean).pop()
   
    
     return (
-      <nav className={`sticky  flex justify-between items-center  top-0  w-full h-16  border-b transition-colors duration-300`}>
+      <nav className={`sticky  p-2    flex justify-between items-center  top-0  w-full h-16  border-b transition-colors duration-300`}>
         <div>
 
         <Logo/>
@@ -107,7 +107,7 @@ const routes = usepath.split('/').filter(Boolean).pop()
         <Sheet>
   <SheetTrigger asChild>
     <Button variant="outline" size="icon">
-              <MenuIcon  className="h-5 w-5" />
+              <MenuIcon  className="h-10 w-10" />
             </Button>
   </SheetTrigger>
   <SheetContent>
