@@ -3,13 +3,18 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 import Link from 'next/link'
 import { Facebook, Github, Instagram, Linkedin, Twitter } from 'lucide-react'
-
+import { UuidAction } from '@/actions/read'
 import UsingOurApp from '@/components/landingpage/UsingOurApp'
 import InputLandingPage from '@/components/landingpage/inputlandingpage'
+import { redirect } from 'next/navigation'
 
-const page = () => {
+const page = async() => {
 
-  // const data = website  name
+  const user = await UuidAction()
+  if(user[0].id.length > 0){
+    redirect('/dashboard')
+    
+  }
 
 
   return (
@@ -23,7 +28,7 @@ const page = () => {
         }} className='  h-[100vh]  w-full flex flex-col gap-3  justify-center items-center      '>
           <div className='   select-none   text-center  '>
             <h1 className=' text-4xl md:text-6xl text-wrap font-bold text-black dark:text-white  '>One link  endless connection </h1>
- <p className='text-sm text-zinc-400  text-balance break-words  w-[70%] mx-auto mt-2 '>hive link is a platform that allows you to create a single link for your website, and use it to track all of your website traffic.</p>
+ <p className='text-sm text-zinc-400  text-balance break-words  w-[70%] mx-auto mt-2 '>hive link is a platform that allows you to create a single link for your multiple links design customize </p>
            
            <InputLandingPage/>
 
