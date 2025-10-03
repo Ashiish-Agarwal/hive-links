@@ -47,7 +47,7 @@ const layout = ({children}: {children: React.ReactNode}) => {
       </div>
 </div>
 {/**small or medium screen  */}
-<div className=' sm:block md:hidden   '>
+<div className=' sm:block md:hidden p-3     '>
   <div>
 
   <MobileNavBar/>
