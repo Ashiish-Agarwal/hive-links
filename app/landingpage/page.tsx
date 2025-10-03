@@ -3,19 +3,15 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 import Link from 'next/link'
 import { Facebook, Github, Instagram, Linkedin, Twitter } from 'lucide-react'
-import { UuidAction } from '@/actions/read'
+import {  UuidLandingPage } from '@/actions/read'
 import UsingOurApp from '@/components/landingpage/UsingOurApp'
 import InputLandingPage from '@/components/landingpage/inputlandingpage'
-import { redirect } from 'next/navigation'
+
 import Image from 'next/image'
 
 const page = async() => {
-
-  const user = await UuidAction()
-  if(user[0].id.length > 0){
-    redirect('/dashboard')
-    
-  }
+ await UuidLandingPage()
+ 
 
 
   return (
@@ -39,7 +35,7 @@ const page = async() => {
         </div>
         <div style={{
           background:'#F5F3FF'
-        }} className='h-full w-full flex items-center justify-center    '>
+        }} className='h-full bg-red-500 p-2  w-full flex items-center justify-center    '>
           
 
 
@@ -47,7 +43,7 @@ const page = async() => {
           
 
 
-          <div className=' w-full h-full mx-auto  overflow-hidden    '> 
+          <div className=' w-full h-full mx-auto  overflow-hidden      '> 
       <div style={{
         background:'var(--bg)',
         color:'var(--text)'
@@ -58,14 +54,13 @@ const page = async() => {
         }} className='w-full h-full rounded-md flex flex-col items-center justify-center mb-20 mt-16     '>
           {/* //image */}
           <div className={`  w-full flex items-center justify-center `} >
-            <Avatar className=' size-44   select-none overflow-hidden'>
-          <Image src={"/defaultimg.jpg"} alt="" width={100} height={100}/>
+
+          <Image className='rounded-full ' src={"/defaultimg.jpg"} alt="" width={100} height={100}/>
            
               
 
              
-              <AvatarFallback>Hive</AvatarFallback>
-            </Avatar>
+             
             
 
           </div>

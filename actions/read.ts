@@ -25,6 +25,21 @@ return users
 
 }
 
+export  async function UuidLandingPage(){
+
+  const session = await auth.api.getSession({
+      headers: await headers()
+  })
+  if(!session || !session.user.id){
+      return redirect('/dashboard')
+  }
+
+const users = await db.select().from(user).where(eq(user.id,session.user.id))
+
+return users
+
+}
+
 export async function GetProduct(productid:string){
     const user= await UuidAction()
       if(!user || !user[0].id || user.length === 0){
