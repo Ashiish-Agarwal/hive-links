@@ -14,8 +14,8 @@ const layout = ({children}: {children: React.ReactNode}) => {
 {/* large screen */}
 <div className=' hidden md:block p-2 overflow-hidden h-screen w-full    '>
 
-    <div className='w-fit   h-screen flex  '>
-        <div className=' h-full w-[20rem]  flex  border-r-2  overflow-hidden dark:border-gray-800/20 border-gray-200/70   '>
+    <div className='w-screen   h-screen flex  '>
+        <div className=' h-full w-[20%]  flex  border-r-2  overflow-hidden dark:border-gray-800/20 border-gray-200/70   '>
         <div className=' h-full w-full grid grid-rows-[200px_1fr]   '>
           <div className=' ml-5    text-3xl  font-semibold '>
 
@@ -31,16 +31,11 @@ const layout = ({children}: {children: React.ReactNode}) => {
         </div>
             
 
-                <div className='w-[50rem] hide-scrollbar  border-r-2 dark:border-gray-800/20 border-gray-200/70 h-full  relative overflow-y-scroll '>
+                <div className='w-[80%] p-5 hide-scrollbar  border-r-2 dark:border-gray-800/20 border-gray-200/70 h-full  relative overflow-y-scroll '>
                 {children}
                 </div>
                 
-                <div className='h-full  w-[20rem]  '>
-                  <div className='flex justify-center items-center overflow-hidden  '>
-                   <RightPanel/>
-                  </div>
-                   
-                </div>
+                
 
 
 
