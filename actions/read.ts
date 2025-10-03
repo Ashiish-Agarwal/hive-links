@@ -3,12 +3,9 @@ import { db } from "@/db";
 import { user } from "@/db/schema/auth-schema";
 import { data, links, socialLinks, theme } from "@/db/schema/data-schema";
 import { auth } from "@/lib/auth";
-import { cache_Tag } from "@/lib/chache";
 import { and, eq } from "drizzle-orm";
-import { revalidatePath, revalidateTag } from "next/cache";
-import { Trykker } from "next/font/google";
 import { headers } from "next/headers";
-import { notFound, redirect } from "next/navigation";
+import {  redirect } from "next/navigation";
 
 export  async function UuidAction(){
 
@@ -18,27 +15,18 @@ export  async function UuidAction(){
     if(!session || !session.user.id){
         return redirect('/signup')
     }
+    
 
 const users = await db.select().from(user).where(eq(user.id,session.user.id))
+
 
 return users
 
 }
 
-export  async function UuidLandingPage(){
 
-  const session = await auth.api.getSession({
-      headers: await headers()
-  })
-  if(!session || !session.user.id){
-      return redirect('/dashboard')
-  }
 
-const users = await db.select().from(user).where(eq(user.id,session.user.id))
 
-return users
-
-}
 
 export async function GetProduct(productid:string){
     const user= await UuidAction()

@@ -3,14 +3,14 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 import Link from 'next/link'
 import { Facebook, Github, Instagram, Linkedin, Twitter } from 'lucide-react'
-import {  UuidLandingPage } from '@/actions/read'
 import UsingOurApp from '@/components/landingpage/UsingOurApp'
 import InputLandingPage from '@/components/landingpage/inputlandingpage'
 
 import Image from 'next/image'
 
 const page = async() => {
- await UuidLandingPage()
+
+
  
 
 
