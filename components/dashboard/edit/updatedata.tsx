@@ -24,6 +24,7 @@ import { cn } from "@/lib/utils"
 import { userDataSchema } from "@/lib/zod/Userdata"
 import { updateData } from "@/actions/update"
 import { UploadButton } from "@/lib/utils/uploadthing"
+import Image from "next/image"
 
 interface UserDataUpdateFormProps {
   initialData?: {
@@ -127,17 +128,11 @@ function UserDataUpdateForm({ initialData, productid }: UserDataUpdateFormProps)
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full h-full flex flex-col gap-3 items-center justify-center">
-        <div className="flex flex-col">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full h-full  p-5 flex flex-col gap-3 container mx-auto  ">
+        <div className="flex flex-col items-center justify-center   ">
           {/* Avatar section */}
-          <div className="mt-36 flex items-center gap-4 flex-col">
-            <Avatar>
-              <AvatarImage 
-                className="rounded-full size-24 object-cover" 
-                src={imagePreview || "https://github.com/shadcn.png"} 
-              />
-              <AvatarFallback className="rounded-full size-24">CN</AvatarFallback>
-            </Avatar>
+          <div className="  flex items-center gap-4 flex-col">
+            <Image className="rounded-full " src={initialData?.profile || '/dummy.png'} width={80} height={80} alt='profile'/>  
 
             <FormField
               control={form.control}
@@ -166,10 +161,10 @@ function UserDataUpdateForm({ initialData, productid }: UserDataUpdateFormProps)
                           onUploadError={handleUploadError}
                           appearance={{
                             button: buttonVariants({
-                              variant:"outline"
+                              variant:"default"
                             }),
-                            allowedContent: "text-sm text-gray-500",
-                          }}
+                            allowedContent: "allowed-content",
+                          }} 
                         />
 
                         {isUploading && (
@@ -191,7 +186,7 @@ function UserDataUpdateForm({ initialData, productid }: UserDataUpdateFormProps)
           </div>
 
           {/* Name field */}
-          <div className="w-[30rem]">
+          <div className="w-full md:w-[80%]">
             <FormField
               control={form.control}
               name="name"
@@ -211,7 +206,8 @@ function UserDataUpdateForm({ initialData, productid }: UserDataUpdateFormProps)
           </div>
 
           {/* Bio field */}
-          <div className="w-[30rem]">
+          <div className="w-full md:w-[80%]">
+
             <FormField
               control={form.control}
               name="bio"
@@ -231,8 +227,8 @@ function UserDataUpdateForm({ initialData, productid }: UserDataUpdateFormProps)
           </div>
 
           {/* Links section */}
-          <Card className="w-[30rem] h-fit flex flex-col gap-8 p-8">
-            <div className="w-full h-[20rem] overflow-y-scroll hide-scrollbar gap-4 flex flex-col">
+          <Card className="w-full md:w-[80%] h-fit flex flex-col gap-8 p-8">
+            <div className="w-full h-full overflow-y-scroll hide-scrollbar gap-4 flex flex-col">
               {fields.map((field, index) => (
                 <div key={field.id} className="border rounded-lg p-4 space-y-4 relative">
                   <div className="flex items-center justify-between">

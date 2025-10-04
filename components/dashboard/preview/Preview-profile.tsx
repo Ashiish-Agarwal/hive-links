@@ -28,10 +28,11 @@ const PreviewProfile = async ({productid}:{productid:string}) => {
 
 const designdata = await DesignAction(productid)
 // const themeData =  designdata 
+console.log(designdata)
 
 
   return (
-    <div>
+    <div className='w-full h-full '>
      <PreviewProfileComponent data={{...designdata}} productid={productid} />
       
 
@@ -60,7 +61,7 @@ export async function  PreviewProfileComponent (
   return(
     <div style={{
       background:data?.backgroundColor || ''
-    }} >
+    }} className='w-full h-full '  >
 
       <div 
       style={{
@@ -68,7 +69,7 @@ export async function  PreviewProfileComponent (
         color:'var(--text)'
         
       }} 
-      className={`w-full h-screen  text-center ${data?.fontStyle }   ${data?.textcolor } ${data?.theme || ''} p-2 theme-${data?.theme}`}>
+      className={`w-full h-full  text-center ${data?.fontStyle }   ${data?.textcolor } ${data?.Linkcolor || ''} p-2 theme-${data?.theme}`}>
         <div
          style={{
           background:'var(--bg)',

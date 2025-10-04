@@ -107,11 +107,11 @@ function UserDataFormSubsmition() {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full h-full flex flex-col items-center justify-center">
-        <div className="flex flex-col">
+    <Form {...form} >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full h-full flex flex-col items-center justify-center ">
+        <div className="flex flex-col w-[90%] ">
           {/* Avatar section */}
-          <div className="mt-36 flex items-center gap-4 flex-col">
+          <div className="mt-36 flex items-center w-full gap-4 flex-col">
             <Avatar className="size-24">
               <AvatarImage 
                 className="rounded-full size-24 object-cover" 
@@ -120,7 +120,7 @@ function UserDataFormSubsmition() {
               <AvatarFallback className="rounded-full size-24">CN</AvatarFallback>
             </Avatar>
 
-            <FormField
+            <FormField 
               control={form.control}
               name='profile'
               render={({ field }) => (
@@ -129,7 +129,7 @@ function UserDataFormSubsmition() {
                   <FormControl>
                     <div className="space-y-4">
                       {/* UploadThing Button */}
-                      <div className="flex flex-col items-center gap-4">
+                      <div className="flex flex-col items-center  gap-4">
                         <UploadButton
                           endpoint="imageUploader"
                           onUploadBegin={() => {
@@ -170,7 +170,7 @@ function UserDataFormSubsmition() {
             />
           </div>
 
-          <div className="w-[30rem]">
+          <div className="w-full">
             <FormField
               control={form.control}
               name="name"
@@ -189,7 +189,7 @@ function UserDataFormSubsmition() {
             />
           </div>
 
-          <div className="w-[30rem]">
+          <div className="w-full">
             <FormField
               control={form.control}
               name="bio"
@@ -208,7 +208,7 @@ function UserDataFormSubsmition() {
             />
           </div>
 
-          <Card className="w-[30rem] h-fit flex flex-col gap-8 p-8">
+          <Card className="w-full h-fit flex flex-col gap-8 p-8">
             <div className="w-full h-[20rem] overflow-y-scroll hide-scrollbar gap-4 flex flex-col">
               {fields.map((field, index) => (
                 <div key={field.id} className="border rounded-lg p-4 space-y-4 relative">
@@ -280,7 +280,7 @@ function UserDataFormSubsmition() {
 
           <Button
             type="submit"
-            className={cn('w-full', {
+            className={cn('w-[50%] mx-auto', {
               'opacity-50 cursor-not-allowed': isSubmitting || isUploading,
             })}
             disabled={isSubmitting || isUploading}

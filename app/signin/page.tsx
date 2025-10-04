@@ -10,6 +10,7 @@ import { Loader2 } from "lucide-react";
 import { signIn } from "@/lib/auth-client";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { redirect } from "next/navigation";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -86,12 +87,15 @@ export default function SignIn() {
                     email,
                     password
                 },
+
+                
                 {
                   onRequest: () => {
                     setLoading(true);
                   },
                   onResponse: () => {
                     setLoading(false);
+                    redirect('/dashboard')
                   },
                 },
                 );

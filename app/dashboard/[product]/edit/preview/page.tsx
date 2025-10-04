@@ -12,8 +12,8 @@ const preview = async ({params}:{params:Promise<{product:string}>}) => {
     }
   return (
 
-    <div className='h-screen w-full '>
-      <div className='relative w-[20vw]  overflow-hidden  h-[80vh] flex p-3  mx-auto  '>
+    <div className='h-full w-screen '>
+      <div className=' w-full  overflow-hidden  h-full flex p-3  mx-auto  '>
 
 <PreviewProfile productid={param.product} />
 

@@ -12,17 +12,17 @@ import React from 'react'
 const page = async () => {
  
 
-const uuid = await  UuidAction()
-if(!uuid){
-    return redirect('/signup')
-}
-const dataa = await  db.select().from(data).where(eq(data.userId,uuid[0].id))
+ const uuid = await  UuidAction()
+ if(!uuid){
+     return redirect('/signup')
+ }
+ const dataa = await  db.select().from(data).where(eq(data.userId,uuid[0].id))
 
-if( !dataa[0]?.name){
-  return <div className='flex items-center justify-center h-full w-full   p-4'>
-     <NoProduct/> 
-  </div>
-}
+ if( !dataa[0]?.name){
+   return <div className='flex items-center justify-center h-full w-full   p-4'>
+      <NoProduct/> 
+   </div>
+ }
    
 
   return (
@@ -34,6 +34,7 @@ if( !dataa[0]?.name){
     </div>
     <div className='  h-screen '>
       <AllProducts data={dataa}/>
+    
     </div>
    </div>
     </>

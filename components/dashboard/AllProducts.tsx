@@ -42,16 +42,7 @@ const AllProducts = async ({ data }: {
   }[]
 }) => {
 
-  // const CopyDomain = process.env.PUBLIC_DOMAIN
 
-  // const uuid = await  UuidAction()
-  // const user = uuid[0].id
-//   const fetchImage = await db.select().from(userdata).where(eq(userdata.userId,user))
-
-//  const profileImage = fetchImage[0]?.profile
-
-
- console.log(data)
 
 
 
@@ -68,10 +59,12 @@ const AllProducts = async ({ data }: {
                 <div className='flex  justify-between items-center w-full h-full   '>
                   
 
-                  <div className='p-2 flex    w-1/2    gap-4  text-lg  '>
+                  <div className={`p-2 flex    w-1/2    gap-4  text-lg   `}>
                 
-                 
-                      <Image className='rounded-full ' src={item.profile || defaultImage} alt='profile' width={70} height={70}/>
+                 <div className={`${item.profile?.length ===0  ? 'hidden' : ''}`}>
+
+                      <Image className='rounded-full ' src={item.profile || ''} alt='profile' width={70} height={70}/>
+                 </div>
                      
                     <div className=' flex flex-col gap-2 '>
 

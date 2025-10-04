@@ -25,7 +25,7 @@ const DesignClientCmp = ({userId}:{userId:string} ) => {
 
   const [color, SetColor] = useState<string>('')
   const [pickerColorText, setpickerColorText] = useColor('#fbfbfb');
-  // use for change the baclground
+  // use for change the background
 
 
   const [pickerColor_Background, setpickerColor_Background] = useColor('#000000');
@@ -35,7 +35,7 @@ const DesignClientCmp = ({userId}:{userId:string} ) => {
   const [pickerColor2_Link, setpickerColor2_Link] = useColor('#3c9f8b');
 
   const bgColor = Array.isArray(ThemeColor) ? ThemeColor[0] : ThemeColor;
-  const bgColormap= ThemeColor
+  const bgColormap= ThemeColor 
 
 
 
@@ -54,9 +54,9 @@ const DesignClientCmp = ({userId}:{userId:string} ) => {
     fontStyle:font,
     color:color,   
     pickerColorText:pickerColorText.hex,
-    pickerColor_Background:pickerColor_Background.hex,
+    pickerColor_Background:pickerColor_Background.hex ,
     pickerColor2_Link:pickerColor2_Link.hex,
-    productid:userId 
+    productid:userId  
 
 
   })
@@ -119,11 +119,12 @@ const DesignClientCmp = ({userId}:{userId:string} ) => {
           } className=' flex flex-col gap-4 w-full     '>
             <h1 className={`text-xl font-sans   uppercase select-none dark:text-white  `}>design your Fonts</h1>
 
-            <div className=' flex w-[90%] gap-5 p-3 overflow-x-scroll mx-auto hide-scrollbar rounded-md   bg-accent/4  '>
+            <div className=' flex w-[90%] gap-3 p-5 overflow-x-scroll mx-auto hide-scrollbar rounded-md   bg-accent/80   '>
 
 
               {
                 fontData.map((item, index) => (
+
                   <Button  style={
                     { color: pickerColorText.hex }
                   } onClick={() => setFont(item)} key={index} className={`sansation-light w-20 h-10   text-sm ${item}  `}>
@@ -134,10 +135,10 @@ const DesignClientCmp = ({userId}:{userId:string} ) => {
               }
 
 
-              <div >
+              <div className='flex items-center gap-2'>
                 <Popover>
                   <PopoverTrigger asChild>
-                    <Button variant={'outline'} className='rounded-full w-full text-center  h-full p-4  ' size={'icon'}>
+                    <Button variant={'outline'} className='rounded-full w-full text-center text-black dark:text-white  h-full p-4  ' size={'icon'}>
                       <Edit2 size={16} />
                     </Button>
                   </PopoverTrigger>
@@ -157,14 +158,14 @@ const DesignClientCmp = ({userId}:{userId:string} ) => {
         </div>
         {/** color design */}
         <div className='w-full'>
-          <div className={'flex gap-3 items-center w-[90%] mx-auto  overflow-x-scroll hide-scrollbar rounded-md   bg-accent/10 justify-center ' }>
+          <div className={'flex gap-3 items-center w-[90%] mx-auto  overflow-x-scroll hide-scrollbar rounded-md   bg-accent/60 p-5  justify-center ' }>
 
 
             {
               bgColormap.map((elem) => (
                 <Button key={elem} onClick={() => {SetColor(elem); console.log(elem)}} className={`${elem}  hover:text-black rounded-full p-2 gap-4 `}>
 
-                  <span className={`${elem} size-5 rounded-full  `}/>
+                  <span className={`${elem} size-5 rounded-full  `}/>         
                   
                   
 
@@ -174,13 +175,13 @@ const DesignClientCmp = ({userId}:{userId:string} ) => {
               ))
             }
             {/* customize the color  */}
-            <span className=' bg-zinc-700  text-center rounded-full  p-2  '>
+            <span className='  text-center rounded-full  p-2  '>
               <div className='group relative'>
 
-            <div>
+            <div className=''>
                 <Popover>
                   <PopoverTrigger asChild>
-                    <Button variant={'link'} className='rounded-full w-6 text-center  h-fit' size={'icon'}>
+                    <Button variant={'outline'} className='rounded-full  text-center text-black dark:text-white p-5 ' size={'icon'}>
                       <Edit2 size={16} />
                     </Button>
                   </PopoverTrigger>
@@ -203,14 +204,15 @@ const DesignClientCmp = ({userId}:{userId:string} ) => {
 
 
           </div>
+     
           {
-
+            
             ['facebook', 'twitter', 'linkedin'].map((item, index) => <div style={
               {
                 backgroundColor: pickerColor2_Link.hex,
                 
-          
-
+                
+                
               }
             } key={index} className='flex justify-center  items-center w-[75%] h-16  rounded-3xl hover:scale-105 delay-100 transition-all duration-300 hover:shadow-lg  gap-5    ' >
               <div className='w-full h-full flex justify-between items-center gap-3 p-2 '>
@@ -227,7 +229,7 @@ const DesignClientCmp = ({userId}:{userId:string} ) => {
                   <Popover>
                     <PopoverTrigger asChild>
                       <Button variant={'outline'} className='rounded-full w-full text-center  h-full p-4 ' size={'icon'}>
-                        <Edit2 className='text-white' size={16} />
+                        <Edit2 className=' text-black dark:text-white ' size={16} />
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent>

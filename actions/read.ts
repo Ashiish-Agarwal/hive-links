@@ -1,6 +1,6 @@
 'use server'
 import { db } from "@/db";
-import { user } from "@/db/schema/auth-schema";
+import { session, user } from "@/db/schema/auth-schema";
 import { data, links, socialLinks, theme } from "@/db/schema/data-schema";
 import { auth } from "@/lib/auth";
 import { and, eq } from "drizzle-orm";
@@ -13,9 +13,26 @@ export  async function UuidAction(){
         headers: await headers()
     })
     if(!session || !session.user.id){
-        return redirect('/signup')
+        return redirect('/signin')
     }
     
+
+const users = await db.select().from(user).where(eq(user.id,session.user.id))
+
+
+return users
+
+}
+
+export  async function LadningpageAuth(){
+
+  const session = await auth.api.getSession({
+      headers: await headers()
+  })
+  if(!session || !session.user.id){
+      return null
+  }
+  
 
 const users = await db.select().from(user).where(eq(user.id,session.user.id))
 

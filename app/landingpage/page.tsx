@@ -1,15 +1,18 @@
-
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-
 import Link from 'next/link'
 import { Facebook, Github, Instagram, Linkedin, Twitter } from 'lucide-react'
 import UsingOurApp from '@/components/landingpage/UsingOurApp'
 import InputLandingPage from '@/components/landingpage/inputlandingpage'
 
 import Image from 'next/image'
+import { LadningpageAuth } from '@/actions/read'
+import { redirect } from 'next/navigation'
 
 const page = async() => {
 
+  const current= await LadningpageAuth()
+  if(current){
+    return redirect('/dashboard')
+  }
 
  
 
@@ -24,7 +27,7 @@ const page = async() => {
           background:'#1E1B4B'
         }} className='  h-[100vh]  w-full flex flex-col gap-3  justify-center items-center      '>
           <div className='   select-none   text-center  '>
-            <h1 className=' text-4xl md:text-6xl text-wrap font-bold text-black dark:text-white  '>One link  endless connection </h1>
+            <h1 className=' text-4xl md:text-6xl text-wrap font-bold text-black dark:text-white  '>Create a Quick website for your social links</h1>
  <p className='text-sm text-zinc-400  text-balance break-words  w-[70%] mx-auto mt-2 '>hive link is a platform that allows you to create a single link for your multiple links design customize </p>
            
            <InputLandingPage/>
@@ -85,7 +88,7 @@ const page = async() => {
                 
               }}   target="_blank" className={` flex items-center justify-center rounded-md w-full md:w-[50%] p-2 h-8 mx-auto scale-105 duration-300 ease-in-out hover:scale-110   sm:text-sm md:text-base lg:text-lg xl:text-xl  `}>Link</Link>
                 ))}
-              </span>
+              </span> 
 
              
             

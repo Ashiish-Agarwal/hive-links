@@ -28,10 +28,13 @@ const page = async ({params}:{params:Promise<{product :string}>}) => {
     
   return (
     <>
-    <div className=' w-full h-full  relative'>
-     
-     
 
+     
+     
+<div className=' h-full w-full    '>
+ 
+
+  
     <UserDataUpdateForm
       productid={param.product}
       initialData={{
@@ -44,11 +47,11 @@ const page = async ({params}:{params:Promise<{product :string}>}) => {
           linkUrl:link.link  ,
         })) || []
       }}
-
-    />
-  
-        </div>
-       <div>         
+      
+      />
+     
+     
+            
        
 <EditOptionsCMP param={param.product }   />
 
