@@ -20,6 +20,7 @@ const page = () => {
     
   }
  ]}/>
+ <UploadThing/>
 
     </div>
   )
