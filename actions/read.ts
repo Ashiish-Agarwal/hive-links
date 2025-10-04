@@ -1,6 +1,6 @@
 'use server'
 import { db } from "@/db";
-import { session, user } from "@/db/schema/auth-schema";
+import {  user } from "@/db/schema/auth-schema";
 import { data, links, socialLinks, theme } from "@/db/schema/data-schema";
 import { auth } from "@/lib/auth";
 import { and, eq } from "drizzle-orm";

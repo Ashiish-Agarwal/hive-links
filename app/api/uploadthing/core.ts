@@ -1,13 +1,10 @@
 // /app/api/uploadthing/core.ts
-import { UuidAction } from "@/actions/read";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
 
 const f = createUploadthing();
-const uuid = await UuidAction()
 
-
-const auth = async (req: Request) => ({ id: uuid[0].id }); // Fake auth function
+const auth = (req: Request) => ({ id: 'userid' }); // Fake auth function
 
 
 // FileRouter for your app, can contain multiple FileRoutes

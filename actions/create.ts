@@ -140,7 +140,7 @@ export async function createDesign(themeC:{
 
   if(productId.length ===0 ){
 
-    
+
     
     await db.insert(theme).values({
     id:crypto.randomUUID(),
@@ -209,11 +209,24 @@ export async function CreateTheme(params:string,themeClient:string) {
     }
   }
   try {
-
-    await db.update(theme).set({
-      theme:themeClient,
-      fontStyle:'',
-      textcolor:'',
+    const themecheck = await db.select().from(theme).where(and(eq(theme.productId,params),eq(theme.userId,userid[0]?.id))).limit(1).execute()
+    if(themecheck.length === 0){
+      await db.insert(theme).values({
+        id:crypto.randomUUID(),
+        userId:userid[0]?.id,
+        theme:themeClient,
+        productId:params,
+        fontStyle:'',
+        textcolor:'',
+        backgroundColor:'',
+        Linkcolor:''
+      }).execute()
+    }
+    else{
+      await db.update(theme).set({
+        theme:themeClient,
+        fontStyle:'',
+        textcolor:'',
       backgroundColor:'',
       Linkcolor:''
     }).where(and(eq(theme.productId,params),eq(theme.userId,userid[0]?.id))).execute()
@@ -223,6 +236,7 @@ export async function CreateTheme(params:string,themeClient:string) {
       success:true,
       message:'added theme successfully'
       
+    }
     }
 
   } catch (error) {

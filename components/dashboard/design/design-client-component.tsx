@@ -48,17 +48,17 @@ const DesignClientCmp = ({userId}:{userId:string} ) => {
 
 
   async function OnSubmit(){
+
+
     setLoading(true) 
-   
+   const backgroundColor= pickerColor_Background.hex==='#000000' ? '' : pickerColor_Background.hex
   const data = await createDesign({
     fontStyle:font,
     color:color,   
     pickerColorText:pickerColorText.hex,
-    pickerColor_Background:pickerColor_Background.hex ,
+    pickerColor_Background:backgroundColor,
     pickerColor2_Link:pickerColor2_Link.hex,
     productid:userId  
-
-
   })
   if(data?.success){
     toast.success(data.message)
@@ -69,8 +69,21 @@ const DesignClientCmp = ({userId}:{userId:string} ) => {
   }
   setLoading(false)
 }
+ 
+function setpickerColor_Backgroundfn(){
+  SetColor('')
+  console.log('comes to setpickerColor_Backgroundfn')
+  console.log(SetColor +'set pickcolor')
+
+}
+
+ function bgcolorset(elem:string){
+  SetColor(elem)
+ 
+  setpickerColor_Background({ ...pickerColor_Background, hex: '#000000' })
 
 
+}
 
   return (
     <>
@@ -103,7 +116,7 @@ const DesignClientCmp = ({userId}:{userId:string} ) => {
        { ...backgroundColor, color: pickerColorText.hex}
         
 
-      } className={`relative w-[90%] mx-auto h-screen  gap-4   ${font} flex items-center flex-col ${!isCustomColor ? color : 'bg-red-500'}  `}>
+      } className={`relative w-[90%] mx-auto h-screen  gap-4   ${font} flex items-center flex-col ${!isCustomColor ? color : ''}  `}>
         
 
         {/* font design  */}
@@ -163,7 +176,7 @@ const DesignClientCmp = ({userId}:{userId:string} ) => {
 
             {
               bgColormap.map((elem) => (
-                <Button key={elem} onClick={() => {SetColor(elem); console.log(elem)}} className={`${elem}  hover:text-black rounded-full p-2 gap-4 `}>
+                <Button key={elem} onClick={() => {bgcolorset(elem) ; console.log(elem)}} className={`${elem}  hover:text-black rounded-full p-2 gap-4 `}>
 
                   <span className={`${elem} size-5 rounded-full  `}/>         
                   
@@ -181,12 +194,12 @@ const DesignClientCmp = ({userId}:{userId:string} ) => {
             <div className=''>
                 <Popover>
                   <PopoverTrigger asChild>
-                    <Button variant={'outline'} className='rounded-full  text-center text-black dark:text-white p-5 ' size={'icon'}>
-                      <Edit2 size={16} />
+                    <Button onClick={()=>setpickerColor_Backgroundfn()} variant={'outline'} className='rounded-full  text-center text-black dark:text-white p-5 ' size={'icon'}>
+                      <Edit2 size={16}  />
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent>
-                    <ColorPicker color={pickerColor_Background} onChange={setpickerColor_Background} />
+                    <ColorPicker  color={pickerColor_Background } onChange={setpickerColor_Background} />
                   </PopoverContent>
                 </Popover>
               </div>
