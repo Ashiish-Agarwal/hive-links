@@ -52,11 +52,11 @@ const ThemeList = ({params}:{params?:string}) => {
     console.log(Submittheme)
 
     const themeSubmit = await CreateTheme(params!,Submittheme)
-    if(themeSubmit.success){
+    if(themeSubmit?.success){
       toast.success(themeSubmit.message)
     }
     else{
-      toast.error(themeSubmit.message)
+      toast.error(themeSubmit?.message)
     }
     setloading(false)
   }

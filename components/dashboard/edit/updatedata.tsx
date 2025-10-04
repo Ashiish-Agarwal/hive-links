@@ -163,7 +163,7 @@ function UserDataUpdateForm({ initialData, productid }: UserDataUpdateFormProps)
                             button: buttonVariants({
                               variant:"default"
                             }),
-                            allowedContent: "allowed-content",
+                            allowedContent: "al ",
                           }} 
                         />
 
