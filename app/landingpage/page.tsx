@@ -6,13 +6,14 @@ import InputLandingPage from '@/components/landingpage/inputlandingpage'
 import Image from 'next/image'
 import { LadningpageAuth } from '@/actions/read'
 import { redirect } from 'next/navigation'
+import Animatedtext from '@/components/landingpage/Animatedtext'
 
 const page = async() => {
 
-  const current= await LadningpageAuth()
-  if(current){
-    return redirect('/dashboard')
-  }
+  // const current= await LadningpageAuth()
+  // if(current){
+  //   return redirect('/dashboard')
+  // }
 
  
 
@@ -21,21 +22,10 @@ const page = async() => {
 
     <div className=' flex flex-col gap-1 h-full  w-full  overflow-hidden   '>
 
-    <div className=' p-2 flex flex-col items-center justify-center text-center  '>
+    <div className=' p-2 flex flex-col items-center justify-center text-center mx-auto   '>
       <section className='grid grid-cols-1 md:grid-cols-2 w-full sm:h-[200vh] md:h-screen   gap-2  '>
-        <div style={{
-          background:'#1E1B4B'
-        }} className='  h-[100vh]  w-full flex flex-col gap-3  justify-center items-center      '>
-          <div className='   select-none   text-center  '>
-            <h1 className=' text-4xl md:text-6xl text-wrap font-bold text-black dark:text-white  '>Create a Quick website for your social links</h1>
- <p className='text-sm text-zinc-400  text-balance break-words  w-[70%] mx-auto mt-2 '>hive link is a platform that allows you to create a single link for your multiple links design customize </p>
-           
-           <InputLandingPage/>
-
-         
-          </div>
-
-        </div>
+       
+       <Animatedtext/>
         <div style={{
           background:'#F5F3FF'
         }} className='h-full bg-red-500 p-2  w-full flex items-center justify-center    '>
@@ -133,10 +123,10 @@ const page = async() => {
 
 
     </div>
-<section className='h-screen w-screen  mx-auto flex items-center justify-center bg-accent/30   '>
+{/* <section className='h-screen w-screen  mx-auto flex items-center justify-center bg-accent/30   '>
 
   <UsingOurApp/>
-</section>
+</section> */}
           </div>
   )
 

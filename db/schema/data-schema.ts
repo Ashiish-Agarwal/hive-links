@@ -5,7 +5,7 @@ export const data = pgTable("data",{
     id:text("id").primaryKey(),
     userId:text("user_id").notNull().references(() => user.id, { onDelete: "cascade" }),
     profile:text("profile").default(''),
-    name:text("name").notNull(),
+    name:text("name").notNull().unique(),
     bio:text("bio"),
   
    

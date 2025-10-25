@@ -45,7 +45,7 @@ const AllProducts = async ({ data }: {
 
 
 
-
+console.log(data[0].name)
 
   return (
     <>

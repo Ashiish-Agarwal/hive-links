@@ -15,6 +15,13 @@
       "when": 1759253152065,
       "tag": "0001_fat_master_mold",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1761299598460,
+      "tag": "0002_futuristic_vector",
+      "breakpoints": true
     }
   ]
 }

@@ -25,6 +25,8 @@ import { toast } from "sonner"
 import { Card } from "../ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { UploadButton } from "@/lib/utils/uploadthing"
+import { checkUserAlreadyExisit } from "@/actions/read"
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 
 function UserDataFormSubsmition() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -32,10 +34,8 @@ function UserDataFormSubsmition() {
   const [isMounted, setIsMounted] = useState(false)
   const [imagePreview, setImagePreview] = useState<string | null>(null)
   const [isUploading, setIsUploading] = useState(false)
+  const [available , setAvailable] = useState<boolean | null>(null)
   
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
 
   const form = useForm<z.infer<typeof userDataSchema>>({
     resolver: zodResolver(userDataSchema),
@@ -106,6 +106,40 @@ function UserDataFormSubsmition() {
     setIsSubmitting(false)
   }
 
+  async function checkuseregsist(){
+
+
+    const username = form.getValues("name")
+    if(!username){
+      return ;
+    }
+    try {
+     
+      const userexsist = await checkUserAlreadyExisit({name:username})
+     
+        setAvailable(userexsist.success)
+      
+      
+      
+    } catch (error) {
+      setAvailable(false)
+      
+    }
+
+   
+
+
+    
+    
+    
+  }
+  useEffect(() => {
+    setIsMounted(true); checkuseregsist();
+  }, [form.watch('name')])
+
+
+  
+
   return (
     <Form {...form} >
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full h-full flex flex-col items-center justify-center ">
@@ -115,7 +149,7 @@ function UserDataFormSubsmition() {
             <Avatar className="size-24">
               <AvatarImage 
                 className="rounded-full size-24 object-cover" 
-                src={isMounted && imagePreview ? imagePreview : "https://github.com/shadcn.png"} 
+                src={isMounted && imagePreview ? imagePreview : "https://i.pinimg.com/222x/80/e8/40/80e8406626428e1d6387061f9783abd1.jpg"} 
               />
               <AvatarFallback className="rounded-full size-24">CN</AvatarFallback>
             </Avatar>
@@ -150,6 +184,7 @@ function UserDataFormSubsmition() {
                             <span className="text-sm">Uploading...</span>
                           </div>
                         )}
+                      
                       </div>
                       
                       {/* Hidden input to store the URL - NO SPREADING field */}
@@ -178,11 +213,25 @@ function UserDataFormSubsmition() {
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input className="w-full" placeholder="shadcn" {...field} />
+                    <Input onClick={()=>checkuseregsist()} className="w-full" placeholder="name" {...field} />
+
                   </FormControl>
                   <FormDescription>
-                    This is your public display name.
+                     Note: this name create a unique url link ex: https://linkog.com/kuru
                   </FormDescription>
+                  {
+                  available===null ? null :available?
+                   (
+                    <FormMessage className="text-green-500">
+                      this username is available
+                    </FormMessage>
+                  ) : (
+                    <FormMessage className="text-red-500">
+                      this username is already taken
+                      
+                    </FormMessage>
+                  )
+                }
                   <FormMessage />
                 </FormItem>
               )}

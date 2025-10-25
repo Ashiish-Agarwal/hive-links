@@ -11,7 +11,7 @@ const Logo = () => {
 <Link href="/" className='  duration-300 ease-in-out  '>
 
 
-<span className='text-shadow-primary-foreground  '>Hiv</span>
+<span className='text-shadow-primary-foreground text-2xl md:text-4xl xl:text-6xl   '>Hiv</span>
 <span className='text-primary '>E</span>
 </Link>
         

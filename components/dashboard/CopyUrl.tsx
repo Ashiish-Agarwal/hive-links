@@ -26,7 +26,7 @@ export function CopyToClipboard({id,name}:{id:string,name:string}) {
           id="copyUrl"
           type="text"
           className="col-span-6 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-          value={`${CopyDomain}/box/${encodeURIComponent(name)}/${id}/inbox`}
+          value={`${CopyDomain}/${encodeURIComponent(name)}`}
           disabled
           readOnly
           />
@@ -35,7 +35,7 @@ export function CopyToClipboard({id,name}:{id:string,name:string}) {
 
 
 
-          <ClipboardWithIcon title="Copy" className="" valueToCopy= {`${CopyDomain}/box/${encodeURIComponent(name)}/${id}/inbox`} />
+          <ClipboardWithIcon title="Copy" className="" valueToCopy= {`${CopyDomain}/${encodeURIComponent(name)}`} />
 
           </div>
         

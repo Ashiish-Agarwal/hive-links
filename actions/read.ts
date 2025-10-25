@@ -34,10 +34,10 @@ export  async function LadningpageAuth(){
   }
   
 
-const users = await db.select().from(user).where(eq(user.id,session.user.id))
 
 
-return users
+
+return session
 
 }
 
@@ -177,5 +177,60 @@ export async function GetSocialLink({productid}:{productid:string}){
   } catch (error) {
     console.log(error)
     return null
+  }
+}
+
+
+
+
+export async function GetInfo({username}:{username:string}){
+  
+ 
+ const name = await  username
+ try {
+  
+   
+   const usernamedata = (await db.select( ).from(data).where(eq(data.name,name)))[0]
+ 
+ const productuuid = usernamedata.id
+  const linksdata = await GetunauthorizeLink({productid:productuuid})
+ const designdata = await GetunauthorizeDesigndata({productid:productuuid})
+
+ 
+ 
+
+
+ 
+ 
+
+ 
+
+  return {
+    usernamedata,
+   
+    productuuid,
+    linksdata,
+    designdata
+  }
+  
+ } catch (error) {
+  console.log(error)
+ }
+}
+
+export async  function checkUserAlreadyExisit({name}:{name:string}){
+
+  const user = await db.select().from(data).where(eq(data.name,name)).limit(1).execute()
+
+  if(user.length===0){
+    return {
+      success:true,
+      message:"the name is unique"
+    }
+  }
+
+  return {
+    success:false,
+    message:"user already exisit"
   }
 }
