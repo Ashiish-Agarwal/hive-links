@@ -1,7 +1,7 @@
 import { GetInfo } from '@/actions/read'
 import SocialLinksDisplay from '@/components/dashboard/social-links'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import {UserNotFound} from '@/components/user-not-found'
+import UserNotFound from '@/components/user-not-found'
 
 import Link from 'next/link'
 import React from 'react'

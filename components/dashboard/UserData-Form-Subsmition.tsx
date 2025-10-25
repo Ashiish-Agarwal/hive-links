@@ -26,7 +26,6 @@ import { Card } from "../ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { UploadButton } from "@/lib/utils/uploadthing"
 import { checkUserAlreadyExisit } from "@/actions/read"
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 
 function UserDataFormSubsmition() {
   const [isSubmitting, setIsSubmitting] = useState(false)

@@ -1,6 +1,5 @@
 import React from 'react'
 import { DesignAction, GetLink, GetProduct } from '@/actions/read'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import Link from 'next/link'
 import {  LucideCrown } from 'lucide-react'
 import SocialLinksDisplay from '../social-links'
