@@ -24,6 +24,7 @@ import { userDataSchema } from "@/lib/zod/Userdata"
 import { updateData } from "@/actions/update"
 import { UploadButton } from "@/lib/utils/uploadthing"
 import Image from "next/image"
+import { checkUserAlreadyExisit } from "@/actions/read"
 
 interface UserDataUpdateFormProps {
   initialData?: {
@@ -42,6 +43,8 @@ function UserDataUpdateForm({ initialData, productid }: UserDataUpdateFormProps)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [imagePreview, setImagePreview] = useState<string | null>(null)
   const [isUploading, setIsUploading] = useState(false)
+    const [available , setAvailable] = useState<boolean | null>(null)
+  
 
   // Initialize form with existing data or defaults
   const form = useForm<z.infer<typeof userDataSchema>>({
@@ -57,12 +60,9 @@ function UserDataUpdateForm({ initialData, productid }: UserDataUpdateFormProps)
     },
   })
 
+
   // Set initial image preview
-  useEffect(() => {
-    if (initialData?.profile) {
-      setImagePreview(initialData.profile)
-    }
-  }, [initialData])
+
 
   const { fields, append, remove } = useFieldArray({
     control: form.control,
@@ -124,6 +124,42 @@ function UserDataUpdateForm({ initialData, productid }: UserDataUpdateFormProps)
       setIsSubmitting(false)
     }
   }
+
+   async function checkuseregsist(){
+  
+  
+      const username = form.getValues("name")
+      if(!username){
+        return ;
+      }
+      try {
+       
+        const userexsist = await checkUserAlreadyExisit({name:username})
+       
+          setAvailable(userexsist.success)
+        
+        
+        
+      } catch (error) {
+        setAvailable(false)
+        
+      }
+  
+     
+  
+  
+      
+      
+      
+    }
+   
+
+      useEffect(() => {
+    if (initialData?.profile) {
+      setImagePreview(initialData.profile)
+    };
+    checkuseregsist();
+  }, [initialData,form.watch('name')])
 
   return (
     <Form {...form}>
@@ -195,9 +231,22 @@ function UserDataUpdateForm({ initialData, productid }: UserDataUpdateFormProps)
                   <FormControl>
                     <Input className="w-full" placeholder="Your name" {...field} />
                   </FormControl>
-                  <FormDescription>
-                    This is your public display name.
+                 <FormDescription>
+                     Note: this name create a unique url link ex: https://linkog.com/kuru
                   </FormDescription>
+                  {
+                  available===null ? null :available?
+                   (
+                    <FormMessage className="text-green-500">
+                      this username is available
+                    </FormMessage>
+                  ) : (
+                    <FormMessage className="text-red-500">
+                      this username is already taken
+                      
+                    </FormMessage>
+                  )
+                }
                   <FormMessage />
                 </FormItem>
               )}

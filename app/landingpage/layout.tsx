@@ -39,7 +39,10 @@ export default function LandingPageLayout({
       </nav>
      
         {children}
+        <div className='hidden md:block'>
+
         
         <SmoothCursor />
+        </div>
         </div>
   }

@@ -10,10 +10,10 @@ import Animatedtext from '@/components/landingpage/Animatedtext'
 
 const page = async() => {
 
-  // const current= await LadningpageAuth()
-  // if(current){
-  //   return redirect('/dashboard')
-  // }
+  const current= await LadningpageAuth()
+  if(current){
+    return redirect('/dashboard')
+  }
 
  
 
