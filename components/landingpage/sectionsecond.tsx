@@ -1,10 +1,7 @@
-import React from 'react'
-import RotatingText from '../RotatingText'
-import { BrushCleaning, ChartColumn, Globe2, GlobeIcon, LucideMousePointerClick, PaintRoller, Rocket, WandSparkles } from 'lucide-react'
-import { cn } from '@/lib/utils'
-import { buttonVariants } from '../ui/button'
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
+import RotatingText from '../RotatingText'
+import { buttonVariants } from '../ui/button'
 
 const Sectionsecond = () => {
   return (

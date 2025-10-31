@@ -3,6 +3,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useFieldArray, useForm } from "react-hook-form"
 import { z } from "zod"
 
+import { createProduct } from "@/actions/create"
+import { checkUserAlreadyExisit } from "@/actions/read"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   Form,
   FormControl,
@@ -13,19 +16,16 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { userDataSchema } from "@/lib/zod/Userdata"
-import { createProduct } from "@/actions/create"
-import { useRouter } from "next/navigation"
-import { Button } from "../ui/button"
 import { cn } from "@/lib/utils"
-import { useState, useEffect } from "react"
-import { Loader2, Plus, Trash2 } from "lucide-react"
-import { Textarea } from "../ui/textarea"
-import { toast } from "sonner"
-import { Card } from "../ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { UploadButton } from "@/lib/utils/uploadthing"
-import { checkUserAlreadyExisit } from "@/actions/read"
+import { userDataSchema } from "@/lib/zod/Userdata"
+import { Loader2, Plus, Trash2 } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
+import { toast } from "sonner"
+import { Button } from "../ui/button"
+import { Card } from "../ui/card"
+import { Textarea } from "../ui/textarea"
 
 function UserDataFormSubsmition() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -122,6 +122,7 @@ function UserDataFormSubsmition() {
       
     } catch (error) {
       setAvailable(false)
+      console.log(error)
       
     }
 

@@ -101,7 +101,7 @@ const Questions = () => {
 {FAQData.map((elem,i)=>(
 
 
-    <AccordionItem value={'item'+i}>
+    <AccordionItem key={i} value={'item'+i}>
     <AccordionTrigger className='text-2xl fontRecursive'>{elem.question}</AccordionTrigger>
     <AccordionContent>
     <p className='text-xl '>{elem.answer}</p>

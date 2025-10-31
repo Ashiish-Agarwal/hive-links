@@ -1,7 +1,7 @@
 import { ClipboardWithIcon } from "flowbite-react";
 
 
-export function CopyToClipboard({id,name}:{id:string,name:string}) {
+export function CopyToClipboard({name}:{name:string}) {
     const CopyDomain = process.env.PUBLIC_DOMAIN
   return (
 

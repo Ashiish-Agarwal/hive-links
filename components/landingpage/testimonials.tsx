@@ -1,8 +1,8 @@
 'use client'
-import React, { useMemo } from 'react'
-import PixelTransition from '../PixelTransition'
-import Image from 'next/image'
 import { TestimonialsImage as testimo } from '@/lib/image'
+import Image from 'next/image'
+
+import PixelTransition from '../PixelTransition'
 import RotatingText from '../RotatingText'
 const Testimonials = () => {
 
@@ -29,7 +29,7 @@ const Testimonials = () => {
     ]
 
     // Duplicate testimonials for seamless loop
-    const TestimonialsImage = useMemo(() => [...Testimonials, ...Testimonials], [])
+    const TestimonialsImage =  [...Testimonials, ...Testimonials]
 
     return (
         <>

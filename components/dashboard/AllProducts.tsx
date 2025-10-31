@@ -1,11 +1,10 @@
 
-import React from 'react'
 import { Card } from '../ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel,  DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+
+import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Copy, Edit, EllipsisVertical } from 'lucide-react';
 import { Button } from '../ui/button';
 import { CardContent, } from '../ui/card';
-import { Copy, Edit, EllipsisVertical } from 'lucide-react';
 import { CopyToClipboard } from './CopyUrl';
 
 import {
@@ -18,15 +17,14 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
+} from "@/components/ui/alert-dialog";
 import Link from 'next/link';
 
 
-import DeleteProductComponent from './delete-product';
-import { defaultImage } from '@/lib/utils';
-import SocialLinksManager from './sociallinks';
-import SocialLinksDisplay from './social-links';
 import Image from 'next/image';
+import DeleteProductComponent from './delete-product';
+import SocialLinksDisplay from './social-links';
+import SocialLinksManager from './sociallinks';
 
 
 
@@ -102,7 +100,7 @@ console.log(data[0].name)
                                   <AlertDialogHeader>
                                     <AlertDialogTitle >Copy    </AlertDialogTitle>
                                     <AlertDialogDescription className='flex   '>
-                                      <CopyToClipboard name={item.name} id={item.id} />
+                                      <CopyToClipboard name={item.name} />
                                     </AlertDialogDescription>
                                   </AlertDialogHeader >
                                   <AlertDialogFooter>

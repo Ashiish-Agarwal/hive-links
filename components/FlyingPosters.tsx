@@ -151,14 +151,15 @@ void main() {
 }
 `;
 
-function AutoBind(self: any, { include, exclude }: AutoBindOptions = {}) {
-  const getAllProperties = (object: any): Set<[any, string | symbol]> => {
-    const properties = new Set<[any, string | symbol]>();
+function AutoBind(self: object, { include, exclude }: AutoBindOptions = {}) {
+  const getAllProperties = (object: object): Set<[object, string | symbol]> => {
+    const properties = new Set<[object, string | symbol]>();
+     let current: object | null = object;
     do {
-      for (const key of Reflect.ownKeys(object)) {
-        properties.add([object, key]);
+      for (const key of Reflect.ownKeys(current)) {
+        properties.add([current, key]);
       }
-    } while ((object = Reflect.getPrototypeOf(object)) && object !== Object.prototype);
+    } while ((current = Reflect.getPrototypeOf(current)) && current !== Object.prototype);
     return properties;
   };
 
@@ -175,7 +176,7 @@ function AutoBind(self: any, { include, exclude }: AutoBindOptions = {}) {
     if (key === 'constructor' || !filter(key)) continue;
     const descriptor = Reflect.getOwnPropertyDescriptor(object, key);
     if (descriptor && typeof descriptor.value === 'function') {
-      self[key] = self[key].bind(self);
+      (self as Record<string | symbol, unknown>)[key] = (descriptor.value as (...args:unknown[]) => unknown).bind(self);
     }
   }
   return self;

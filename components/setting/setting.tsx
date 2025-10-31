@@ -1,23 +1,24 @@
 'use client'
-import { useState } from "react";
-import { Trash2, AlertTriangle, User, Mail, Calendar, CheckCircle, XCircle } from "lucide-react";
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { 
-  AlertDialog, 
-  AlertDialogAction, 
-  AlertDialogCancel, 
-  AlertDialogContent, 
-  AlertDialogDescription, 
-  AlertDialogFooter, 
-  AlertDialogHeader, 
-  AlertDialogTitle, 
-  AlertDialogTrigger 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { AlertTriangle, Calendar, CheckCircle, Mail, Trash2, User, XCircle } from "lucide-react";
+import { useState } from "react";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { DeleteAccount } from "@/actions/delete";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import Image from "next/image";
 import { toast } from "sonner";
 
 
@@ -87,10 +88,12 @@ export default function SettingsPage({user}: {user: User}) {
               {/* Profile Picture and Basic Info */}
               <div className="flex items-start space-x-4">
                 <div className="relative">
-                  <img
+                  <Image
                     src={user.image || '/defaultimg.jpg'}
                     alt={user.name}
                     className="w-16 h-16 rounded-full object-cover border-2 border-border"
+                    width={50}
+                    height={50}
                   />
                 </div>
                 <div className="flex-1 min-w-0">

@@ -142,6 +142,8 @@ function UserDataUpdateForm({ initialData, productid }: UserDataUpdateFormProps)
         
       } catch (error) {
         setAvailable(false)
+        console.log(error)
+
         
       }
   

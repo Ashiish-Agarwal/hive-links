@@ -1,9 +1,7 @@
 
-import React from 'react'
-import FlyingPosters from '../FlyingPosters';
 import { GithubImageLinks } from '@/lib/image';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import FlyingPosters from '../FlyingPosters';
 
 const CardSwapsection = () => {
     const items = GithubImageLinks

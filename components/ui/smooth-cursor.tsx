@@ -1,7 +1,7 @@
 "use client"
 
-import { FC, useEffect, useRef, useState } from "react"
 import { motion, useSpring } from "motion/react"
+import { FC, useEffect, useRef, useState } from "react"
 
 interface Position {
   x: number

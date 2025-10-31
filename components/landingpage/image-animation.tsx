@@ -72,7 +72,7 @@ const Imageanimation = () => {
   {
     
     duplicatedImages.map((e,index)=>(
-      <motion.div 
+      <motion.div  key={e}
        whileHover={{
         scale:1.05,
 

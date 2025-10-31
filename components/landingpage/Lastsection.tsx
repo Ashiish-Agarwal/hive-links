@@ -1,13 +1,10 @@
 'use client'
-import React, { useState } from 'react'
-import { Input } from '../ui/input'
+import { useState } from 'react'
 
 import Link from 'next/link'
-import { buttonVariants } from '../ui/button'
 
 const Lastsection = () => {
-    const website = process?.env?.PUBLIC_DOMAIN?.toString() || 'hive-link.app/'
-          const [name,setName] = useState(website + '@')
+    
   return (
     <div className='mt-20 flex items-center justify-center flex-col gap-2  '>
 

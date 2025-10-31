@@ -1,11 +1,10 @@
 'use client'
 import Stepper, { Step } from './Stepper';
 
-import React from 'react'
+import React from 'react';
 import { Input } from './ui/input';
 
 import { CopyButton } from './ui/shadcn-io/copy-button';
-import { motion } from 'framer-motion';
 
 const StepperCmp = () => {
     const [name, setName] = React.useState('');
