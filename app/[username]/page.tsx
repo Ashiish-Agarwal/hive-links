@@ -88,7 +88,7 @@ const username = async ({params}:{params:Promise<{username:string}>}) => {
            </div>
            {/* icons */}
            <div  className='flex gap-3 text-center mt-6 w-full justify-center  items-center flex-wrap '>
-            <SocialLinksDisplay  productid={fetchInfo?.productuuid || ''} />
+            <SocialLinksDisplay  productid={fetchInfo?.productuuid || 'h'} />
         
            </div>
  

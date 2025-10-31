@@ -16,6 +16,7 @@ import {
 import { Button } from './ui/button'
 import { Separator } from '@radix-ui/react-dropdown-menu'
 import { usePathname } from 'next/navigation'
+import { AnimatedThemeToggler } from './ui/animated-theme-toggler'
 
 const links: Array<{
     id: number;
@@ -76,7 +77,7 @@ console.log(routes)
      </div>
      <div className='flex flex-col gap-2 mt-5 mb-5   '>
      <span className='h-0.5 bg-zinc-500/10 '/>
-       <DarkButton/>
+       <AnimatedThemeToggler />
         <Logout/>
         
         

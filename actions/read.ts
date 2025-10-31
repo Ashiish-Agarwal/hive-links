@@ -192,7 +192,10 @@ export async function GetInfo({username}:{username:string}){
    
    const usernamedata = (await db.select( ).from(data).where(eq(data.name,name)))[0]
  
- const productuuid = usernamedata.id
+   if(!usernamedata){
+     return null
+   }
+ const productuuid = usernamedata.id 
   const linksdata = await GetunauthorizeLink({productid:productuuid})
  const designdata = await GetunauthorizeDesigndata({productid:productuuid})
 

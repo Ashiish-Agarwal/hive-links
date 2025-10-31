@@ -1,12 +1,18 @@
-import Link from 'next/link'
-import { Facebook, Github, Instagram, Linkedin, Twitter } from 'lucide-react'
-import UsingOurApp from '@/components/landingpage/UsingOurApp'
-import InputLandingPage from '@/components/landingpage/inputlandingpage'
 
-import Image from 'next/image'
+
 import { LadningpageAuth } from '@/actions/read'
 import { redirect } from 'next/navigation'
 import Animatedtext from '@/components/landingpage/Animatedtext'
+
+import Sectionsecond from '@/components/landingpage/sectionsecond'
+
+
+import CardSwapsection from '@/components/landingpage/CardSwapsection'
+import StepperCmp from '@/components/StepperCmp'
+import Testimonials from '@/components/landingpage/testimonials'
+import Questions from '@/components/landingpage/Questions'
+import Lastsection from '@/components/landingpage/Lastsection'
+
 
 const page = async() => {
 
@@ -19,114 +25,78 @@ const page = async() => {
 
 
   return (
+    
 
-    <div className=' flex flex-col gap-1 h-full  w-full  overflow-hidden   '>
+    <div  style={{
+     background:'#FFFAEC'
+    }} className='   flex-col gap-1 h-full  w-full  overflow-hidden     '>
 
-    <div className=' p-2 flex flex-col items-center justify-center text-center mx-auto   '>
-      <section className='grid grid-cols-1 md:grid-cols-2 w-full sm:h-[200vh] md:h-screen   gap-2  '>
+    <div  className='   flex flex-col items-center justify-center text-center mx-auto   '>
+       
+    
+
+      <section  style={{
+        background:'#FCF5ED'
+      }} className='    grid grid-cols-1 md:grid-cols-2 w-full sm:h-[200vh] md:h-screen -mt-10   gap-10 p-0.5 md:p-14  '>
+
        
        <Animatedtext/>
-        <div style={{
-          background:'#F5F3FF'
-        }} className='h-full bg-red-500 p-2  w-full flex items-center justify-center    '>
-          
-
-
-          <div className='w-[18rem] h-[35rem] rounded-lg  border-2 border-primary bg-white  hover:scale-[1.03] duration-300 ease-in-out '>
-          
-
-
-          <div className=' w-full h-full mx-auto  overflow-hidden      '> 
-      <div style={{
-        background:'var(--bg)',
-        color:'var(--text)'
-      }} className={`w-full h-full flex flex-col items-center justify-center  text-centersansation-light p-2 `}>
-        <div style={{
-          background:'var(--bg)',
-          
-        }} className='w-full h-full rounded-md flex flex-col items-center justify-center mb-20 mt-16     '>
-          {/* //image */}
-          <div className={`  w-full flex items-center justify-center `} >
-
-          <Image className='rounded-full ' src={"/defaultimg.jpg"} alt="" width={100} height={100}/>
-           
-              
-
-             
-             
-            
-
-          </div>
-          {/* name bio */}
-          
-
-          <div  className='flex flex-col items-center  gap-1  text-center '>
-            <h1 className='text-2xl uppercase text-black  tracking-tighter  '>@Aviinash agarwal</h1>
-            <p className='text-sm text-zinc-400  text-balance break-words  w-[70%] mx-auto  '> yo i am avii who created the entire website   </p>
-
-          </div>
-          {/* links */}
-          <div className='flex flex-col gap-2 w-full mx-auto text-center mt-6  '>
-           
-              <span  className='flex gap-2 w-full flex-col  '>
-                {
-
-                ['1','2'].map((e)=>(
-
-                  <Link key={e} href={'/'} style={{
-                    background: 'purple' 
-                
-              }}   target="_blank" className={` flex items-center justify-center rounded-md w-full md:w-[50%] p-2 h-8 mx-auto scale-105 duration-300 ease-in-out hover:scale-110   sm:text-sm md:text-base lg:text-lg xl:text-xl  `}>Link</Link>
-                ))}
-              </span> 
-
-             
-            
-          </div>
-          {/* icons */}
-          <div className='flex gap-3 text-center mt-6  items-center flex-wrap text-black/60  '>
-         {  [
-          {key:'github',value:<Github/>},
-           {key:'facebook',value:<Facebook/>},
-           {key:'twitter',value:<Twitter/>},
-           {key:'instagram',value:<Instagram/>},
-           {key:'linkedin',value:<Linkedin/>}].map((e,index)=>(
-            <span  className='hover:text-black/80 duration-300 ease-in-out hover:scale-105 ' key={index}>
-              {e.value}
-            </span>
-           ))}
-       
-          </div>
-
-          
-          
-
-        
-          {/* logo */}
-          <div className='flex items-center gap-2 w-full     justify-center mt-10 h-fit  text-purple-300  hover:text-purple-800 duration-300 ease-in-out   '>
-            <Link href={'/landingpage'} target="_blank" className=' text-3xl'>
-            Hive Link 
-            </Link>
-          </div>
-          </div>
-        
-      </div>
       
-      
-    </div>
-            
-          </div>
-        </div>
+     
       
 
       </section>
+      
 
 
     </div>
-{/* <section className='h-screen w-screen  mx-auto flex items-center justify-center bg-accent/30   '>
+    <section
+ style={{
+  background:'#301212'
+}} className='w-full h-screen hidden md:block '
+>
+<CardSwapsection/>
 
-  <UsingOurApp/>
-</section> */}
+
+
+</section>
+<section style={{
+  background:'#F5ECD5'
+}} className='h-screen w-full  p-3   mx-auto flex items-center justify-center   backdrop-blur-sm    '>
+
+<Sectionsecond/>
+ 
+</section>
+
+
+ <section style={{
+  background:'#FFFAEC'
+}} className='w-full h-screen'>
+ 
+
+  <StepperCmp/>
+
+</section>
+<section   className='w-full h-screen '  >
+  <div   className='w-full h-screen '>
+
+
+
+  <Testimonials/>
+  <h1 className='text-2xl  fontSourGummy font-bold text-center mt-20  p-4 bg-red-800 text-white '>The Lazy way to increase your Ashthetics</h1>
+</div>
+  
+  </section> 
+  <section className='flex flex-col items-center justify-center text-center'>
+    <h1 className='text-xl md:text-3xl lg:text-4xl xl:text-4xl fontSourGummy font-bold  '>Questions ? <span className='text-red-900'>Answers</span></h1>
+    
+    <div className='w-[60%]  text-center p-5 '>
+      <Questions/>
+    </div>
+  </section>
+  <section className='h-1/2 w-full flex flex-col items-center justify-center'>
+    <Lastsection/>
+  </section>
           </div>
   )
 
