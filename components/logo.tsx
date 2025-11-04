@@ -1,19 +1,17 @@
 import Link from 'next/link'
-
+import Image from 'next/image'
 
 const Logo = () => {
   
   return (
     <>
-    <div className='text-3xl w-full  text-center   h-fit '>
+    <div className='text-3xl w-full  text-center   h-full flex flex-col md:flex-none  '>
      
 <Link href="/" className='  duration-300 ease-in-out   '>
-{/* <Image className='mix-blend-screen bg-blend-color ' src="/logo.jpg" alt="logo" width={50} height={50} /> */}
+<Image className=' ' src="/logo.png" alt="logo" width={50} height={50} />
 
-<span style={{
-  color:'#41270b'
-}} className='text-shadow-primary-foreground fontPoppins text-2xl  md:text-4xl xl:text-5xl   '>BEE</span>
-<span className=" text-3xl font-bold  ml-2" style={{textShadow: '0 0 8px #41270b, 0 0 16px #41270b' ,color:'#41270b'}}>.</span>
+<span className='text-shadow-primary-foreground fontSourGummy text-2xl  md:text-4xl xl:text-5xl  text-black dark:text-[#fbbf24]  '>BEE</span>
+<span className=" text-3xl font-bold  ml-2" style={{textShadow: '0 0 8px #fbbf24, 0 0 16px #fbbf24' ,color:'#fbbf24'}}>.</span>
 {/* <span className='text-primary  text-shadow-2xs  p-2 text-shadow-primary  '>.</span> */}
 </Link>
         

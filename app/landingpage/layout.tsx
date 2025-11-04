@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import NavigationBaar from "@/components/landingpage/NavigationBaar";
+
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 
@@ -11,7 +12,7 @@ export default function LandingPageLayout({
   }: {
     children: React.ReactNode;
   }) {
-    return <div className=" relative">
+    return <div className=" relative bg-white ">
       <div className="sticky top-0 z-50">
 
      </div>

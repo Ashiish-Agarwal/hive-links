@@ -2,8 +2,10 @@
 import { ArrowRight, MenuIcon } from 'lucide-react'
 import Image from "next/image"
 import Link from 'next/link'
+
 import { buttonVariants } from '../ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
+import { AnimatedThemeToggler } from '../ui/animated-theme-toggler'
 
 
 const NavigationBaar = () => {
@@ -33,7 +35,7 @@ const NavigationBaar = () => {
 ]
     
   return (
-   <div className='grid grid-cols-3 gap-4 border-b-2 border-yellow-500 sticky top-0 z-50  h-10 md:h-15   backdrop-blur w-[90%] md:w-[60%]  mx-auto items-center rounded-md  justify-center  '>
+   <div className='grid   grid-cols-3 gap-4 border-b-2 border-yellow-500 sticky top-0 z-50  h-10 md:h-15   backdrop-blur w-[90%] md:w-[60%]  mx-auto items-center rounded-md  justify-center  '>
     <div>
       <Sheet>
         <SheetTrigger>
@@ -41,13 +43,14 @@ const NavigationBaar = () => {
 <span className={buttonVariants({
   variant:"outline",
   size:"lg",
-  className:' bg-transparent border-2 ml-5 text-black  '
+  className:' bg-transparent border-2 ml-5 text-black hover:text-zinc-900/80 hover:scale-105     '
 })}>
+  
 
 <MenuIcon/>
 </span>
         </SheetTrigger>
-        <SheetContent className='w-full h-full flex flex-col  items-center justify-start text-center      '>
+        <SheetContent className='w-full h-full flex flex-col  items-center  justify-start text-center      '>
           <Link href={'/'} target="_blank" className='' >
           
           <Image src="/logo.png" alt="logo" width={100} height={100}/>
@@ -71,7 +74,8 @@ const NavigationBaar = () => {
       size:"lg",
       className:' bg-transparent border-2 ml-5 text-black  '
     })} >Sign Up</Link>
-          </div>    
+          </div>  
+         
         </SheetContent>
       </Sheet>
     
@@ -85,7 +89,7 @@ const NavigationBaar = () => {
 
     <Link href={'/signin'} target="_blank" className=
         
-       '  text-center  text-sm  tracking-tighter bg-gray-200  flex items-center hover:bg-gray-600 hover:text-black duration-300 ease-in-out p-1.5  rounded-xl   w-fit    '
+       '  text-center  text-sm  mr-2  tracking-tighter bg-gray-200  flex items-center hover:bg-gray-600/80 hover:text-black duration-300 ease-in-out p-1.5  rounded-xl   w-fit    '
     >Sign In <ArrowRight className='ml-1 size-3.5'/></Link>
     </div>
 

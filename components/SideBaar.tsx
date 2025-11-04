@@ -1,11 +1,6 @@
 'use client'
 import Link from 'next/link'
 
-import React from 'react'
-import Logout from './logout'
-import { DarkButton } from './mode-toggle'
-import Logo from './logo'
-import { MenuIcon, } from 'lucide-react'
 import {
   Sheet,
   SheetContent,
@@ -13,10 +8,13 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { Button } from './ui/button'
 import { Separator } from '@radix-ui/react-dropdown-menu'
+import { MenuIcon, } from 'lucide-react'
 import { usePathname } from 'next/navigation'
+import Logo from './logo'
+import Logout from './logout'
 import { AnimatedThemeToggler } from './ui/animated-theme-toggler'
+import { Button } from './ui/button'
 
 const links: Array<{
     id: number;
@@ -131,7 +129,7 @@ const routes = usepath.split('/').filter(Boolean).pop()
         </div>
         <Separator/>
         <div className='flex flex-col gap-2 '>
-        <DarkButton/>
+       <AnimatedThemeToggler/>
         <Logout/>
         </div>
   </SheetContent>
