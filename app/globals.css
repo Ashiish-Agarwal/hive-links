@@ -118,9 +118,11 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-color: transparent;
   }
 }
 
+body { background-color: transparent; } 
 .cardeffect{
   background: #b956c4;
 background: linear-gradient(90deg,rgba(185, 86, 196, 1) 0%, rgba(113, 48, 120, 1) 50%, rgba(29, 145, 118, 1) 100%);

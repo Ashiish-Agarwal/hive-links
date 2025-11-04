@@ -4,6 +4,8 @@ import Link from "next/link";
 import { SmoothCursor } from "@/components/ui/smooth-cursor"
 import PromotionSection from "@/components/PromotionSection";
 import Footer from "@/components/Footer";
+import { StickyBanner } from "@/components/ui/sticky-banner";
+import NavigationBaar from "@/components/landingpage/NavigationBaar";
 
 
 
@@ -15,11 +17,12 @@ export default function LandingPageLayout({
     return <div className=" relative">
       <div className="sticky top-0 z-50">
 
-      <PromotionSection/>
+      {/* <PromotionSection/> */}
+      <StickyBanner children={<PromotionSection/>} hideOnScroll={false}/>
       </div>
 
 
-      <nav className='absolute top-10   w-full  h-20 rounded-lg  flex items-center justify-center '>
+      {/* <nav className='absolute top-10   w-full  h-20 rounded-lg  flex items-center justify-center '>
       
         <div 
         className="      w-[80%]  gap-2    flex items-center justify-center  h-full bg-black/10 border-2 border-white/10 rounded-lg p-3 z-50 " 
@@ -45,6 +48,9 @@ export default function LandingPageLayout({
         </div>
         </div>
 
+      </nav> */}
+      <nav>
+        <NavigationBaar/>
       </nav>
       <div >
 

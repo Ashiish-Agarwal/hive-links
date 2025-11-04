@@ -1,73 +1,61 @@
 'use client'
-import React, { Suspense, useEffect, useState } from 'react'
-import InputLandingPage from './inputlandingpage'
+
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import Link from 'next/link'
+import React from 'react'
+import { Button } from '../ui/button'
 import { PointerHighlight } from '../ui/pointer-highlight'
-import Imageanimation from './image-animation'
-import { useTheme } from 'next-themes'
-import { Particles } from '../ui/particles'
+import { Video } from 'lucide-react'
+import Image from 'next/image'
 
 const Animatedtext = () => {
-   const { resolvedTheme } = useTheme()
-  const [color, setColor] = useState("#301212")
-  useEffect(() => {
-    setColor(resolvedTheme === "dark" ? "#301212" : "#000000")
-  }, [resolvedTheme])
   return (
-    <>
-    <div className='  h-[100vh]  w-full flex flex-col gap-3  justify-center items-center      '>
-       <Particles
-        className="absolute inset-0 z-0  "
-        quantity={500}
-        ease={200}
-        color={color}
-        refresh
-      />
-          <div className='   select-none   text-center  '>
-            <div style={{
-              color:'#400707'
-            }} className=' text-4xl md:text-6xl text-wrap flex flex-col  font-bold   '>
-              <h1 >One Link for All Your</h1> 
+    <div className=' gap-4  mt-20  flex flex-col   items-center justify-start   '>
+<div className='flex flex-col items-center justify-center w-full h-full  '>
+
+<h1 className='text-4xl md:text-6xl fontSourGummy '>ONE LINK FOR ALL YOUR</h1>
+<div className='bg-amber-400 rotate-2  '>
+
+<PointerHighlight pointerClassName='   text-black '  >
+<h1 className='p-2 text-4xl md:text-6xl fontSourGummy font-bold  '>PROFILES</h1>
+
                
+ </PointerHighlight>
+</div>
+</div>
+<div>
+<p className='text-sm text-zinc-400  text-balance break-words   flex-wrap  mx-auto mt-2 '>Build a custom web app, add all your links, share it everywhere . </p>
+</div>
+<div className='flex  gap-4'>
+  <Link href={'/Signin'} target="_blank" className=''>
+    <Button className='bg-yellow-500 text-white hover:bg-yellow-600 rounded-2xl duration-300 hover:scale-110 '>Open-Account  </Button>
+  </Link>
+  <Link href={'/'} target="_blank" className=''>
+    <Button className=' border-2 border-black/40  rounded-2xl bg-gray-50 hover:bg-gray-200 text-black  duration-300 hover:scale-110 '>Guide <Video/></Button>
+  </Link>
+</div>
+<div className="block md:hidden">
 
-<div className='w-full  flex items-center justify-center'>
+<div  className='w-full   grid grid-cols-2 md:grid-cols-4 gap-4  items-center justify-center overflow-hidden     '>
 
-<PointerHighlight pointerClassName=' text-[#301212] ' >
+  <Image className='    size-56 object-cover  '  unoptimized src="/la/brar.png" alt="logo" width={100} height={100}/>
 
-                 Profiles
-</PointerHighlight>
+
+  <Image className='size-56  object-cover  '  unoptimized src="/la/bbhb.png" alt="logo" width={100} height={100}/>
+</div>
+</div>
+<div className="hidden md:block">
+
+<div  className='w-full  h-fit  flex  gap-4  items-center justify-center overflow-hidden  z-50    '>
+
+  <Image className='    size-96 object-cover  '  unoptimized src="/la/brar.png" alt="logo" width={100} height={100}/>
+
+
+  <Image className='size-96  object-cover  '  unoptimized src="/la/bbhb.png" alt="logo" width={100} height={100}/>
+</div>
 </div>
 
-
-            
-               
-
-
-
-
-            </div>
- <p style={{
-   color:'#6f4d4d'
-  }} className='text-sm text-zinc-400  text-balance break-words  w-[70%] mx-auto mt-2 '>Build a custom web app, add all your links, share it everywhere . </p>
-           <div className='w-full  mx-auto'>
-
-           <InputLandingPage/>
-           </div>
-
-         
-          </div>
-
-        </div>
-         <div className=' -mt-10 h-full   '>
-        <Suspense fallback={<div></div>}>
-
-
-        
-<Imageanimation/>
-
-        </Suspense>
-        
-       </div>
-  </>
+    </div>
   )
 }
 

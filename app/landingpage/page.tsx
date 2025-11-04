@@ -29,19 +29,23 @@ const page = async() => {
 
     <div  style={{
      background:'#FFFAEC'
-    }} className='   flex-col gap-1 h-full  w-full  overflow-hidden     '>
+    }} className='   flex-col gap-1 h-full  w-full  overflow-hidden text-black     '>
 
     <div  className='   flex flex-col items-center justify-center text-center mx-auto   '>
        
     
 
-      <section  style={{
-        background:'#FCF5ED'
-      }} className='    grid grid-cols-1 md:grid-cols-2 w-full sm:h-[200vh] md:h-screen -mt-10   gap-10 p-0.5 md:p-14  '>
+      
+      <section style={{
+        background:'#Ffff'
+       }}
+      //  className='    grid grid-cols-1 md:grid-cols-2 w-full sm:h-[200vh] md:h-screen -mt-10   gap-10 p-0.5 md:p-14  '>
+      className='w-full h-screen  '
+      >
 
        
-       <Animatedtext/>
-      
+ 
+      <Animatedtext/>
      
       
 
@@ -53,7 +57,9 @@ const page = async() => {
     <section
  style={{
   background:'#301212'
-}} className='w-full h-screen hidden md:block '
+}
+}
+ className='w-full h-screen hidden md:block '
 >
 <CardSwapsection/>
 
@@ -62,7 +68,7 @@ const page = async() => {
 </section>
 <section style={{
   background:'#F5ECD5'
-}} className='h-screen w-full  p-3   mx-auto flex items-center justify-center   backdrop-blur-sm    '>
+}} className='h-screen w-full   p-3   mx-auto flex items-center justify-center   backdrop-blur-sm    '>
 
 <Sectionsecond/>
  
