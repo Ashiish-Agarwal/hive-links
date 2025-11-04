@@ -1,18 +1,7 @@
-import React from 'react'
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-} from "@/components/ui/navigation-menu"
 // import Logo from "../logo"
+import { ArrowRight, MenuIcon } from 'lucide-react'
 import Image from "next/image"
 import Link from 'next/link'
-import { ArrowRight, MenuIcon } from 'lucide-react'
 import { buttonVariants } from '../ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
 
@@ -68,7 +57,7 @@ const NavigationBaar = () => {
 
            {Links.map((link)=>{
              return(
-               <Link key={link.name} href={link.href as any } className='w-full 0  rounded-b-none hover:zinc-500 font-sans uppercase text-black  tracking-tighter    rounded-md  p-2  duration-300 gap-4  hover:bg-yellow-500/70 hover:text-white' >{link.name}</Link>
+               <Link key={link.name} href={{ pathname: link.href }  } className='w-full 0  rounded-b-none hover:zinc-500 font-sans uppercase text-black  tracking-tighter    rounded-md  p-2  duration-300 gap-4  hover:bg-yellow-500/70 hover:text-white' >{link.name}</Link>
               )
             })}
         <div className='flex gap-3 '>

@@ -1,11 +1,8 @@
-import Logo from "@/components/logo";
-import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
-import { SmoothCursor } from "@/components/ui/smooth-cursor"
-import PromotionSection from "@/components/PromotionSection";
 import Footer from "@/components/Footer";
-import { StickyBanner } from "@/components/ui/sticky-banner";
 import NavigationBaar from "@/components/landingpage/NavigationBaar";
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
+
+
 
 
 
@@ -17,9 +14,8 @@ export default function LandingPageLayout({
     return <div className=" relative">
       <div className="sticky top-0 z-50">
 
-      {/* <PromotionSection/> */}
-      <StickyBanner children={<PromotionSection/>} hideOnScroll={false}/>
-      </div>
+     </div>
+     
 
 
       {/* <nav className='absolute top-10   w-full  h-20 rounded-lg  flex items-center justify-center '>

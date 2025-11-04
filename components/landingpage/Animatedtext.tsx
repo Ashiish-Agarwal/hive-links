@@ -1,12 +1,10 @@
 'use client'
 
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import Link from 'next/link'
-import React from 'react'
-import { Button } from '../ui/button'
-import { PointerHighlight } from '../ui/pointer-highlight'
-import { Video } from 'lucide-react'
-import Image from 'next/image'
+import { Video } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Button } from '../ui/button';
+import { PointerHighlight } from '../ui/pointer-highlight';
 
 const Animatedtext = () => {
   return (
