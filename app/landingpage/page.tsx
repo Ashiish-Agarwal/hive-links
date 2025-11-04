@@ -7,7 +7,7 @@ import Animatedtext from '@/components/landingpage/Animatedtext'
 import Sectionsecond from '@/components/landingpage/sectionsecond'
 
 
-import CardSwapsection from '@/components/landingpage/CardSwapsection'
+
 import StepperCmp from '@/components/StepperCmp'
 import Testimonials from '@/components/landingpage/testimonials'
 import Questions from '@/components/landingpage/Questions'
@@ -54,7 +54,7 @@ const page = async() => {
 
 
     </div>
-    <section
+    {/* <section
  style={{
   background:'#301212'
 }
@@ -65,7 +65,7 @@ const page = async() => {
 
 
 
-</section>
+</section> */}
 <section style={{
   background:'#F5ECD5'
 }} className='h-full w-full   p-3   mx-auto flex items-center justify-center   backdrop-blur-sm    '>

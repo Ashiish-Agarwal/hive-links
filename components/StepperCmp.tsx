@@ -11,7 +11,7 @@ const StepperCmp = () => {
     const [Lname, LsetName] = React.useState('');
   return (
     <>
-    <div className='pt-20 flex flex-col gap-10 p-2  '>
+    <div className=' flex flex-col gap-10 p-2  '>
       <div className='  '>
 
  <h1 className=' text-4xl md:text-5xl  h-full w-full lg:text-6xl xl:text-6xl text-center fontSourGummy'> How easy is it </h1>
