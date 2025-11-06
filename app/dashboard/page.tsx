@@ -33,7 +33,7 @@ const page = async () => {
     <NewProductButton/>
     </div>
     <div className='  h-screen '>
-      {/* <AllProducts data={dataa}/> */}
+       <AllProducts data={dataa}/> 
     
     </div>
    </div>
