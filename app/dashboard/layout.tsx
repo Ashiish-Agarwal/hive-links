@@ -31,9 +31,9 @@ const layout = ({children}: {children: React.ReactNode}) => {
         </div>
             
 
-                {/* <div className='w-[80%] p-5 hide-scrollbar  border-r-2 dark:border-gray-800/20 border-gray-200/70 h-full dark:bg-black relative overflow-y-scroll '>
+                <div className='w-[80%] p-5 hide-scrollbar  border-r-2 dark:border-gray-800/20 border-gray-200/70 h-full dark:bg-black relative overflow-y-scroll '>
                 {children}
-                </div> */}
+                </div>
                 
                 
 
