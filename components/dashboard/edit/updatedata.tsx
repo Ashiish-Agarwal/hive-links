@@ -24,7 +24,7 @@ import { userDataSchema } from "@/lib/zod/Userdata"
 import { updateData } from "@/actions/update"
 import { UploadButton } from "@/lib/utils/uploadthing"
 import Image from "next/image"
-import { checkUserAlreadyExisit } from "@/actions/read"
+import { MobileNavBar } from "@/components/SideBaar"
 
 interface UserDataUpdateFormProps {
   initialData?: {
@@ -125,48 +125,22 @@ function UserDataUpdateForm({ initialData, productid }: UserDataUpdateFormProps)
     }
   }
 
-   async function checkuseregsist(){
   
-  
-      const username = form.getValues("name")
-      if(!username){
-        return ;
-      }
-      try {
-       
-        const userexsist = await checkUserAlreadyExisit({name:username})
-       
-          setAvailable(userexsist.success)
-        
-        
-        
-      } catch (error) {
-        setAvailable(false)
-        console.log(error)
-
-        
-      }
-  
-     
-  
-  
-      
-      
-      
-    }
    
 
       useEffect(() => {
     if (initialData?.profile) {
       setImagePreview(initialData.profile)
     };
-    checkuseregsist();
-  }, [initialData,form.watch('name')])
+  ;
+  }, [initialData])
 
   return (
+    <>
+    <MobileNavBar/>
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full h-full  p-5 flex flex-col gap-3 container mx-auto  ">
-        <div className="flex flex-col items-center justify-center   ">
+        <div className="flex flex-col items-center justify-center w-full  md:w-[70%] mx-auto  ">
           {/* Avatar section */}
           <div className="  flex items-center gap-4 flex-col">
             <Image className="rounded-full " src={initialData?.profile || '/dummy.png'} width={80} height={80} alt='profile'/>  
@@ -223,32 +197,20 @@ function UserDataUpdateForm({ initialData, productid }: UserDataUpdateFormProps)
           </div>
 
           {/* Name field */}
-          <div className="w-full md:w-[80%]">
+           <div className="w-full md:w-[80%]">
+
             <FormField
               control={form.control}
               name="name"
-              render={({ field }) => (
+              render={() => (
                 <FormItem>
                   <FormLabel>Name</FormLabel>
-                  <FormControl>
-                    <Input className="w-full" placeholder="Your name" {...field} />
+                  <FormControl className=" cursor-not-allowed">
+                    <Input className=" select-none text-black" placeholder={form.getValues("name")} disabled  />
                   </FormControl>
-                 <FormDescription>
-                     Note: this name create a unique url link ex: https://linkog.com/kuru
+                  <FormDescription>
+                    Name not editable
                   </FormDescription>
-                  {
-                  available===null ? null :available?
-                   (
-                    <FormMessage className="text-green-500">
-                      this username is available
-                    </FormMessage>
-                  ) : (
-                    <FormMessage className="text-red-500">
-                      this username is already taken
-                      
-                    </FormMessage>
-                  )
-                }
                   <FormMessage />
                 </FormItem>
               )}
@@ -370,6 +332,7 @@ function UserDataUpdateForm({ initialData, productid }: UserDataUpdateFormProps)
         </div>
       </form>
     </Form>
+    </>
   )
 }
 

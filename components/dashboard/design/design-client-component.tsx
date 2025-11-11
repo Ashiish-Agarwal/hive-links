@@ -19,11 +19,11 @@ const DesignClientCmp = ({userId}:{userId:string} ) => {
   const [loading,setLoading] = useState<boolean>(false)
  
 
-  const [font, setFont] = useState<string>('')
+  const [font, setFont] = useState<string>('fontSansation')
 
 
 
-  const [color, SetColor] = useState<string>('')
+  const [color, SetColor] = useState<string>('black')
   const [pickerColorText, setpickerColorText] = useColor('#fbfbfb');
   // use for change the background
 
@@ -103,8 +103,8 @@ function setpickerColor_Backgroundfn(){
           <Button onClick={() => {
 
 
-            setFont('')
-            SetColor('')
+            setFont('fontSansation')
+            SetColor('black')
             setpickerColorText({ ...pickerColorText, hex: '#fbfbfb' })
             setpickerColor_Background({ ...pickerColor_Background, hex: '#000000' })
             setpickerColor2_Link({ ...pickerColor2_Link, hex: '#3c9f8b' })
@@ -130,9 +130,9 @@ function setpickerColor_Backgroundfn(){
             }
 
           } className=' flex flex-col gap-4 w-full     '>
-            <h1 className={`text-xl font-sans   uppercase select-none dark:text-white  `}>design your Fonts</h1>
+            <h1  className={`text-xl font-sans   uppercase select-none text-black dark:text-white ${font}  `}>design your Fonts</h1>
 
-            <div className=' flex w-[90%] gap-3 p-5 overflow-x-scroll mx-auto hide-scrollbar rounded-md   bg-accent/80   '>
+            <div className=' flex w-[90%] gap-3 p-5 overflow-x-scroll mx-auto hide-scrollbar rounded-md    bg-accent/80   '>
 
 
               {
@@ -148,10 +148,12 @@ function setpickerColor_Backgroundfn(){
               }
 
 
+
+            </div>
               <div className='flex items-center gap-2'>
                 <Popover>
                   <PopoverTrigger asChild>
-                    <Button variant={'outline'} className='rounded-full w-full text-center text-black dark:text-white  h-full p-4  ' size={'icon'}>
+                    <Button variant={'outline'} className='rounded-full  text-center text-black dark:text-white  w-20 h-10  ' size={'icon'}>
                       <Edit2 size={16} />
                     </Button>
                   </PopoverTrigger>
@@ -161,16 +163,14 @@ function setpickerColor_Backgroundfn(){
                 </Popover>
                 
               </div>
-
-            </div>
           </div>
 
 
 
-          <h1 className='uppercase'>Choose the color</h1>
+          <h1 className='uppercase text-black dark:text-white'>Choose the color</h1>
         </div>
         {/** color design */}
-        <div className='w-full'>
+        <div className='w-full  flex flex-col  '>
           <div className={'flex gap-3 items-center w-[90%] mx-auto  overflow-x-scroll hide-scrollbar rounded-md   bg-accent/60 p-5  justify-center ' }>
 
 
@@ -188,13 +188,16 @@ function setpickerColor_Backgroundfn(){
               ))
             }
             {/* customize the color  */}
-            <span className='  text-center rounded-full  p-2  '>
+            
+
+          </div>
+<div className='  text-center rounded-full w-20 h-10   p-2  '>
               <div className='group relative'>
 
-            <div className=''>
+            <div className='  '>
                 <Popover>
                   <PopoverTrigger asChild>
-                    <Button onClick={()=>setpickerColor_Backgroundfn()} variant={'outline'} className='rounded-full  text-center text-black dark:text-white p-5 ' size={'icon'}>
+                    <Button onClick={()=>setpickerColor_Backgroundfn()} variant={'outline'} className='rounded-full w-20 h-10 text-center text-black dark:text-white p-5 ' size={'icon'}>
                       <Edit2 size={16}  />
                     </Button>
                   </PopoverTrigger>
@@ -207,41 +210,17 @@ function setpickerColor_Backgroundfn(){
                 <h1 className='text-sm'>Customize color </h1>
               </div>
               </div>
-            </span>
-          </div>
-
+            </div>
         </div>
         <div className='flex justify-center flex-col w-full gap-3 p-4  items-center h-full'>
-          <div className='flex justify-between items-center w-full gap-3'>
-        <h1 className='uppercase'>Design your links</h1>
+          <div className='flex justify-start  w-full gap-3 flex-col '>
+        <h1 className='uppercase text-black dark:text-white'>Design your links</h1>
+<div className='group relative'>
 
-
-          </div>
-     
-          {
-            
-            ['facebook', 'twitter', 'linkedin'].map((item, index) => <div style={
-              {
-                backgroundColor: pickerColor2_Link.hex,
-                
-                
-                
-              }
-            } key={index} className='flex justify-center  items-center w-[75%] h-16  rounded-3xl hover:scale-105 delay-100 transition-all duration-300 hover:shadow-lg  gap-5    ' >
-              <div className='w-full h-full flex justify-between items-center gap-3 p-2 '>
-                <div>
-
-                  <h1 className={`text-xl font-semibold  `}>
-                    Example links
-                  </h1>
-                  <p className='text-sm text-white/60'>https://www.example.com</p>
-                </div>
-                <div className='group relative'>
-
-                <div>
+                <div className=' w-fit '>
                   <Popover>
                     <PopoverTrigger asChild>
-                      <Button variant={'outline'} className='rounded-full w-full text-center  h-full p-4 ' size={'icon'}>
+                      <Button variant={'outline'} className='rounded-full w-20 text-center  h-10 p-4  ' size={'icon'}>
                         <Edit2 className=' text-black dark:text-white ' size={16} />
                       </Button>
                     </PopoverTrigger>
@@ -258,9 +237,38 @@ function setpickerColor_Backgroundfn(){
               </div>
 
                 </div>
-              </div> 
-            </div>)
 
+          </div>
+     
+          {
+            
+            ['Reddit'].map(( index) => (
+            <div key={index} className='flex flex-col w-full  md:w-[50%]  '>
+            <div style={
+              {
+                backgroundColor: pickerColor2_Link.hex,
+                
+                
+                
+              }
+            } key={index} className='flex justify-center  items-center w-full h-16  rounded-md  delay-100 transition-all duration-300 hover:shadow-lg  gap-5    ' >
+              <div className='w-full h-full flex justify-between items-center gap-3 p-2 '>
+                <div>
+
+                  <h1 className={`text-xl font-semibold  `}>
+                    Example links
+                  </h1>
+                  <p className='text-sm text-white/60'>https://www.reddit.com</p>
+                </div>
+                
+              </div>
+               
+            </div>
+            
+                <div/>
+            </div>
+            )
+          )
           }
 
         <Button className={`w-[75%] mt-20  cursor-pointer `} onClick={OnSubmit}>{

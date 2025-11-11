@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react'
 import {
     AlertDialog,
     AlertDialogAction,
@@ -16,6 +15,7 @@ import { Trash2 } from 'lucide-react'
 import { DropdownMenuLabel } from '@radix-ui/react-dropdown-menu'
 import { DeleteProduct } from '@/actions/delete'
 import { toast } from 'sonner'
+import { Button } from '../ui/button'
 
 const DeleteProductComponent = ({item}:{item:{id:string,userId:string}}) => {
 
@@ -46,8 +46,8 @@ const DeleteProductComponent = ({item}:{item:{id:string,userId:string}}) => {
     <DropdownMenuLabel className='flex w-full  items-center gap-2 hover:text-zinc-500 dark:hover:text-white/80 rounded-md cursor-pointer transition-all duration-300 ' >
     
     <AlertDialog>
-      <AlertDialogTrigger className='flex gap-2 items-center'>
-        Delete <Trash2 size={20} />
+      <AlertDialogTrigger asChild className='flex gap-2 items-center'>
+        <Button variant={'destructive'} className=" w-full">Delete <Trash2 size={20} /></Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

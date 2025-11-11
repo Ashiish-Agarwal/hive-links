@@ -26,7 +26,7 @@ export type PreviewProfileProps = {
 const PreviewProfile = async ({productid}:{productid:string}) => {
 
 const designdata = await DesignAction(productid)
-// const themeData =  designdata 
+const themeData =  designdata 
 console.log(designdata)
 
 
@@ -68,13 +68,13 @@ export async function  PreviewProfileComponent (
         color:'var(--text)'
         
       }} 
-      className={`w-full h-full  text-center ${data?.fontStyle }   ${data?.textcolor } ${data?.Linkcolor || ''} p-2 theme-${data?.theme}`}>
+      className={` text-center ${data?.fontStyle }   ${data?.textcolor } ${data?.Linkcolor || ''} p-2 theme-${data?.theme}`}>
         <div
          style={{
           background:'var(--bg)',
           
         }}
-         className='w-full h-screen rounded-md  '>
+         className='w-full h-screen rounded-md flex flex-col items-center justify-center '>
           {/* //image */}
           <div className={` w-full flex items-center justify-center ${ datainformation[0]?.profile?'block':'hidden' }`} >
                                   <Image className='rounded-full ' src={datainformation[0]?.profile || defaultImage} alt='profile' width={70} height={70}/>
@@ -93,7 +93,7 @@ export async function  PreviewProfileComponent (
 
           </div>
           {/* links */}
-          <div className='flex flex-col gap-2 w-full text-center mt-6  '>
+          <div className='flex flex-col gap-2 w-full text-center mt-44    '>
             {linksdata?.map(e=>(
               <>
               <span className='flex gap-2'>
@@ -129,5 +129,7 @@ export async function  PreviewProfileComponent (
       
       
     </div>
+  
+
   )
 }

@@ -2,7 +2,7 @@
 import { Card } from '../ui/card';
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { Copy, Edit, EllipsisVertical } from 'lucide-react';
+import { Copy, Edit, EllipsisVertical, Trash } from 'lucide-react';
 import { Button } from '../ui/button';
 import { CardContent, } from '../ui/card';
 import { CopyToClipboard } from './CopyUrl';
@@ -25,6 +25,7 @@ import Image from 'next/image';
 import DeleteProductComponent from './delete-product';
 import SocialLinksDisplay from './social-links';
 import SocialLinksManager from './sociallinks';
+import { CopyButton } from '../ui/shadcn-io/copy-button';
 
 
 
@@ -40,28 +41,31 @@ const AllProducts = async ({ data }: {
   }[]
 }) => {
 
+const domain= process.env.PUBLIC_DOMAIN
 
-
+  const copied = `http://${domain}/${data[0].name}`
 
 console.log(data[0].name)
 
   return (
     <>
-      <div className=' flex flex-col  gap-3     mt-5 '>
+      <div className=' gap-3  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  mt-5 '>
         {
           data.map((item) => {
             return (
-              <Card key={item.id} className=' w-full  h-full      gap-2   p-2      '>
+              <Card key={item.id} className=' w-[15rem] md:w-[20rem]   h-fit        gap-2   p-2      '>
+                <Link href={`/dashboard/${item.id}/edit`} className=' cursor-pointer '>
+                  
 
                 
                 <div className='flex  justify-between items-center w-full h-full   '>
                   
 
-                  <div className={`p-2 flex    w-1/2    gap-4  text-lg   `}>
+                  <div className={`p-3 flex   flex-col   w-full  items-center justify-center   gap-4  text-lg   `}>
                 
-                 <div className={`${item.profile?.length ===0  ? 'hidden' : ''}`}>
+                 <div className={`${item.profile?.length ===0  ? 'hidden w-full ' : ''}`}>
 
-                      <Image className='rounded-full ' src={item.profile || ''} alt='profile' width={70} height={70}/>
+                      <Image className='rounded-full w-20 h-20 object-cover ' src={item.profile || ''} alt='profile' width={70} height={70}/>
                  </div>
                      
                     <div className=' flex flex-col gap-2 '>
@@ -75,92 +79,33 @@ console.log(data[0].name)
                    
                   </div>
                
-                  <div className=' w-10 h-full   ' >
-                    <DropdownMenu  >
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="outline" className="" >
-
-                          <EllipsisVertical />
-
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent>
-                        <Card className='w-fit  h-[10rem] flex flex-col text-center gap-4      '>
-
-                          <CardContent>
-                            {/* crud comppoent */}
-                            <DropdownMenuLabel className='flex w-full     h-fit    items-center gap-2 hover:text-zinc-700 dark:hover:text-white/80 p-2  rounded-md cursor-pointer transition-all duration-300 '>
-
-
-
-
-                              <AlertDialog >
-                                <AlertDialogTrigger className='flex gap-2 cursor-pointer hover:text-zinc-700 dark:hover:text-white/80 p-.5  rounded-md transition-all duration-300   '>Copy <Copy size={20} /></AlertDialogTrigger>
-                                <AlertDialogContent>
-                                  <AlertDialogHeader>
-                                    <AlertDialogTitle >Copy    </AlertDialogTitle>
-                                    <AlertDialogDescription className='flex   '>
-                                      <CopyToClipboard name={item.name} />
-                                    </AlertDialogDescription>
-                                  </AlertDialogHeader >
-                                  <AlertDialogFooter>
-
-                                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                 
-                                    <AlertDialogAction>Got !t </AlertDialogAction>
-
-
-
-
-
-
-                                    {/* </AlertDialogAction> */}
-                                  </AlertDialogFooter>
-                                </AlertDialogContent>
-                              </AlertDialog>
-
-
-
-                            </DropdownMenuLabel>
-                            <DropdownMenuLabel className='flex  items-center gap-2 hover:text-zinc-500 dark:hover:text-white/80 p-2 rounded-md cursor-pointer transition-all duration-300 '>
-
-                              <Link className='flex gap-2 cursor-pointer hover:text-zinc-700 dark:hover:text-white/80 p-2  rounded-md transition-all duration-300  ' href={`/dashboard/${item.id}/edit`}>
-                                Edit <Edit size={20} />
-                              </Link>
-                            </DropdownMenuLabel>
-                            <DropdownMenuLabel className='flex   gap-2 hover:text-zinc-500 dark:hover:text-white/80 p-2 rounded-md cursor-pointer transition-all duration-300 ' >
-
-
-
-
-
-
-
-                              <DeleteProductComponent item={item} />
-
-
-
-
-
-
-
-                            </DropdownMenuLabel>
-                          </CardContent>
-                        </Card>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-
-
-
-                  </div>
+                 
 
                 </div>
+              <h1 className='text-zinc-500 text-sm lowercase '>last update:{new Date(item.updatedAt).toLocaleDateString()}</h1>
+                </Link>
+
               <div className='flex gap-2 items-center h-10 w-full  '>
 
                 <SocialLinksManager productid={item.id}/>
                 <SocialLinksDisplay productid={item.id}/>
               </div>
+              <div className='w-full h-10 flex gap-2 items-center justify-center  '>
+                <Button variant={'outline'} asChild className='w-[50%]'>
+                <CopyButton 
+                 content={copied}
+                 variant='outline'
+                 />
+                </Button>
+                
+                <Button asChild className='w-[50%] ' >
+                
+                <DeleteProductComponent item={item} />
+                </Button>
+
+              </div>
                
+              
 
               </Card>
 

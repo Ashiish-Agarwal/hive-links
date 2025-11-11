@@ -1,4 +1,4 @@
-export const fontData = ['fontEagle','fontsofia','fontRecursive','fontSourGummy','fontReenieBeanie','fontAnnieUseYourTelescope','fontCrimsonPro','fontJapanese','fontSansation']
+export const fontData = ['fontEagle','fontsofia','fontRecursive','fontSourGummy','fontAnnieUseYourTelescope','fontCrimsonPro','fontJapanese','fontSansation','fontPoppins','fontSourGummy','fontRecursive','fontReenieBeanie','fontAnnieUseYourTelescope','fontCrimsonPro','fontSansation']
 
         
  export const ThemeData =['business-corporate','business-gray','business-tech','business-finance','business-elegant','influencer-candy','influencer-sunrise','influencer-gold','influencer-neon','influencer-minimal','aesthetic-pastel-pink','aesthetic-mint','aesthetic-lavender','aesthetic-sky','aesthetic-cream','aesthetic-coffee','aesthetic-olive','aesthetic-rust','aesthetic-charcoal','aesthetic-sakura'   

@@ -76,7 +76,7 @@ const search = usePathname().split('/').filter(Boolean).pop()
     
 
       {/* preview link */}
-      <div className= {` relative group rounded-md duration-300 text-black dark:text-white  ${search ==='preview' ?' bg-primary hover:bg-primary/90  text-white   ':''}`}>
+      {/* <div className= {` relative group rounded-md duration-300 text-black dark:text-white  ${search ==='preview' ?' bg-primary hover:bg-primary/90  text-white   ':''}`}>
 
 <Link href={`/dashboard/${param}/edit/preview`} className={buttonVariants({
   variant:'option',
@@ -89,7 +89,7 @@ const search = usePathname().split('/').filter(Boolean).pop()
   Preview
   </span>
 </div>
-</div>
+</div> */}
 
     </div>
     

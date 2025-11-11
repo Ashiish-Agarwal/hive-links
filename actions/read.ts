@@ -237,3 +237,13 @@ export async  function checkUserAlreadyExisit({name}:{name:string}){
     message:"user already exisit"
   }
 }
+
+export async function GetUserName({productid}:{productid:string}){
+  const user = await db.select().from(data).where(eq(data.id,productid)).limit(1).execute()
+  if(user.length===0){
+    return null
+  }
+  // console.log("ddd",user[0].name)
+  return user[0].name
+  
+}

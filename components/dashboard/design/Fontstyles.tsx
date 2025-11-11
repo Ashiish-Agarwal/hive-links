@@ -29,10 +29,10 @@ if(!font){
   return (
     <div  style={
       { color: pickerColor.hex}
-     } className=' flex flex-col gap-4   ' >
+     } className=' flex flex-col gap-4 text-black dark:text-white   ' >
       <h1 style={
      { color: pickerColor.hex}
-    }  className='text-xl fontsofia  uppercase select-none '>design your Fonts</h1>
+    }  className='text-xl fontsofia  uppercase select-none  '>design your Fonts</h1>
 
     <div className=' flex w-[40vw] gap-5 p-3 overflow-x-scroll mx-auto hide-scrollbar rounded-md   bg-accent/4  '>
 

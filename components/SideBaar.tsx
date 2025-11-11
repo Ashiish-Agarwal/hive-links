@@ -128,10 +128,16 @@ const routes = usepath.split('/').filter(Boolean).pop()
           
         </div>
         <Separator/>
-        <div className='flex flex-col gap-2 '>
-       <AnimatedThemeToggler/>
+       
+
+              <AnimatedThemeToggler />
+           
+        
+        <Separator/>
+
+        
         <Logout/>
-        </div>
+        
   </SheetContent>
 </Sheet>
            
