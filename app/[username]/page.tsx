@@ -2,11 +2,19 @@ import { GetInfo } from '@/actions/read'
 import SocialLinksDisplay from '@/components/dashboard/social-links'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import UserNotFound from '@/components/user-not-found'
+import { Metadata } from 'next'
 
 import Link from 'next/link'
 import React from 'react'
 
-const username = async ({params}:{params:Promise<{username:string}>}) => {
+type Props = {
+    params: {
+        username: string;
+    };
+}
+
+const username = async ({params}:Props) => {
+  
  
  const name = await  params 
     
@@ -117,3 +125,73 @@ const username = async ({params}:{params:Promise<{username:string}>}) => {
  
 
 export default username
+export async function generateMetadata({params}:Props): Promise<Metadata> {
+  const paramsawaited = await params
+  
+   const decodedUsername = decodeURIComponent(paramsawaited.username)
+    if(!decodedUsername){
+   
+    }
+    const fetchInfo= await GetInfo({username:decodedUsername})
+  
+
+   return {
+    title: {
+    default: paramsawaited.username,
+    template: `%s | ${fetchInfo?.usernamedata?.name} `
+  },
+  description: `${fetchInfo?.usernamedata?.bio}`,
+  
+  // Keywords for SEO
+  keywords: [
+    'bio link',
+    'link in bio',
+    'linktree alternative',
+    'bio link editor',
+    'social media links',
+    'link page creator',
+    'beetree',
+    'free link in bio',
+    'custom bio page',
+    'social link manager',
+    ''
+  ],
+  authors: [{ name: "beetree", }],
+  openGraph: {
+    title: `${fetchInfo?.usernamedata?.name}`,
+    description: "Create a custom app for your links store",
+    type: "website",
+    locale: "en_US",
+    siteName: "beetree",
+    url: `https://beetree.netlify.app/${paramsawaited.username}`,
+    images: [
+      {
+        url: `${fetchInfo?.usernamedata?.profile}`,
+        width: 1200,
+        height: 630,
+        alt: "beetree",
+      },
+    ],
+  },
+   twitter: {
+    card: 'summary_large_image',
+    title: `${fetchInfo?.usernamedata?.name}`,
+    description: `${fetchInfo?.usernamedata?.bio}`,
+    images: [`${fetchInfo?.usernamedata?.profile}`],
+    creator: '@beetree', 
+  },
+    robots: {
+    index: true,
+    
+    follow: true,
+    googleBot: {
+      
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1
+      
+    },
+  },
+}}
