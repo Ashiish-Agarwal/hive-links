@@ -1,5 +1,6 @@
 'use client'
 import Stepper, { Step } from './Stepper';
+import { name as domainname} from '@/lib/utils';
 
 import React from 'react';
 import { Input } from './ui/input';
@@ -29,7 +30,7 @@ const StepperCmp = () => {
   nextButtonText="Next"
 >
   <Step>
-    <h2>Welcome to the bee Tree</h2>
+    <h2>Welcome to the {domainname}</h2>
     <p>Create a cutome app for your links store</p>
   </Step>
   <Step>
@@ -49,9 +50,9 @@ const StepperCmp = () => {
     <h1>You made it! 🎉</h1>
     <div className='flex gap-4 items-center'>
 
-    <code className='text-black w-fit pr-2  flex gap-4 items-center     p-2 rounded'>https://beelink.in{name} 
+    <code className='text-black w-fit pr-2  flex gap-4 items-center     p-2 rounded'>https://{domainname}/{name} 
           <CopyButton  className='bg-slate-700/20  text-black hover:bg-slate-400/80'
-        content={name}
+        content={`https://${domainname}/${name}`}
         onCopy={() => console.log("Link copied!")}
         />
         </code>

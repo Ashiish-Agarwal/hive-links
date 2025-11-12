@@ -6,6 +6,7 @@ import localFont from "next/font/local";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
+import { metadatadescription, name, url } from "@/lib/utils";
 
 
 
@@ -82,10 +83,12 @@ const recursive = Recursive({
 
 export const metadata: Metadata = {
    title: {
-    default: 'BeeTree - Free Bio Link Editor | Create Your Link in Bio',
-    template: '%s | BeeTree'
+    default: `${name} - Free Bio Link Editor | Create Your Link in Bio`,
+    template: `%s |${ name}`
   },
-  description: 'Create a beautiful bio link page in minutes. BeeTree is a free and paid bio link editor. Share all your links, social profiles, and content in one customizable landing page.',
+  description: `${metadatadescription
+    
+  }`,
   
   // Keywords for SEO
   keywords: [
@@ -101,14 +104,14 @@ export const metadata: Metadata = {
     'social link manager',
     ''
   ],
-  authors: [{ name: "beetree", }],
+  authors: [{ name: `${name}`, }],
   openGraph: {
-    title: "BeeTree - Free Bio Link Editor | Create Your Link in Bio",
-    description: "Create a custom app for your links store",
+    title: `${name} - Free Bio Link Editor | Create Your Link in Bio`,
+    description: `${metadatadescription}`, 
     type: "website",
     locale: "en",
-    siteName: "beetree",
-    url: "https://beetree.netlify.app",
+    siteName: `${name}`,
+    url: `${url}`,
     images: [
       {
         url: "/favicon.ico",
@@ -120,8 +123,8 @@ export const metadata: Metadata = {
   },
    twitter: {
     card: 'summary_large_image',
-    title: 'BeeTree - Free Bio Link Editor',
-    description: 'Create a beautiful bio link page in minutes. Share all your links in one place.',
+    title: `${name} - Free Bio Link Editor`,
+    description: `${metadatadescription}`, 
     images: ['https://beetree.netlify.app/twitter-image.png'],
     creator: '@https://x.com/dornygrp35016', 
   },

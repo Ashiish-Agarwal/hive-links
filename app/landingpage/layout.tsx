@@ -2,15 +2,15 @@ import Footer from "@/components/Footer";
 import NavigationBaar from "@/components/landingpage/NavigationBaar";
 
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
+import { metadatadescription, name ,url } from "@/lib/utils";
 import { Metadata } from "next";
-
 
 export const metadata: Metadata = {
    title: {
-    default: 'BeeTree - Free Bio Link Editor | Create Your Link in Bio',
-    template: '%s | BeeTree'
+    default: `${name} - Free Bio Link Editor | Create Your Link in Bio`,
+    template: '%s | ${name}'
   },
-  description: 'Create a beautiful bio link page in minutes. BeeTree is a free and paid bio link editor. Share all your links, social profiles, and content in one customizable landing page.',
+  description: `${metadatadescription}`,
   
   // Keywords for SEO
   keywords: [
@@ -20,34 +20,34 @@ export const metadata: Metadata = {
     'bio link editor',
     'social media links',
     'link page creator',
-    'beetree',
+    `${name}`,
     'free link in bio',
     'custom bio page',
     'social link manager',
-    ''
+    'bio tool'
   ],
-  authors: [{ name: "beetree", }],
+  authors: [{ name: `${name}`, }],
   openGraph: {
-    title: "BeeTree - Free Bio Link Editor | Create Your Link in Bio",
-    description: "Create a custom app for your links store",
+    title: `${name} - Free Bio Link Editor | Create Your Link in Bio`,
+    description: `${metadatadescription}`,
     type: "website",
     locale: "en",
-    siteName: "beetree",
-    url: "https://beetree.netlify.app",
+    siteName: `${name}`,
+    url: `${url}`,
     images: [
       {
         url: "/favicon.ico",
         width: 1200,
         height: 630,
-        alt: "beetree",
+        alt: `${name}`,
       },
     ],
   },
    twitter: {
     card: 'summary_large_image',
-    title: 'BeeTree - Free Bio Link Editor',
-    description: 'Create a beautiful bio link page in minutes. Share all your links in one place.',
-    images: ['https://beetree.netlify.app/twitter-image.png'],
+    title: `${name} - Free Bio Link Editor`,
+    description: `${metadatadescription}`,
+    images: [`${url}/twitter-image.png`],
     creator: '@https://x.com/dornygrp35016', 
   },
     robots: {
@@ -79,33 +79,7 @@ export default function LandingPageLayout({
      
 
 
-      {/* <nav className='absolute top-10   w-full  h-20 rounded-lg  flex items-center justify-center '>
-      
-        <div 
-        className="      w-[80%]  gap-2    flex items-center justify-center  h-full bg-black/10 border-2 border-white/10 rounded-lg p-3 z-50 " 
-      >
-
-<div className="flex items-center justify-between text-center  h-full  w-full ">
-
-       <div className="   ">
-        <Logo/>
-       </div>
-       <div className="  ">
-        
-        <Link style={{
-              background:'#301212'
-            }} className={buttonVariants({
-          variant:'default',
-          size:'lg',
-          className:'text-black hover:text-white duration-300 ease-in-out border-white hover:border-2 hover:bg-primary hover:scale-105  '
-        })} href={'/signin'} target="_blank" > create Product</Link>
-        
-        
-       </div>
-        </div>
-        </div>
-
-      </nav> */}
+    
       <nav>
         <NavigationBaar/>
       </nav>

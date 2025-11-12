@@ -43,7 +43,7 @@ const AllProducts = async ({ data }: {
 
 const domain= process.env.PUBLIC_DOMAIN
 
-  const copied = `http://${domain}/${data[0].name}`
+  const copied = `${domain}/${data[0].name}`
 
 console.log(data[0].name)
 

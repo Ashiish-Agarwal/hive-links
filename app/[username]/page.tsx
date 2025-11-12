@@ -2,7 +2,9 @@ import { GetInfo } from '@/actions/read'
 import SocialLinksDisplay from '@/components/dashboard/social-links'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import UserNotFound from '@/components/user-not-found'
+import { metadatadescription } from '@/lib/utils'
 import { Metadata } from 'next'
+
 
 import Link from 'next/link'
 import React from 'react'
@@ -41,7 +43,9 @@ const username = async ({params}:Props) => {
  
 
    return (
- 
+    <>
+
+
      <div
      style={{
        background:designdata?.backgroundColor || ''
@@ -119,6 +123,7 @@ const username = async ({params}:Props) => {
     
      
     
+</>
         
    )
  }
@@ -159,11 +164,11 @@ export async function generateMetadata({params}:Props): Promise<Metadata> {
   authors: [{ name: "beetree", }],
   openGraph: {
     title: `${fetchInfo?.usernamedata?.name}`,
-    description: "Create a custom app for your links store",
+    description: `${metadatadescription}`,
     type: "website",
     locale: "en_US",
     siteName: "beetree",
-    url: `https://beetree.netlify.app/${paramsawaited.username}`,
+    url: `https://laxybio.netlify.app/${paramsawaited.username}`,
     images: [
       {
         url: `${fetchInfo?.usernamedata?.profile}`,

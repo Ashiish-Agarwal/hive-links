@@ -4,26 +4,27 @@ import Image from 'next/image'
 
 import PixelTransition from '../PixelTransition'
 import RotatingText from '../RotatingText'
+import { name } from '@/lib/utils'
 const Testimonials = () => {
 
     const Testimonials = [
         {
-            name: '@beetree.in/kevin',
+            name: `@${name}/kevin`,
             image: testimo[0],
         },
         {
-            name: '@beetree.in/dorny',
+            name: `@${name}/dorny`,
             image: testimo[1],
         },
         {
-            name: '@beetree.in/kuru',
+            name: `@${name}/kuru`,
             image: testimo[2],
         },
         {
-            name: '@beetree.in/webshot',
+            name: `@${name}/webshot`,
             image: testimo[3],
         },{
-            name: '@beetree.in/designerruoo',
+            name: `@${name}/designerruoo`,
             image: testimo[4],
         }
     ]

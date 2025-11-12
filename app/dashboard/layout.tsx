@@ -2,13 +2,14 @@
 import { Toaster } from '@/components/ui/sonner'
 import React from 'react'
 import { Metadata } from 'next'
+import { metadatadescription, name, url } from '@/lib/utils';
 
 export const metadata: Metadata = {
    title: {
-    default: 'BeeTree - Free Bio Link Editor | Create Your Link in Bio',
-    template: '%s | BeeTree'
+    default: `${name} - Free Bio Link Editor | Create Your Link in Bio`,
+    template: '%s | ${name}'
   },
-  description: 'Create a beautiful bio link page in minutes. BeeTree is a free and paid bio link editor. Share all your links, social profiles, and content in one customizable landing page.',
+  description: `${metadatadescription}`,
   
   // Keywords for SEO
   keywords: [
@@ -18,34 +19,34 @@ export const metadata: Metadata = {
     'bio link editor',
     'social media links',
     'link page creator',
-    'beetree',
+    `${name}`,
     'free link in bio',
     'custom bio page',
     'social link manager',
     'bio tool'
   ],
-  authors: [{ name: "beetree", }],
+  authors: [{ name: `${name}`, }],
   openGraph: {
-    title: "BeeTree - Free Bio Link Editor | Create Your Link in Bio",
-    description: "Create a custom app for your links store",
+    title: `${name} - Free Bio Link Editor | Create Your Link in Bio`,
+    description: `${metadatadescription}`,
     type: "website",
     locale: "en",
-    siteName: "beetree",
-    url: "https://beetree.netlify.app",
+    siteName: `${name}`,
+    url: `${url}`,
     images: [
       {
         url: "/favicon.ico",
         width: 1200,
         height: 630,
-        alt: "beetree",
+        alt: `${name}`,
       },
     ],
   },
    twitter: {
     card: 'summary_large_image',
-    title: 'BeeTree - Free Bio Link Editor',
-    description: 'Create a beautiful bio link page in minutes. Share all your links in one place.',
-    images: ['https://beetree.netlify.app/twitter-image.png'],
+    title: `${name} - Free Bio Link Editor`,
+    description: `${metadatadescription}`,
+    images: [`${url}/twitter-image.png`],
     creator: '@https://x.com/dornygrp35016', 
   },
     robots: {

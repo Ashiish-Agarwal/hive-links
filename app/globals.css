@@ -111,6 +111,10 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.541 0.281 293.009);
 }
+::selection {
+  background: #ffcc00; /* your color */
+  color: #000; /* text color */
+}
 
 @layer base {
   * {
