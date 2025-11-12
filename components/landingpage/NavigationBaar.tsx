@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import { buttonVariants } from '../ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
-import { AnimatedThemeToggler } from '../ui/animated-theme-toggler'
+
 import {  nameonly } from '@/lib/utils'
 
 

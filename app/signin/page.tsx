@@ -11,6 +11,7 @@ import { signIn } from "@/lib/auth-client";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { redirect } from "next/navigation";
+import Logo from "@/components/logo";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -19,12 +20,15 @@ export default function SignIn() {
   const [rememberMe, setRememberMe] = useState(false);
 
   return (
-    <div className="flex items-center justify-center h-screen w-full">
-
+    <div className="flex items-center justify-center h-screen w-full p-4">
     <Card className="max-w-md w-full">
+<div className="w-[95%] mx-auto ">
+  <Logo/>
+</div>
       <CardHeader>
         <CardTitle className="text-lg md:text-xl">Sign In</CardTitle>
         <CardDescription className="text-xs md:text-sm">
+
           Enter your email below to login to your account
         </CardDescription>
       </CardHeader>
@@ -79,7 +83,7 @@ export default function SignIn() {
 
           <Button
               type="submit"
-              className="w-full"
+              className="w-full bg-yellow-500 hover:bg-yellow-500/80"
               disabled={loading}
               onClick={async () => {
                 await signIn.email(
@@ -146,7 +150,7 @@ export default function SignIn() {
 			</svg>
                   Sign in with Google
                 </Button>
-				<Button
+				<Button 
                   variant="outline"
                   className={cn(
                     "w-full gap-2"
@@ -188,7 +192,7 @@ export default function SignIn() {
       <CardFooter>
           <div className="flex justify-center w-full border-t py-4">
             <p className="text-center text-xs text-neutral-500">
-             built with{" "}
+             no account we have {" "}
               <Link
                 href="/signup"
                 className="underline"

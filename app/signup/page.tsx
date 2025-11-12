@@ -18,6 +18,7 @@ import { signUp } from "@/lib/auth-client";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Logo from "@/components/logo";
 
 export default function SignUp() {
 	const [firstName, setFirstName] = useState("");
@@ -45,6 +46,9 @@ export default function SignUp() {
 	return (
 		<div className="flex items-center justify-center h-screen w-full">
 			<Card className="z-50 rounded-md rounded-t-none max-w-md">
+				<div className="w-[95%] mx-auto ">
+				  <Logo/>
+				</div>
 				<CardHeader>
 					<CardTitle className="text-lg md:text-xl">Sign Up</CardTitle>
 					<CardDescription className="text-xs md:text-sm">
@@ -149,7 +153,7 @@ export default function SignUp() {
 					</div>
 					<Button
 						type="submit"
-						className="w-full"
+						className="w-full bg-yellow-500 hover:bg-yellow-500/80"
 						disabled={loading}
 						onClick={async () => {
 							await signUp.email({
