@@ -35,7 +35,7 @@ const count = parseInt(ff?.toString() || '0')
         {/* Header */}
         <div className="space-y-2">
           <h1 className="text-4xl font-bold text-slate-900">Dashboard</h1>
-          <p className="text-slate-600">Welcome back! Here's your overview</p>
+          <p className="text-slate-600">Welcome back! Heres &apos; your overview</p>
         </div>
 
         {/* Product Limit Alert */}
@@ -43,7 +43,7 @@ const count = parseInt(ff?.toString() || '0')
           <Alert className="border-amber-200 bg-amber-50">
             <AlertCircle className="h-4 w-4 text-amber-600" />
             <AlertDescription className="text-amber-800">
-              You've reached your product limit ({stats.maxProducts} products). Delete an existing product to create a new one.
+              You &apos;ve reached your product limit ({stats.maxProducts} products). Delete an existing product to create a new one.
             </AlertDescription>
           </Alert>
         )}
