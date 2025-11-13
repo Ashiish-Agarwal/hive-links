@@ -130,7 +130,7 @@ function setpickerColor_Backgroundfn(){
             }
 
           } className=' flex flex-col gap-4 w-full     '>
-            <h1  className={`text-xl font-sans   uppercase select-none text-black dark:text-white ${font}  `}>design your Fonts</h1>
+            <h1  className={`text-xl font-sans   uppercase select-none text-black dark:text-white ${font}  `}>Font Style</h1>
 
             <div className=' flex w-[90%] gap-3 p-5 overflow-x-scroll mx-auto hide-scrollbar rounded-md    bg-accent/80   '>
 
@@ -151,6 +151,7 @@ function setpickerColor_Backgroundfn(){
 
             </div>
               <div className='flex items-center gap-2'>
+                {/* //todo */}
                 <Popover>
                   <PopoverTrigger asChild>
                     <Button variant={'outline'} className='rounded-full  text-center text-black dark:text-white  w-20 h-10  ' size={'icon'}>
@@ -167,7 +168,7 @@ function setpickerColor_Backgroundfn(){
 
 
 
-          <h1 className='uppercase text-black dark:text-white'>Choose the color</h1>
+          <h1 className='uppercase text-black dark:text-white'>Background Color</h1>
         </div>
         {/** color design */}
         <div className='w-full  flex flex-col  '>
@@ -196,6 +197,7 @@ function setpickerColor_Backgroundfn(){
 
             <div className='  '>
                 <Popover>
+                  {/* todo */}
                   <PopoverTrigger asChild>
                     <Button onClick={()=>setpickerColor_Backgroundfn()} variant={'outline'} className='rounded-full w-20 h-10 text-center text-black dark:text-white p-5 ' size={'icon'}>
                       <Edit2 size={16}  />
@@ -218,6 +220,7 @@ function setpickerColor_Backgroundfn(){
 <div className='group relative'>
 
                 <div className=' w-fit '>
+                  {/* todo */}
                   <Popover>
                     <PopoverTrigger asChild>
                       <Button variant={'outline'} className='rounded-full w-20 text-center  h-10 p-4  ' size={'icon'}>

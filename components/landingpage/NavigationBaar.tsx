@@ -90,7 +90,7 @@ const NavigationBaar = () => {
 
     <Link href={'/signin'} target="_blank" className=
         
-       '  text-center  text-sm  mr-2  tracking-tighter bg-yellow-500  flex items-center hover:bg-yellow-600/80 hover:text-black duration-300 ease-in-out p-1.5  rounded-xl   w-fit    '
+       '  text-center  text-sm  mr-2  tracking-tighter bg-yellow-500  flex items-center hover:bg-yellow-500/80 hover:text-black duration-300 ease-in-out p-1.5  rounded-xl   w-fit    '
     >Sign In <ArrowRight className='ml-1 size-3.5'/></Link>
     </div>
 

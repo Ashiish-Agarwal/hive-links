@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -186,6 +186,12 @@ export default function SignIn() {
 			</svg>
                   Sign in with Github
                 </Button>
+                <Link className={buttonVariants({
+                  variant: "outline",
+                  className: "w-full gap-2"
+                })} href="/signin/payment">
+                💰 Enter Payment Details 
+                </Link>
             </div>
         </div>
       </CardContent>
@@ -202,6 +208,7 @@ export default function SignIn() {
 									signup
 								</span>
               </Link>
+              
             </p>
           </div>
         </CardFooter>

@@ -3,7 +3,7 @@ import { db } from "@/db";
 import {  user } from "@/db/schema/auth-schema";
 import { data, links, socialLinks, theme } from "@/db/schema/data-schema";
 import { auth } from "@/lib/auth";
-import { and, eq } from "drizzle-orm";
+import { and, count, eq } from "drizzle-orm";
 import { headers } from "next/headers";
 import {  redirect } from "next/navigation";
 
@@ -246,4 +246,21 @@ export async function GetUserName({productid}:{productid:string}){
   // console.log("ddd",user[0].name)
   return user[0].name
   
+}
+
+export async  function GetProductValue(){
+
+  const usraction =  await UuidAction()
+  if(!usraction){
+    return null
+  }
+  const logedinUser= await usraction[0].id
+ 
+  const productdata = await db.select({count:count()}).from(data).where(eq(data.userId,logedinUser)).execute()
+ 
+ 
+  console.log(productdata,'counts of products')
+  return productdata
+
+
 }

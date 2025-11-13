@@ -1,9 +1,11 @@
+import Banner from "@/components/banner";
 import Footer from "@/components/Footer";
 import NavigationBaar from "@/components/landingpage/NavigationBaar";
 
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
 import { metadatadescription, name ,url } from "@/lib/utils";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
    title: {
@@ -73,9 +75,7 @@ export default function LandingPageLayout({
     children: React.ReactNode;
   }) {
     return <div className=" relative bg-white ">
-      <div className="sticky top-0 z-50">
-
-     </div>
+      <Banner/>
      
 
 
