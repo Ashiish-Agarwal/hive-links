@@ -12,15 +12,15 @@ const StepperCmp = () => {
     const [Lname, LsetName] = React.useState('');
   return (
     <>
-    <div className=' flex flex-col gap-10 p-2  '>
+    <div className=' flex flex-col gap-10 p-2 fontSourGummy '>
       <div className='  '>
 
- <h1 className=' text-4xl md:text-5xl  h-full w-full lg:text-6xl xl:text-6xl text-center fontSourGummy'> How easy is it </h1>
- <p className=' text-xl md:text-5xl  h-full w-full lg:text-3xl xl:text-3xl text-center fontSourGummy'> takes only 1 minute </p>
+ <h1 className=' text-4xl md:text-5xl  h-full w-full lg:text-6xl xl:text-6xl text-center '> How easy is it </h1>
+ <p className=' text-xl md:text-5xl  h-full w-full lg:text-3xl xl:text-3xl text-center '> takes only 1 minute </p>
       </div>
 <div className=''>
 
-<Stepper className='h-full md:h-[80vh]'
+<Stepper className='h-full md:h-[50vh]'
   initialStep={1}
   onStepChange={(step) => {
     console.log(step);

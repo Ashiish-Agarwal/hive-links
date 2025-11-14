@@ -10,6 +10,7 @@ import { z } from 'zod';
 import { revalidateTag } from 'next/cache';
 import { cache_Tag } from '@/lib/chache';
 import { and, eq } from 'drizzle-orm';
+import { id } from 'zod/v4/locales';
 
 
 
@@ -195,19 +196,15 @@ export async function CreateTheme(params:string,themeClient:string) {
 
   const userid = await UuidAction()
 
-  if(! userid || themeClient.length===0){
-    const user = await UuidAction()
-  if(user.length === 0 || themeClient.length===0 || userid.length===0){
+  if(! userid || themeClient.length===0 || params.length===0){
+    
+  
   return{
     success:false,
     message:'error in adding theme '
   }
   }
-    return{
-      success:false,
-      message:'error in adding theme '
-    }
-  }
+    
   try {
     const themecheck = await db.select().from(theme).where(and(eq(theme.productId,params),eq(theme.userId,userid[0]?.id))).limit(1).execute()
     if(themecheck.length === 0){
@@ -221,6 +218,12 @@ export async function CreateTheme(params:string,themeClient:string) {
         backgroundColor:'',
         Linkcolor:''
       }).execute()
+    
+
+      return{
+        success:true,
+        message:'added theme successfully'
+      }
     }
     else{
       await db.update(theme).set({
@@ -230,6 +233,7 @@ export async function CreateTheme(params:string,themeClient:string) {
       backgroundColor:'',
       Linkcolor:''
     }).where(and(eq(theme.productId,params),eq(theme.userId,userid[0]?.id))).execute()
+   
    
     revalidateTag(`${cache_Tag.Design}`)
     return{

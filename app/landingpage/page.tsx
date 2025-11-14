@@ -2,6 +2,8 @@
 
 import { LadningpageAuth } from '@/actions/read'
 import { redirect } from 'next/navigation'
+import { CldVideoPlayer } from 'next-cloudinary';
+
 import Animatedtext from '@/components/landingpage/Animatedtext'
 
 import Sectionsecond from '@/components/landingpage/sectionsecond'
@@ -12,14 +14,16 @@ import StepperCmp from '@/components/StepperCmp'
 import Testimonials from '@/components/landingpage/testimonials'
 import Questions from '@/components/landingpage/Questions'
 import Lastsection from '@/components/landingpage/Lastsection'
+import { Video } from '@imagekit/next'
+import VideoTutorial from '@/components/landingpage/videotutorial';
 
 
 const page = async() => {
 
-  const current= await LadningpageAuth()
-  if(current){
-    return redirect('/dashboard')
-  }
+  // const current= await LadningpageAuth()
+  // if(current){
+  //   return redirect('/dashboard')
+  // }
 
  
 
@@ -54,18 +58,7 @@ const page = async() => {
 
 
     </div>
-    {/* <section
- style={{
-  background:'#301212'
-}
-}
- className='w-full h-full hidden md:block '
->
-<CardSwapsection/>
-
-
-
-</section> */}
+    
 <section style={{
   background:'#F5ECD5'
 }} className='h-full w-full   p-3   mx-auto flex items-center justify-center   backdrop-blur-sm    '>
@@ -77,14 +70,19 @@ const page = async() => {
 
  <section style={{
   background:'#FFFAEC'
-}} className='w-full h-full'>
+}} className='w-full h-full '>
  
+<div>
 
   <StepperCmp/>
-
+ 
+ 
+     <VideoTutorial/>
+</div>
+ 
 </section>
 <section   className='w-full h-full '  >
-  <div   className='w-full h-full '>
+  <div   className='w- h-full '>
 
 
 
