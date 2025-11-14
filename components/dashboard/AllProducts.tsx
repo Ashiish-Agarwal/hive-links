@@ -43,7 +43,6 @@ const AllProducts = async ({ data }: {
 
 const domain= process.env.PUBLIC_DOMAIN
 
-  const copied = `${domain}/${data[0].name}`
 
 console.log(data[0].name)
 
@@ -93,7 +92,7 @@ console.log(data[0].name)
               <div className='w-full h-10 flex gap-2 items-center justify-center  '>
                 <Button variant={'outline'} asChild className='w-[50%]'>
                 <CopyButton 
-                 content={copied}
+                 content={`${domain}/${item.name}`}
                  variant='outline'
                  />
                 </Button>

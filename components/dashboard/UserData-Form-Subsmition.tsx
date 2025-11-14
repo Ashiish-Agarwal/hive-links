@@ -16,7 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { cn } from "@/lib/utils"
+import { cn, name } from "@/lib/utils"
 import { UploadButton } from "@/lib/utils/uploadthing"
 import { userDataSchema } from "@/lib/zod/Userdata"
 import { Loader2, Plus, Trash2 } from "lucide-react"
@@ -142,14 +142,14 @@ function UserDataFormSubsmition() {
 
   return (
     <Form {...form} >
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full h-full flex flex-col items-center justify-center ">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-[80%]  mb-10 h-full flex flex-col items-center justify-center ">
         <div className="flex flex-col w-[90%] ">
           {/* Avatar section */}
           <div className="mt-36 flex items-center w-full gap-4 flex-col">
             <Avatar className="size-24">
               <AvatarImage 
                 className="rounded-full size-24 object-cover" 
-                src={isMounted && imagePreview ? imagePreview : "https://i.pinimg.com/222x/80/e8/40/80e8406626428e1d6387061f9783abd1.jpg"} 
+                src={isMounted && imagePreview ? imagePreview : "https://cdn.vectorstock.com/i/500p/44/01/default-avatar-photo-placeholder-icon-grey-vector-38594401.jpg"} 
               />
               <AvatarFallback className="rounded-full size-24">CN</AvatarFallback>
             </Avatar>
@@ -217,7 +217,7 @@ function UserDataFormSubsmition() {
 
                   </FormControl>
                   <FormDescription>
-                     Note: this name create a unique url link ex: https://linkog.com/kuru
+                    {field.value.includes(" ") ? <p className="text-red-500">Name must not contain spaces</p> : <p >Note: this name create a unique url link ex: {name} so not include space</p>}
                   </FormDescription>
                   {
                   available===null ? null :available?
