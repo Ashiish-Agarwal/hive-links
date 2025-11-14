@@ -1,6 +1,7 @@
 import Banner from "@/components/banner";
 import Footer from "@/components/Footer";
 import NavigationBaar from "@/components/landingpage/NavigationBaar";
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
 import { metadatadescription, name ,url } from "@/lib/utils";
@@ -85,8 +86,10 @@ export default function LandingPageLayout({
       </nav>
       <div >
 
-     
-        {children}
+      <AppRouterCacheProvider>
+           {children}
+        </AppRouterCacheProvider>
+       
         <Footer/>
       </div>
         <div className='hidden md:block z-0'>

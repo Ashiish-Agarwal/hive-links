@@ -36,7 +36,7 @@ const NavigationBaar = () => {
 ]
     
   return (
-   <div className='grid  bg-white   grid-cols-3 gap-4 border-b-2 border-yellow-500 sticky top-0 z-50  h-10 md:h-15   backdrop-blur w-[90%] md:w-[60%]  mx-auto items-center rounded-md  justify-center  '>
+   <div className='grid  bg-white   grid-cols-3 gap-4 border-2 border-zinc-500/20 sticky top-0 z-50  h-10 md:h-15   backdrop-blur w-[90%] md:w-[60%]  mx-auto items-center rounded-md  justify-center  '>
     <div>
       <Sheet >
         <SheetTrigger>
@@ -68,7 +68,7 @@ const NavigationBaar = () => {
      <Link href={'/signin'} target="_blank" className={buttonVariants({
        variant:"outline",
       size:"lg",
-      className:'  border-2 ml-5  text-black hover:text-black  border-yellow-500   hover:scale-105   '
+      className:'  border-2 ml-5  text-black hover:text-black  border-yellow-500    hover:scale-105   '
     })} >Sign In</Link>
      <Link href={'/signup'} target="_blank" className={buttonVariants({
       
@@ -82,15 +82,15 @@ const NavigationBaar = () => {
     
     
     </div>
-    <div className='flex gap-2 items-center justify-center '>
+    <Link href={'/'} target="_blank" className='flex gap-2 items-center justify-center '>
         <Image className='size-10 md:size-16 rounded-full' src="/logo.png" alt="logo" width={100} height={100}/>
 <h1 className='text-black  hidden md:block  font-bold '>{nameonly} .</h1>
-         </div>
+         </Link>
          <div className='w-full  flex items-center justify-end '>
 
     <Link href={'/signin'} target="_blank" className=
         
-       '  text-center  text-sm  mr-2  tracking-tighter bg-yellow-500  flex items-center hover:bg-yellow-500/80 hover:text-black duration-300 ease-in-out p-1.5  rounded-xl   w-fit    '
+       '  text-center  text-sm  mr-2  tracking-tighter bg-yellow-500  flex items-center hover:bg-yellow-500/80 hover:text-black duration-300 ease-in-out p-1.5  rounded-md   w-fit    '
     >Sign In <ArrowRight className='ml-1 size-3.5'/></Link>
     </div>
 

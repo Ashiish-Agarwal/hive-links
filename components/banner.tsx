@@ -5,7 +5,7 @@ const Banner = () => {
   return (
     <nav className="sticky top-0 z-50 bg-red-900 flex items-center justify-center gap-2 ">
     
-            <span className="font-medium">
+            <span className="font-medium text-white">
               Use our product and after New Year get $50!
             </span>
             <Link href={'/signin'} target="_blank"

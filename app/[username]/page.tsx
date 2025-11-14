@@ -2,7 +2,7 @@ import { GetInfo } from '@/actions/read'
 import SocialLinksDisplay from '@/components/dashboard/social-links'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import UserNotFound from '@/components/user-not-found'
-import { metadatadescription } from '@/lib/utils'
+import { metadatadescription, nameonly } from '@/lib/utils'
 import { Metadata } from 'next'
 
 
@@ -111,7 +111,7 @@ const username = async ({params}:Props) => {
            {/* logo */}
            <div className='flex items-center gap-2 w-full     justify-center mt-10 h-fit   duration-300 ease-in-out   '>
              <Link href={'/landingpage'} target="_blank" className=' text-3xl'>
-             Hive Link 
+            {nameonly}
              </Link>
            </div>
            </div>
