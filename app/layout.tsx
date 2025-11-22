@@ -45,17 +45,18 @@ const AnnieUseYourTelescope= Annie_Use_Your_Telescope({
 
 const poppins = Poppins({
   subsets: ["latin"],
- weight:["400"],
+ weight:["400","700"],
   variable: "--font-poppins",
 })
 
 const sourGummy = Sour_Gummy({
   subsets: ["latin"],
- weight:["400"],
+ weight:["400","700"],
   variable: "--font-sour-gummy",
 });
 const geistSans = Geist({
   variable: "--font-geist-sans",
+  weight:["400","700"],
   subsets: ["latin"],
 });
 const eagleLake = Eagle_Lake({
@@ -66,6 +67,7 @@ variable:"--font-eagle-lake"
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  weight:["400","700"],
   subsets: ["latin"],
 });
 
@@ -77,7 +79,7 @@ const sofia = Sofia({
 
 const recursive = Recursive({
   subsets: ["latin"],
- weight:["400"],
+ weight:["400","700"],
   variable: "--font-recursive",
 });
 

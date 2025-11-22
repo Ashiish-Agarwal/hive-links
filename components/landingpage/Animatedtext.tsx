@@ -25,11 +25,13 @@ const Animatedtext = () => {
 <p className='text-sm text-zinc-400  text-balance break-words   flex-wrap  mx-auto mt-2 font-sans '>Build a custom web app, add all your links, share it everywhere . </p>
 </div>
 <div className='flex  gap-4'>
-  <Link href={'/Signin'} target="_blank" className=''>
+  <Link href={'/signin'}  className=''>
     <Button className='bg-yellow-500 text-white hover:bg-yellow-600 rounded-2xl duration-300 hover:scale-110 '>Open-Account  </Button>
   </Link>
-  <Link href={'/'} target="_blank" className=''>
-    <Button className=' border-2 border-black/40  rounded-2xl bg-gray-50 hover:bg-gray-200 text-black  duration-300 hover:scale-110 '>Guide <Video/></Button>
+  <Link href={'#video'}  className=''>
+    <Button onClick={() => {
+    document.getElementById('video')?.scrollIntoView({ behavior: 'smooth' });
+  }}  className=' border-2 border-black/40  rounded-2xl bg-gray-50 hover:bg-gray-200 text-black  duration-300 hover:scale-110 '>Guide <Video/></Button>
   </Link>
 </div>
 

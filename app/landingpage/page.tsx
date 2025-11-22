@@ -72,13 +72,13 @@ const page = async() => {
   background:'#FFFAEC'
 }} className='w-full h-full '>
  
-<div>
+
 
   <StepperCmp/>
  
  
      <VideoTutorial/>
-</div>
+
  
 </section>
 <section   className='w-full h-full '  >

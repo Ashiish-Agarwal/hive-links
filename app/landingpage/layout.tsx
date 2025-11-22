@@ -8,7 +8,9 @@ import { metadatadescription, name ,url } from "@/lib/utils";
 import { Metadata } from "next";
 
 
+
 export const metadata: Metadata = {
+   metadataBase: new URL(url), 
    title: {
     default: `${name} - Free Bio Link Editor | Create Your Link in Bio`,
     template: '%s | ${name}'

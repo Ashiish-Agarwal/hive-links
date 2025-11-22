@@ -30,7 +30,6 @@ const username = async ({params}:Props) => {
 
  
   
-  
  
  
   if(!GetunAuthorizeData){
@@ -81,7 +80,7 @@ const username = async ({params}:Props) => {
              <h1  className='text-2xl uppercase  '>{GetunAuthorizeData?.name}</h1>
              <p style={{
                color:'var(--accent)'
-             }} className='text-lg text-zinc-500 hover:text-zinc-700 duration-300 ease-in-out  text-balance break-words  w-[90%] mx-auto  '> {GetunAuthorizeData?.bio }   </p>
+             }} className='text-sm md:text-lg  text-zinc-500 hover:text-zinc-700 duration-300 ease-in-out  text-balance break-words  w-[90%] mx-auto  '> {GetunAuthorizeData?.bio }   </p>
  
            </div>
            {/* links */}
