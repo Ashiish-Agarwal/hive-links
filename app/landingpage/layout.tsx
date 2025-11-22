@@ -3,9 +3,11 @@ import Footer from "@/components/Footer";
 import NavigationBaar from "@/components/landingpage/NavigationBaar";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 
-import { SmoothCursor } from "@/components/ui/smooth-cursor";
+
 import { metadatadescription, name ,url } from "@/lib/utils";
 import { Metadata } from "next";
+
+
 
 
 
@@ -78,6 +80,7 @@ export default function LandingPageLayout({
     children: React.ReactNode;
   }) {
     return <div className=" relative bg-white ">
+
       <Banner/>
      
 
@@ -89,16 +92,14 @@ export default function LandingPageLayout({
       <div >
 
       <AppRouterCacheProvider>
+        
            {children}
         </AppRouterCacheProvider>
        
         <Footer/>
       </div>
-        <div className='hidden md:block z-0'>
-
+       
         
-        <SmoothCursor />
-        </div>
         
         </div>
   }
