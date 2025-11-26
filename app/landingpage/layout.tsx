@@ -6,7 +6,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 
 import { metadatadescription, name ,url } from "@/lib/utils";
 import { Metadata } from "next";
-
+import LoadingComponent from "@/components/loadingcomponent";
 
 
 
@@ -80,6 +80,7 @@ export default function LandingPageLayout({
     children: React.ReactNode;
   }) {
     return <div className=" relative bg-white ">
+      
 
       <Banner/>
      
@@ -92,7 +93,7 @@ export default function LandingPageLayout({
       <div >
 
       <AppRouterCacheProvider>
-        
+        <LoadingComponent/>
            {children}
         </AppRouterCacheProvider>
        

@@ -1,9 +1,12 @@
 import { GetInfo } from '@/actions/read'
 import SocialLinksDisplay from '@/components/dashboard/social-links'
+import ShareCard from '@/components/inbox/ShareLink'
+import Logo from '@/components/logo'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import UserNotFound from '@/components/user-not-found'
-import { metadatadescription, nameonly } from '@/lib/utils'
+import { metadatadescription, nameonly, url } from '@/lib/utils'
 import { Metadata } from 'next'
+import Image from 'next/image'
 
 
 import Link from 'next/link'
@@ -45,6 +48,9 @@ const username = async ({params}:Props) => {
     <>
 
 
+  
+      
+     
      <div
      style={{
        background:designdata?.backgroundColor || ''
@@ -58,9 +64,21 @@ const username = async ({params}:Props) => {
          color:'var(--text)'
        }} className={`w-full h-screen flex flex-col items-center justify-center ${designdata?.textcolor}  ${designdata?.fontStyle || 'sansation-light'} ${designdata?.backgroundColor}   p-2 theme-${designdata?.theme}`}>
        
+      
         
          <div className='w-full h-screen rounded-md flex flex-col items-center justify-center    '>
+           
+           
+            <div className=' flex   justify-around items-stretch  w-full    '>
+        <Image src="/logo.png" alt="Logo" width={100} height={100} className='bg-white rounded-full p-1 size-10 ' />
+         <ShareCard
+         url={`${url}/${decodedUsername}`}
+         title={GetunAuthorizeData?.name}
+         description={GetunAuthorizeData?.bio || 'my bio tool from laxybio app'}
+       />
+       </div>
            {/* //image */}
+
            <div className={`  w-full flex items-center justify-center ${ GetunAuthorizeData?.profile?'block':'hidden' }`} >
              <Avatar className=' size-52  select-none overflow-hidden'>
                <AvatarImage className='   w-full h-full  overflow-hidden  object-cover   ' src={`${GetunAuthorizeData?.profile || '/defaultimg.jpg' } `}/>
