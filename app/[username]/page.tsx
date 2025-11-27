@@ -69,7 +69,7 @@ const username = async ({params}:Props) => {
          <div className='w-full h-screen rounded-md flex flex-col items-center justify-center    '>
            
            
-            <div className=' flex   justify-around items-stretch  w-full    '>
+            <div className=' flex    justify-between  w-full md:w-[50%]    '>
         <Image src="/logo.png" alt="Logo" width={100} height={100} className='bg-white rounded-full p-1 size-10 ' />
          <ShareCard
          url={`${url}/${decodedUsername}`}
