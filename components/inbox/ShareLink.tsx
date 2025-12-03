@@ -15,12 +15,14 @@ interface ShareCardProps {
   url: string;
   title?: string;
   description?: string;
+  Cardcolor:string;
 }
 
 export default function ShareCard({ 
   url, 
   title = 'Check this out!', 
-  description = '' 
+  description = '' ,
+  Cardcolor
 }: ShareCardProps) {
   const [copied, setCopied] = useState(false);
 
@@ -98,8 +100,10 @@ export default function ShareCard({
   };
 
   return (
+    <div  >
+
     <Popover >
-      <PopoverTrigger asChild>
+      <PopoverTrigger  >
         <span
           aria-label="Share"
                  >
@@ -108,7 +112,7 @@ export default function ShareCard({
         </span>
       </PopoverTrigger>
       <PopoverContent className="w-80 p-4">
-        <div className="space-y-4">
+        <div   className="space-y-4">
           <div>
             <h3 className="font-semibold text-lg mb-1">Share this link</h3>
             <p className="text-sm text-gray-600">{title}</p>
@@ -130,7 +134,7 @@ export default function ShareCard({
           </div>
 
           <div className="pt-3 border-t">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 text-black">
               <input
                 type="text"
                 value={url}
@@ -156,6 +160,7 @@ export default function ShareCard({
         </div>
       </PopoverContent>
     </Popover>
+              </div>
   );
 }
 

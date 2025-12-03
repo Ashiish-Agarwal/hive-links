@@ -1,8 +1,7 @@
 import { GetInfo } from '@/actions/read'
 import SocialLinksDisplay from '@/components/dashboard/social-links'
 import ShareCard from '@/components/inbox/ShareLink'
-import Logo from '@/components/logo'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+
 import UserNotFound from '@/components/user-not-found'
 import { metadatadescription, nameonly, url } from '@/lib/utils'
 import { Metadata } from 'next'
@@ -72,6 +71,7 @@ const username = async ({params}:Props) => {
             <div className=' flex    justify-between  w-full md:w-[50%]    '>
         <Image src="/logo.png" alt="Logo" width={100} height={100} className='bg-white rounded-full p-1 size-10 ' />
          <ShareCard
+         Cardcolor={`${designdata?.Linkcolor} || `}
          url={`${url}/${decodedUsername}`}
          title={GetunAuthorizeData?.name}
          description={GetunAuthorizeData?.bio || 'my bio tool from laxybio app'}
@@ -80,14 +80,12 @@ const username = async ({params}:Props) => {
            {/* //image */}
 
            <div className={`  w-full flex items-center justify-center ${ GetunAuthorizeData?.profile?'block':'hidden' }`} >
-             <Avatar className=' size-52  select-none overflow-hidden'>
-               <AvatarImage className='   w-full h-full  overflow-hidden  object-cover   ' src={`${GetunAuthorizeData?.profile || '/defaultimg.jpg' } `}/>
+             
+               <Image  alt='Hive' loading='lazy' unoptimized width={100} height={100} className='   size-56 rounded-full overflow-hidden   object-cover   ' src={`${GetunAuthorizeData?.profile|| '/defaultimg.jpg'}`}/>
             
                
  
-              
-               <AvatarFallback>Hive</AvatarFallback>
-             </Avatar>
+             
              
  
            </div>
