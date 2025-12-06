@@ -20,10 +20,10 @@ import VideoTutorial from '@/components/landingpage/videotutorial';
 
 const page = async() => {
 
-  // const current= await LadningpageAuth()
-  // if(current){
-  //   return redirect('/dashboard')
-  // }
+  const current= await LadningpageAuth()
+  if(current){
+    return redirect('/dashboard')
+  }
 
  
 
